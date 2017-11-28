@@ -1,0 +1,513 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C40A94201FB37E61001971A1 /* JerryAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A941F1FB37E61001971A1 /* JerryAVPlayer.m */; };
+		C40A94231FBD977B001971A1 /* BMRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94211FBD977B001971A1 /* BMRequestHelper.m */; };
+		C40A94271FBD97CB001971A1 /* JerryTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94251FBD97CB001971A1 /* JerryTools.m */; };
+		C40A942E1FBEE543001971A1 /* StoryCategory.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A942D1FBEE543001971A1 /* StoryCategory.xib */; };
+		C40A94331FC736F0001971A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94321FC736F0001971A1 /* MainViewController.m */; };
+		C40A94371FC73B4C001971A1 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94361FC73B4C001971A1 /* PlayViewController.m */; };
+		C40A943B1FC73B77001971A1 /* PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A943A1FC73B77001971A1 /* PlayListViewController.m */; };
+		C40A943F1FC80C55001971A1 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A943E1FC80C55001971A1 /* DiscoverViewController.m */; };
+		C40A94431FC80E5D001971A1 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94421FC80E5D001971A1 /* MainTabBarViewController.m */; };
+		C40A94481FC82B44001971A1 /* BannerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94471FC82B44001971A1 /* BannerViewCell.xib */; };
+		C40A944B1FCB09B9001971A1 /* BannerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A944A1FCB09B9001971A1 /* BannerViewCell.m */; };
+		C40A94571FCC82C2001971A1 /* SearchBarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94551FCC82C2001971A1 /* SearchBarViewCell.m */; };
+		C40A94581FCC82C3001971A1 /* SearchBarViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94561FCC82C2001971A1 /* SearchBarViewCell.xib */; };
+		C40A945A1FCC8F98001971A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C40A94591FCC8F98001971A1 /* Assets.xcassets */; };
+		C4A58C261FAF70A900E45395 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C251FAF70A900E45395 /* AppDelegate.m */; };
+		C4A58C291FAF70A900E45395 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C281FAF70A900E45395 /* ViewController.m */; };
+		C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2A1FAF70A900E45395 /* Main.storyboard */; };
+		C4A58C311FAF70A900E45395 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2F1FAF70A900E45395 /* LaunchScreen.storyboard */; };
+		C4A58C341FAF70A900E45395 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C331FAF70A900E45395 /* main.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C40A941E1FB37E61001971A1 /* JerryAVPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JerryAVPlayer.h; sourceTree = "<group>"; };
+		C40A941F1FB37E61001971A1 /* JerryAVPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JerryAVPlayer.m; sourceTree = "<group>"; };
+		C40A94211FBD977B001971A1 /* BMRequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BMRequestHelper.m; path = OrangeFun/BMRequestHelper.m; sourceTree = SOURCE_ROOT; };
+		C40A94221FBD977B001971A1 /* BMRequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BMRequestHelper.h; path = OrangeFun/BMRequestHelper.h; sourceTree = SOURCE_ROOT; };
+		C40A94251FBD97CB001971A1 /* JerryTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JerryTools.m; path = OrangeFun/JerryTools.m; sourceTree = SOURCE_ROOT; };
+		C40A94261FBD97CB001971A1 /* JerryTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JerryTools.h; path = OrangeFun/JerryTools.h; sourceTree = SOURCE_ROOT; };
+		C40A942B1FBD99C1001971A1 /* globalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = globalHeader.h; path = OrangeFun/globalHeader.h; sourceTree = SOURCE_ROOT; };
+		C40A942D1FBEE543001971A1 /* StoryCategory.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryCategory.xib; sourceTree = "<group>"; };
+		C40A942F1FC2DF77001971A1 /* RequestURLHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestURLHeader.h; sourceTree = "<group>"; };
+		C40A94311FC736F0001971A1 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		C40A94321FC736F0001971A1 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		C40A94351FC73B4C001971A1 /* PlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		C40A94361FC73B4C001971A1 /* PlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		C40A94391FC73B77001971A1 /* PlayListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayListViewController.h; sourceTree = "<group>"; };
+		C40A943A1FC73B77001971A1 /* PlayListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayListViewController.m; sourceTree = "<group>"; };
+		C40A943D1FC80C55001971A1 /* DiscoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		C40A943E1FC80C55001971A1 /* DiscoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		C40A94411FC80E5D001971A1 /* MainTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
+		C40A94421FC80E5D001971A1 /* MainTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
+		C40A94471FC82B44001971A1 /* BannerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerViewCell.xib; sourceTree = "<group>"; };
+		C40A94491FCB09B9001971A1 /* BannerViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BannerViewCell.h; sourceTree = "<group>"; };
+		C40A944A1FCB09B9001971A1 /* BannerViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BannerViewCell.m; sourceTree = "<group>"; };
+		C40A944C1FCC810E001971A1 /* ProjectHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectHeader.h; sourceTree = "<group>"; };
+		C40A94541FCC82C2001971A1 /* SearchBarViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchBarViewCell.h; sourceTree = "<group>"; };
+		C40A94551FCC82C2001971A1 /* SearchBarViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchBarViewCell.m; sourceTree = "<group>"; };
+		C40A94561FCC82C2001971A1 /* SearchBarViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarViewCell.xib; sourceTree = "<group>"; };
+		C40A94591FCC8F98001971A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C4A58C211FAF70A900E45395 /* OrangeFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrangeFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4A58C241FAF70A900E45395 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C4A58C251FAF70A900E45395 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C4A58C271FAF70A900E45395 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C4A58C281FAF70A900E45395 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C4A58C2B1FAF70A900E45395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C4A58C301FAF70A900E45395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C4A58C321FAF70A900E45395 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4A58C331FAF70A900E45395 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C4A58C1E1FAF70A900E45395 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C40A941D1FB37CFE001971A1 /* 播放器工具 */ = {
+			isa = PBXGroup;
+			children = (
+				C40A941E1FB37E61001971A1 /* JerryAVPlayer.h */,
+				C40A941F1FB37E61001971A1 /* JerryAVPlayer.m */,
+			);
+			path = "播放器工具";
+			sourceTree = "<group>";
+		};
+		C40A94241FBD978B001971A1 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				C40A94261FBD97CB001971A1 /* JerryTools.h */,
+				C40A94251FBD97CB001971A1 /* JerryTools.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		C40A942A1FBD9998001971A1 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				C40A942B1FBD99C1001971A1 /* globalHeader.h */,
+				C40A942F1FC2DF77001971A1 /* RequestURLHeader.h */,
+				C40A944C1FCC810E001971A1 /* ProjectHeader.h */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		C40A942C1FBEE4F0001971A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C40A942D1FBEE543001971A1 /* StoryCategory.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C40A94301FC736AF001971A1 /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				C40A94311FC736F0001971A1 /* MainViewController.h */,
+				C40A94321FC736F0001971A1 /* MainViewController.m */,
+				C40A94441FC82A96001971A1 /* View */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
+		C40A94341FC73B35001971A1 /* 播放页 */ = {
+			isa = PBXGroup;
+			children = (
+				C40A94351FC73B4C001971A1 /* PlayViewController.h */,
+				C40A94361FC73B4C001971A1 /* PlayViewController.m */,
+			);
+			path = "播放页";
+			sourceTree = "<group>";
+		};
+		C40A94381FC73B60001971A1 /* 播单 */ = {
+			isa = PBXGroup;
+			children = (
+				C40A94391FC73B77001971A1 /* PlayListViewController.h */,
+				C40A943A1FC73B77001971A1 /* PlayListViewController.m */,
+			);
+			path = "播单";
+			sourceTree = "<group>";
+		};
+		C40A943C1FC80C33001971A1 /* 发现 */ = {
+			isa = PBXGroup;
+			children = (
+				C40A943D1FC80C55001971A1 /* DiscoverViewController.h */,
+				C40A943E1FC80C55001971A1 /* DiscoverViewController.m */,
+			);
+			path = "发现";
+			sourceTree = "<group>";
+		};
+		C40A94401FC80E0C001971A1 /* Tab页 */ = {
+			isa = PBXGroup;
+			children = (
+				C40A94411FC80E5D001971A1 /* MainTabBarViewController.h */,
+				C40A94421FC80E5D001971A1 /* MainTabBarViewController.m */,
+			);
+			path = "Tab页";
+			sourceTree = "<group>";
+		};
+		C40A94441FC82A96001971A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C40A944E1FCC8222001971A1 /* 搜索框 */,
+				C40A944D1FCC820C001971A1 /* Banner */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C40A944D1FCC820C001971A1 /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				C40A94471FC82B44001971A1 /* BannerViewCell.xib */,
+				C40A94491FCB09B9001971A1 /* BannerViewCell.h */,
+				C40A944A1FCB09B9001971A1 /* BannerViewCell.m */,
+			);
+			path = Banner;
+			sourceTree = "<group>";
+		};
+		C40A944E1FCC8222001971A1 /* 搜索框 */ = {
+			isa = PBXGroup;
+			children = (
+				C40A94541FCC82C2001971A1 /* SearchBarViewCell.h */,
+				C40A94551FCC82C2001971A1 /* SearchBarViewCell.m */,
+				C40A94561FCC82C2001971A1 /* SearchBarViewCell.xib */,
+			);
+			path = "搜索框";
+			sourceTree = "<group>";
+		};
+		C4A58C181FAF70A900E45395 = {
+			isa = PBXGroup;
+			children = (
+				C4A58C231FAF70A900E45395 /* OrangeFun */,
+				C4A58C221FAF70A900E45395 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C4A58C221FAF70A900E45395 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C4A58C211FAF70A900E45395 /* OrangeFun.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C4A58C231FAF70A900E45395 /* OrangeFun */ = {
+			isa = PBXGroup;
+			children = (
+				C40A942A1FBD9998001971A1 /* Headers */,
+				C40A94241FBD978B001971A1 /* Tools */,
+				C40A941D1FB37CFE001971A1 /* 播放器工具 */,
+				C4A58C3A1FAF71F300E45395 /* Request */,
+				C40A942C1FBEE4F0001971A1 /* View */,
+				C40A94401FC80E0C001971A1 /* Tab页 */,
+				C40A94301FC736AF001971A1 /* 首页 */,
+				C40A94341FC73B35001971A1 /* 播放页 */,
+				C40A943C1FC80C33001971A1 /* 发现 */,
+				C40A94381FC73B60001971A1 /* 播单 */,
+				C4A58C241FAF70A900E45395 /* AppDelegate.h */,
+				C4A58C251FAF70A900E45395 /* AppDelegate.m */,
+				C4A58C271FAF70A900E45395 /* ViewController.h */,
+				C4A58C281FAF70A900E45395 /* ViewController.m */,
+				C40A94591FCC8F98001971A1 /* Assets.xcassets */,
+				C4A58C2A1FAF70A900E45395 /* Main.storyboard */,
+				C4A58C2F1FAF70A900E45395 /* LaunchScreen.storyboard */,
+				C4A58C321FAF70A900E45395 /* Info.plist */,
+				C4A58C331FAF70A900E45395 /* main.m */,
+			);
+			path = OrangeFun;
+			sourceTree = "<group>";
+		};
+		C4A58C3A1FAF71F300E45395 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				C40A94221FBD977B001971A1 /* BMRequestHelper.h */,
+				C40A94211FBD977B001971A1 /* BMRequestHelper.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C4A58C201FAF70A900E45395 /* OrangeFun */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4A58C371FAF70A900E45395 /* Build configuration list for PBXNativeTarget "OrangeFun" */;
+			buildPhases = (
+				C4A58C1D1FAF70A900E45395 /* Sources */,
+				C4A58C1E1FAF70A900E45395 /* Frameworks */,
+				C4A58C1F1FAF70A900E45395 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OrangeFun;
+			productName = OrangeFun;
+			productReference = C4A58C211FAF70A900E45395 /* OrangeFun.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C4A58C191FAF70A900E45395 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Jerry;
+				TargetAttributes = {
+					C4A58C201FAF70A900E45395 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = C4A58C1C1FAF70A900E45395 /* Build configuration list for PBXProject "OrangeFun" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C4A58C181FAF70A900E45395;
+			productRefGroup = C4A58C221FAF70A900E45395 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C4A58C201FAF70A900E45395 /* OrangeFun */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C4A58C1F1FAF70A900E45395 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4A58C311FAF70A900E45395 /* LaunchScreen.storyboard in Resources */,
+				C40A942E1FBEE543001971A1 /* StoryCategory.xib in Resources */,
+				C40A94581FCC82C3001971A1 /* SearchBarViewCell.xib in Resources */,
+				C40A94481FC82B44001971A1 /* BannerViewCell.xib in Resources */,
+				C40A945A1FCC8F98001971A1 /* Assets.xcassets in Resources */,
+				C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C4A58C1D1FAF70A900E45395 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C40A943B1FC73B77001971A1 /* PlayListViewController.m in Sources */,
+				C40A94431FC80E5D001971A1 /* MainTabBarViewController.m in Sources */,
+				C40A94571FCC82C2001971A1 /* SearchBarViewCell.m in Sources */,
+				C40A94271FBD97CB001971A1 /* JerryTools.m in Sources */,
+				C4A58C291FAF70A900E45395 /* ViewController.m in Sources */,
+				C4A58C341FAF70A900E45395 /* main.m in Sources */,
+				C40A94201FB37E61001971A1 /* JerryAVPlayer.m in Sources */,
+				C40A943F1FC80C55001971A1 /* DiscoverViewController.m in Sources */,
+				C40A94371FC73B4C001971A1 /* PlayViewController.m in Sources */,
+				C40A944B1FCB09B9001971A1 /* BannerViewCell.m in Sources */,
+				C40A94331FC736F0001971A1 /* MainViewController.m in Sources */,
+				C40A94231FBD977B001971A1 /* BMRequestHelper.m in Sources */,
+				C4A58C261FAF70A900E45395 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C4A58C2A1FAF70A900E45395 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4A58C2B1FAF70A900E45395 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C4A58C2F1FAF70A900E45395 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4A58C301FAF70A900E45395 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C4A58C351FAF70A900E45395 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C4A58C361FAF70A900E45395 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C4A58C381FAF70A900E45395 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SV488327T;
+				INFOPLIST_FILE = OrangeFun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ChengZhang.story.OrangeFun;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		C4A58C391FAF70A900E45395 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SV488327T;
+				INFOPLIST_FILE = OrangeFun/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ChengZhang.story.OrangeFun;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C4A58C1C1FAF70A900E45395 /* Build configuration list for PBXProject "OrangeFun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4A58C351FAF70A900E45395 /* Debug */,
+				C4A58C361FAF70A900E45395 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4A58C371FAF70A900E45395 /* Build configuration list for PBXNativeTarget "OrangeFun" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4A58C381FAF70A900E45395 /* Debug */,
+				C4A58C391FAF70A900E45395 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C4A58C191FAF70A900E45395 /* Project object */;
+}

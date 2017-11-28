@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BannerViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZ4-hw-i0h">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="LZ4-hw-i0h" secondAttribute="trailing" id="3Q2-Xz-IGT"/>
+                <constraint firstItem="LZ4-hw-i0h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3UX-37-qxf"/>
+                <constraint firstItem="LZ4-hw-i0h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6jV-hr-kn3"/>
+                <constraint firstAttribute="bottom" secondItem="LZ4-hw-i0h" secondAttribute="bottom" id="t39-uD-Bt8"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bannerScrollView" destination="LZ4-hw-i0h" id="ACV-uS-qXR"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="-210"/>
+        </view>
+    </objects>
+</document>
