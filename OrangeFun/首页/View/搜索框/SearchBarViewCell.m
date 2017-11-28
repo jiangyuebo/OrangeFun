@@ -14,7 +14,7 @@
     [super awakeFromNib];
     
     UIImage *searchBgImage = [UIImage imageNamed:@"searchbg"];
-    UIImage *resizeBgImage = [searchBgImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 14)];
+    UIImage *resizeBgImage = [searchBgImage resizableImageWithCapInsets:UIEdgeInsetsMake(15, 18, 15, 18)];
     [self.searchImageView setImage:resizeBgImage];
 }
 

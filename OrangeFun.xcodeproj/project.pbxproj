@@ -21,6 +21,10 @@
 		C40A94571FCC82C2001971A1 /* SearchBarViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94551FCC82C2001971A1 /* SearchBarViewCell.m */; };
 		C40A94581FCC82C3001971A1 /* SearchBarViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94561FCC82C2001971A1 /* SearchBarViewCell.xib */; };
 		C40A945A1FCC8F98001971A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C40A94591FCC8F98001971A1 /* Assets.xcassets */; };
+		C40A94621FCDBD5C001971A1 /* CategoryStoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94601FCDBD5C001971A1 /* CategoryStoryViewCell.m */; };
+		C40A94631FCDBD5C001971A1 /* CategoryStoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94611FCDBD5C001971A1 /* CategoryStoryViewCell.xib */; };
+		C40A94651FCDC452001971A1 /* CategoryStoryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94641FCDC452001971A1 /* CategoryStoryCollectionCell.xib */; };
+		C40A946B1FCDC938001971A1 /* CategoryStoryCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A946A1FCDC938001971A1 /* CategoryStoryCollectionCell.m */; };
 		C4A58C261FAF70A900E45395 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C251FAF70A900E45395 /* AppDelegate.m */; };
 		C4A58C291FAF70A900E45395 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C281FAF70A900E45395 /* ViewController.m */; };
 		C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2A1FAF70A900E45395 /* Main.storyboard */; };
@@ -56,6 +60,12 @@
 		C40A94551FCC82C2001971A1 /* SearchBarViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchBarViewCell.m; sourceTree = "<group>"; };
 		C40A94561FCC82C2001971A1 /* SearchBarViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBarViewCell.xib; sourceTree = "<group>"; };
 		C40A94591FCC8F98001971A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C40A945F1FCDBD5C001971A1 /* CategoryStoryViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryStoryViewCell.h; sourceTree = "<group>"; };
+		C40A94601FCDBD5C001971A1 /* CategoryStoryViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryStoryViewCell.m; sourceTree = "<group>"; };
+		C40A94611FCDBD5C001971A1 /* CategoryStoryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryStoryViewCell.xib; sourceTree = "<group>"; };
+		C40A94641FCDC452001971A1 /* CategoryStoryCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryStoryCollectionCell.xib; sourceTree = "<group>"; };
+		C40A94691FCDC938001971A1 /* CategoryStoryCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryStoryCollectionCell.h; sourceTree = "<group>"; };
+		C40A946A1FCDC938001971A1 /* CategoryStoryCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryStoryCollectionCell.m; sourceTree = "<group>"; };
 		C4A58C211FAF70A900E45395 /* OrangeFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrangeFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A58C241FAF70A900E45395 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4A58C251FAF70A900E45395 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -163,6 +173,7 @@
 		C40A94441FC82A96001971A1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C40A945B1FCD6E16001971A1 /* 分类故事 */,
 				C40A944E1FCC8222001971A1 /* 搜索框 */,
 				C40A944D1FCC820C001971A1 /* Banner */,
 			);
@@ -187,6 +198,19 @@
 				C40A94561FCC82C2001971A1 /* SearchBarViewCell.xib */,
 			);
 			path = "搜索框";
+			sourceTree = "<group>";
+		};
+		C40A945B1FCD6E16001971A1 /* 分类故事 */ = {
+			isa = PBXGroup;
+			children = (
+				C40A945F1FCDBD5C001971A1 /* CategoryStoryViewCell.h */,
+				C40A94601FCDBD5C001971A1 /* CategoryStoryViewCell.m */,
+				C40A94691FCDC938001971A1 /* CategoryStoryCollectionCell.h */,
+				C40A946A1FCDC938001971A1 /* CategoryStoryCollectionCell.m */,
+				C40A94611FCDBD5C001971A1 /* CategoryStoryViewCell.xib */,
+				C40A94641FCDC452001971A1 /* CategoryStoryCollectionCell.xib */,
+			);
+			path = "分类故事";
 			sourceTree = "<group>";
 		};
 		C4A58C181FAF70A900E45395 = {
@@ -301,9 +325,11 @@
 				C4A58C311FAF70A900E45395 /* LaunchScreen.storyboard in Resources */,
 				C40A942E1FBEE543001971A1 /* StoryCategory.xib in Resources */,
 				C40A94581FCC82C3001971A1 /* SearchBarViewCell.xib in Resources */,
+				C40A94651FCDC452001971A1 /* CategoryStoryCollectionCell.xib in Resources */,
 				C40A94481FC82B44001971A1 /* BannerViewCell.xib in Resources */,
 				C40A945A1FCC8F98001971A1 /* Assets.xcassets in Resources */,
 				C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */,
+				C40A94631FCDBD5C001971A1 /* CategoryStoryViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C40A94621FCDBD5C001971A1 /* CategoryStoryViewCell.m in Sources */,
 				C40A943B1FC73B77001971A1 /* PlayListViewController.m in Sources */,
 				C40A94431FC80E5D001971A1 /* MainTabBarViewController.m in Sources */,
 				C40A94571FCC82C2001971A1 /* SearchBarViewCell.m in Sources */,
@@ -323,6 +350,7 @@
 				C40A94201FB37E61001971A1 /* JerryAVPlayer.m in Sources */,
 				C40A943F1FC80C55001971A1 /* DiscoverViewController.m in Sources */,
 				C40A94371FC73B4C001971A1 /* PlayViewController.m in Sources */,
+				C40A946B1FCDC938001971A1 /* CategoryStoryCollectionCell.m in Sources */,
 				C40A944B1FCB09B9001971A1 /* BannerViewCell.m in Sources */,
 				C40A94331FC736F0001971A1 /* MainViewController.m in Sources */,
 				C40A94231FBD977B001971A1 /* BMRequestHelper.m in Sources */,

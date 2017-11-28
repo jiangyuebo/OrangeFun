@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangHK-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nEs-SE-oGg" customClass="CategoryStoryCollectionCell">
+            <rect key="frame" x="0.0" y="0.0" width="161" height="205"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="161" height="205"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gDn-0b-oIl">
+                        <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="gDn-0b-oIl" secondAttribute="height" multiplier="1:1" id="YXf-fA-nz9"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hmy-02-mZr">
+                        <rect key="frame" x="0.0" y="161" width="161" height="42"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="爱占便宜的小猪" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="kbe-il-HC0">
+                                <rect key="frame" x="0.0" y="3" width="161" height="24"/>
+                                <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kbe-il-HC0" secondAttribute="trailing" id="XpM-AD-lyW"/>
+                            <constraint firstAttribute="bottom" secondItem="kbe-il-HC0" secondAttribute="bottom" constant="15" id="arF-ZY-0VV"/>
+                            <constraint firstItem="kbe-il-HC0" firstAttribute="leading" secondItem="Hmy-02-mZr" secondAttribute="leading" id="pjQ-Z5-e5z"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="gDn-0b-oIl" secondAttribute="trailing" id="Abl-oJ-5wW"/>
+                <constraint firstItem="Hmy-02-mZr" firstAttribute="leading" secondItem="nEs-SE-oGg" secondAttribute="leading" id="BBI-1q-Fhj"/>
+                <constraint firstItem="gDn-0b-oIl" firstAttribute="top" secondItem="nEs-SE-oGg" secondAttribute="top" id="CP6-bq-IGF"/>
+                <constraint firstItem="gDn-0b-oIl" firstAttribute="leading" secondItem="nEs-SE-oGg" secondAttribute="leading" id="Iiu-zi-2qd"/>
+                <constraint firstItem="Hmy-02-mZr" firstAttribute="top" secondItem="gDn-0b-oIl" secondAttribute="bottom" id="eyV-AV-Z1c"/>
+                <constraint firstAttribute="trailing" secondItem="Hmy-02-mZr" secondAttribute="trailing" id="hyw-xA-Kvj"/>
+                <constraint firstItem="kbe-il-HC0" firstAttribute="top" secondItem="gDn-0b-oIl" secondAttribute="bottom" constant="3" id="nKi-Uc-wek"/>
+            </constraints>
+            <size key="customSize" width="161" height="205"/>
+            <connections>
+                <outlet property="coverImageView" destination="gDn-0b-oIl" id="0K4-RW-tBs"/>
+                <outlet property="storyName" destination="kbe-il-HC0" id="HcS-Fo-Pb8"/>
+            </connections>
+            <point key="canvasLocation" x="32.5" y="-184.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

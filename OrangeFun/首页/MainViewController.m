@@ -12,6 +12,7 @@
 
 #import "BannerViewCell.h"
 #import "SearchBarViewCell.h"
+#import "CategoryStoryViewCell.h"
 
 @interface MainViewController ()
 
@@ -58,6 +59,19 @@
         isSearchBarRegist = YES;
     }
     
+    //注册分类故事
+    static NSString *categoryStoryCellId = @"categoryStoryCellId";
+    static BOOL isCategoryStoryRegist = NO;
+    if (!isCategoryStoryRegist) {
+        //加载xib
+        UINib *categoryStoryNib = [UINib nibWithNibName:@"CategoryStoryViewCell" bundle:nil];
+        //注册单元格
+        [self.mainPageTable registerNib:categoryStoryNib forCellReuseIdentifier:categoryStoryCellId];
+        isCategoryStoryRegist = YES;
+    }
+    
+    //**********************上面是cell的注册*********************
+    
     //获取banner
     BannerViewCell *bannerCell = [self.mainPageTable dequeueReusableCellWithIdentifier:bannerCellId];
     //设置banner图片
@@ -65,6 +79,11 @@
     
     //获取搜索bar
     SearchBarViewCell *searchBarCell = [self.mainPageTable dequeueReusableCellWithIdentifier:searchBarCellId];
+    
+    //获取分类故事
+    CategoryStoryViewCell *categoryStoryCell = [self.mainPageTable dequeueReusableCellWithIdentifier:categoryStoryCellId];
+    
+    //*********************上面是获取CELL对象***********************
     
     if (indexPath.row == 0) {
         return bannerCell;
@@ -74,11 +93,15 @@
         return searchBarCell;
     }
     
+    if (indexPath.row == 2) {
+        return categoryStoryCell;
+    }
+    
     return bannerCell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -88,7 +111,11 @@
     }
     
     if (indexPath.row == 1) {
-        return 122;
+        return 68;
+    }
+    
+    if (indexPath.row == 2) {
+        return 330;
     }
     
     return 30;
