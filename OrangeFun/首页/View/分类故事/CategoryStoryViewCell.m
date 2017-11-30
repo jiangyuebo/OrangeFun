@@ -16,24 +16,19 @@
     
     self.categoryStoryCollectionView.delegate = self;
     self.categoryStoryCollectionView.dataSource = self;
+    
+    //注册collection cell
+    self.collectionCellId = @"collectionCellId";
+    //加载xib页面
+    UINib *collectionCellNib = [UINib nibWithNibName:@"CategoryStoryCollectionCell" bundle:nil];
+    //注册单元格
+    [self.categoryStoryCollectionView registerNib:collectionCellNib forCellWithReuseIdentifier:self.collectionCellId];
 }
 
 //cell
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    static NSString *collectionCellId = @"collectionCellId";
-    //flag
-    static BOOL isCollectionRegist = NO;
-    if (!isCollectionRegist) {
-        //加载xib页面
-        UINib *collectionCellNib = [UINib nibWithNibName:@"CategoryStoryCollectionCell" bundle:nil];
-        //注册单元格
-        [self.categoryStoryCollectionView registerNib:collectionCellNib forCellWithReuseIdentifier:collectionCellId];
-        
-        isCollectionRegist = YES;
-    }
-    
-    CategoryStoryCollectionCell *collectionCell = [self.categoryStoryCollectionView dequeueReusableCellWithReuseIdentifier:collectionCellId forIndexPath:indexPath];
+    CategoryStoryCollectionCell *collectionCell = [self.categoryStoryCollectionView dequeueReusableCellWithReuseIdentifier:self.collectionCellId forIndexPath:indexPath];
     
     UIImage *exampleCoverImage = [UIImage imageNamed:@"xiaozhu"];
     [collectionCell.coverImageView setImage:exampleCoverImage];

@@ -16,6 +16,12 @@
 
 @interface MainViewController ()
 
+@property (strong,nonatomic) NSString *bannerCellId;
+
+@property (strong,nonatomic) NSString *searchBarCellId;
+
+@property (strong,nonatomic) NSString *categoryStoryCellId;
+
 @end
 
 @implementation MainViewController
@@ -27,6 +33,8 @@
     
     self.mainPageTable.dataSource = self;
     self.mainPageTable.delegate = self;
+    
+    [self registNibForTable];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -34,74 +42,63 @@
     self.tabBarController.navigationItem.title = @"橙娃故事";
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+#pragma mark 为首页table注册cell ui
+- (void)registNibForTable{
     //注册banner cell
-    static NSString *bannerCellId = @"bannerCellId";
-    //flag
-    static BOOL isBannerRegist = NO;
-    if (!isBannerRegist) {
-        //加载xib页面
-        UINib *bannerNib = [UINib nibWithNibName:@"BannerViewCell" bundle:nil];
-        //注册单元格
-        [self.mainPageTable registerNib:bannerNib forCellReuseIdentifier:bannerCellId];
-        isBannerRegist = YES;
-    }
+    self.bannerCellId = @"bannerCellId";
+    //加载xib页面
+    UINib *bannerNib = [UINib nibWithNibName:@"BannerViewCell" bundle:nil];
+    //注册单元格
+    [self.mainPageTable registerNib:bannerNib forCellReuseIdentifier:self.bannerCellId];
     
-    //注册搜索框view
-    static NSString *searchBarCellId = @"searchBarCellId";
-    static BOOL isSearchBarRegist = NO;
-    if (!isSearchBarRegist) {
-        //加载xib
-        UINib *searchBarNib = [UINib nibWithNibName:@"SearchBarViewCell" bundle:nil];
-        //注册单元格
-        [self.mainPageTable registerNib:searchBarNib forCellReuseIdentifier:searchBarCellId];
-        isSearchBarRegist = YES;
-    }
+    self.searchBarCellId = @"searchBarCellId";
+    //加载xib
+    UINib *searchBarNib = [UINib nibWithNibName:@"SearchBarViewCell" bundle:nil];
+    //注册单元格
+    [self.mainPageTable registerNib:searchBarNib forCellReuseIdentifier:self.searchBarCellId];
     
-    //注册分类故事
-    static NSString *categoryStoryCellId = @"categoryStoryCellId";
-    static BOOL isCategoryStoryRegist = NO;
-    if (!isCategoryStoryRegist) {
-        //加载xib
-        UINib *categoryStoryNib = [UINib nibWithNibName:@"CategoryStoryViewCell" bundle:nil];
-        //注册单元格
-        [self.mainPageTable registerNib:categoryStoryNib forCellReuseIdentifier:categoryStoryCellId];
-        isCategoryStoryRegist = YES;
-    }
-    
-    //**********************上面是cell的注册*********************
-    
-    //获取banner
-    BannerViewCell *bannerCell = [self.mainPageTable dequeueReusableCellWithIdentifier:bannerCellId];
-    //设置banner图片
-    [bannerCell setBannerURLs:nil];
-    
-    //获取搜索bar
-    SearchBarViewCell *searchBarCell = [self.mainPageTable dequeueReusableCellWithIdentifier:searchBarCellId];
-    
-    //获取分类故事
-    CategoryStoryViewCell *categoryStoryCell = [self.mainPageTable dequeueReusableCellWithIdentifier:categoryStoryCellId];
+    self.categoryStoryCellId = @"categoryStoryCellId";
+    //加载xib
+    UINib *categoryStoryNib = [UINib nibWithNibName:@"CategoryStoryViewCell" bundle:nil];
+    //注册单元格
+    [self.mainPageTable registerNib:categoryStoryNib forCellReuseIdentifier:self.categoryStoryCellId];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     //*********************上面是获取CELL对象***********************
     
     if (indexPath.row == 0) {
+        //获取banner
+        BannerViewCell *bannerCell = [self.mainPageTable dequeueReusableCellWithIdentifier:self.bannerCellId];
+        //设置banner图片
+        [bannerCell setBannerURLs:nil];
         return bannerCell;
     }
     
     if (indexPath.row == 1) {
+        //获取搜索bar
+        SearchBarViewCell *searchBarCell = [self.mainPageTable dequeueReusableCellWithIdentifier:self.searchBarCellId];
         return searchBarCell;
     }
     
     if (indexPath.row == 2) {
+        //获取分类故事
+        CategoryStoryViewCell *categoryStoryCell = [self.mainPageTable dequeueReusableCellWithIdentifier:self.categoryStoryCellId];
         return categoryStoryCell;
     }
     
-    return bannerCell;
+    if (indexPath.row == 3) {
+        //获取分类故事
+        CategoryStoryViewCell *categoryStoryCell = [self.mainPageTable dequeueReusableCellWithIdentifier:self.categoryStoryCellId];
+        return categoryStoryCell;
+    }
+    
+    return nil;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -115,6 +112,10 @@
     }
     
     if (indexPath.row == 2) {
+        return 330;
+    }
+    
+    if (indexPath.row == 3) {
         return 330;
     }
     

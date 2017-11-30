@@ -12,5 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UICollectionView *categoryStoryCollectionView;
 
+@property (strong,nonatomic) NSString *collectionCellId;
+
 
 @end

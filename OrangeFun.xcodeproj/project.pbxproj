@@ -213,6 +213,13 @@
 			path = "分类故事";
 			sourceTree = "<group>";
 		};
+		C40A946C1FD04C2B001971A1 /* 搜索 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "搜索";
+			sourceTree = "<group>";
+		};
 		C4A58C181FAF70A900E45395 = {
 			isa = PBXGroup;
 			children = (
@@ -232,6 +239,7 @@
 		C4A58C231FAF70A900E45395 /* OrangeFun */ = {
 			isa = PBXGroup;
 			children = (
+				C40A946C1FD04C2B001971A1 /* 搜索 */,
 				C40A942A1FBD9998001971A1 /* Headers */,
 				C40A94241FBD978B001971A1 /* Tools */,
 				C40A941D1FB37CFE001971A1 /* 播放器工具 */,
