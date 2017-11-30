@@ -10,7 +10,6 @@
 		C40A94201FB37E61001971A1 /* JerryAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A941F1FB37E61001971A1 /* JerryAVPlayer.m */; };
 		C40A94231FBD977B001971A1 /* BMRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94211FBD977B001971A1 /* BMRequestHelper.m */; };
 		C40A94271FBD97CB001971A1 /* JerryTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94251FBD97CB001971A1 /* JerryTools.m */; };
-		C40A942E1FBEE543001971A1 /* StoryCategory.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A942D1FBEE543001971A1 /* StoryCategory.xib */; };
 		C40A94331FC736F0001971A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94321FC736F0001971A1 /* MainViewController.m */; };
 		C40A94371FC73B4C001971A1 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94361FC73B4C001971A1 /* PlayViewController.m */; };
 		C40A943B1FC73B77001971A1 /* PlayListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A943A1FC73B77001971A1 /* PlayListViewController.m */; };
@@ -25,6 +24,9 @@
 		C40A94631FCDBD5C001971A1 /* CategoryStoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94611FCDBD5C001971A1 /* CategoryStoryViewCell.xib */; };
 		C40A94651FCDC452001971A1 /* CategoryStoryCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94641FCDC452001971A1 /* CategoryStoryCollectionCell.xib */; };
 		C40A946B1FCDC938001971A1 /* CategoryStoryCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A946A1FCDC938001971A1 /* CategoryStoryCollectionCell.m */; };
+		C40A946F1FD04EE9001971A1 /* JerryViewTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A946E1FD04EE9001971A1 /* JerryViewTools.m */; };
+		C40A94721FD05186001971A1 /* UIColor+NSString.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94711FD05186001971A1 /* UIColor+NSString.m */; };
+		C40A94751FD0554D001971A1 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C40A94741FD05539001971A1 /* CoreImage.framework */; };
 		C4A58C261FAF70A900E45395 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C251FAF70A900E45395 /* AppDelegate.m */; };
 		C4A58C291FAF70A900E45395 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C281FAF70A900E45395 /* ViewController.m */; };
 		C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2A1FAF70A900E45395 /* Main.storyboard */; };
@@ -40,7 +42,6 @@
 		C40A94251FBD97CB001971A1 /* JerryTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JerryTools.m; path = OrangeFun/JerryTools.m; sourceTree = SOURCE_ROOT; };
 		C40A94261FBD97CB001971A1 /* JerryTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JerryTools.h; path = OrangeFun/JerryTools.h; sourceTree = SOURCE_ROOT; };
 		C40A942B1FBD99C1001971A1 /* globalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = globalHeader.h; path = OrangeFun/globalHeader.h; sourceTree = SOURCE_ROOT; };
-		C40A942D1FBEE543001971A1 /* StoryCategory.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoryCategory.xib; sourceTree = "<group>"; };
 		C40A942F1FC2DF77001971A1 /* RequestURLHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestURLHeader.h; sourceTree = "<group>"; };
 		C40A94311FC736F0001971A1 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		C40A94321FC736F0001971A1 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
@@ -66,6 +67,11 @@
 		C40A94641FCDC452001971A1 /* CategoryStoryCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryStoryCollectionCell.xib; sourceTree = "<group>"; };
 		C40A94691FCDC938001971A1 /* CategoryStoryCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryStoryCollectionCell.h; sourceTree = "<group>"; };
 		C40A946A1FCDC938001971A1 /* CategoryStoryCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryStoryCollectionCell.m; sourceTree = "<group>"; };
+		C40A946D1FD04EE9001971A1 /* JerryViewTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JerryViewTools.h; sourceTree = "<group>"; };
+		C40A946E1FD04EE9001971A1 /* JerryViewTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JerryViewTools.m; sourceTree = "<group>"; };
+		C40A94701FD05186001971A1 /* UIColor+NSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+NSString.h"; sourceTree = "<group>"; };
+		C40A94711FD05186001971A1 /* UIColor+NSString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+NSString.m"; sourceTree = "<group>"; };
+		C40A94741FD05539001971A1 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		C4A58C211FAF70A900E45395 /* OrangeFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrangeFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A58C241FAF70A900E45395 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4A58C251FAF70A900E45395 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -82,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C40A94751FD0554D001971A1 /* CoreImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +107,10 @@
 		C40A94241FBD978B001971A1 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				C40A94701FD05186001971A1 /* UIColor+NSString.h */,
+				C40A94711FD05186001971A1 /* UIColor+NSString.m */,
+				C40A946D1FD04EE9001971A1 /* JerryViewTools.h */,
+				C40A946E1FD04EE9001971A1 /* JerryViewTools.m */,
 				C40A94261FBD97CB001971A1 /* JerryTools.h */,
 				C40A94251FBD97CB001971A1 /* JerryTools.m */,
 			);
@@ -114,14 +125,6 @@
 				C40A944C1FCC810E001971A1 /* ProjectHeader.h */,
 			);
 			path = Headers;
-			sourceTree = "<group>";
-		};
-		C40A942C1FBEE4F0001971A1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C40A942D1FBEE543001971A1 /* StoryCategory.xib */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		C40A94301FC736AF001971A1 /* 首页 */ = {
@@ -220,11 +223,20 @@
 			path = "搜索";
 			sourceTree = "<group>";
 		};
+		C40A94731FD05538001971A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C40A94741FD05539001971A1 /* CoreImage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C4A58C181FAF70A900E45395 = {
 			isa = PBXGroup;
 			children = (
 				C4A58C231FAF70A900E45395 /* OrangeFun */,
 				C4A58C221FAF70A900E45395 /* Products */,
+				C40A94731FD05538001971A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,14 +251,13 @@
 		C4A58C231FAF70A900E45395 /* OrangeFun */ = {
 			isa = PBXGroup;
 			children = (
-				C40A946C1FD04C2B001971A1 /* 搜索 */,
 				C40A942A1FBD9998001971A1 /* Headers */,
 				C40A94241FBD978B001971A1 /* Tools */,
 				C40A941D1FB37CFE001971A1 /* 播放器工具 */,
 				C4A58C3A1FAF71F300E45395 /* Request */,
-				C40A942C1FBEE4F0001971A1 /* View */,
 				C40A94401FC80E0C001971A1 /* Tab页 */,
 				C40A94301FC736AF001971A1 /* 首页 */,
+				C40A946C1FD04C2B001971A1 /* 搜索 */,
 				C40A94341FC73B35001971A1 /* 播放页 */,
 				C40A943C1FC80C33001971A1 /* 发现 */,
 				C40A94381FC73B60001971A1 /* 播单 */,
@@ -331,7 +342,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4A58C311FAF70A900E45395 /* LaunchScreen.storyboard in Resources */,
-				C40A942E1FBEE543001971A1 /* StoryCategory.xib in Resources */,
 				C40A94581FCC82C3001971A1 /* SearchBarViewCell.xib in Resources */,
 				C40A94651FCDC452001971A1 /* CategoryStoryCollectionCell.xib in Resources */,
 				C40A94481FC82B44001971A1 /* BannerViewCell.xib in Resources */,
@@ -351,6 +361,8 @@
 				C40A94621FCDBD5C001971A1 /* CategoryStoryViewCell.m in Sources */,
 				C40A943B1FC73B77001971A1 /* PlayListViewController.m in Sources */,
 				C40A94431FC80E5D001971A1 /* MainTabBarViewController.m in Sources */,
+				C40A94721FD05186001971A1 /* UIColor+NSString.m in Sources */,
+				C40A946F1FD04EE9001971A1 /* JerryViewTools.m in Sources */,
 				C40A94571FCC82C2001971A1 /* SearchBarViewCell.m in Sources */,
 				C40A94271FBD97CB001971A1 /* JerryTools.m in Sources */,
 				C4A58C291FAF70A900E45395 /* ViewController.m in Sources */,
