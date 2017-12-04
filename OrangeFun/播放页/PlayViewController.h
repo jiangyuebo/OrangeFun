@@ -31,4 +31,11 @@
 //下一首
 @property (strong, nonatomic) IBOutlet UIButton *nextButton;
 
+//列表剩余空间遮罩
+@property (strong,nonatomic) UIView *maskView;
+//列表view
+@property (strong,nonatomic) UIView *playListView;
+//列表中table
+@property (strong,nonatomic) UITableView *tablePlayList;
+
 @end

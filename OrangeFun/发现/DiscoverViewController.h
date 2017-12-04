@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DiscoverViewController : UIViewController
+@interface DiscoverViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property (strong, nonatomic) IBOutlet UITableView *tableDiscover;
+
+@property (strong,nonatomic) NSString *storyCellID;
 
 @end

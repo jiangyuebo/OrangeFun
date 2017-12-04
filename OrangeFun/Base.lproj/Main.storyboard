@@ -9,6 +9,11 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangHK-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="MzJ-pf-GZG">
@@ -37,9 +42,24 @@
                     <view key="view" contentMode="scaleToFill" id="6ts-5s-pe1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jYZ-2Q-XWG">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qtn-fB-hUL" firstAttribute="top" secondItem="jYZ-2Q-XWG" secondAttribute="bottom" id="0br-3E-SsJ"/>
+                            <constraint firstItem="jYZ-2Q-XWG" firstAttribute="leading" secondItem="6ts-5s-pe1" secondAttribute="leading" id="TC5-ai-iMJ"/>
+                            <constraint firstItem="jYZ-2Q-XWG" firstAttribute="top" secondItem="TGj-Kl-OA6" secondAttribute="bottom" id="wCU-SN-jyd"/>
+                            <constraint firstAttribute="trailing" secondItem="jYZ-2Q-XWG" secondAttribute="trailing" id="wdc-uH-1SG"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="发现" id="1Ng-yd-u2g"/>
+                    <connections>
+                        <outlet property="tableDiscover" destination="jYZ-2Q-XWG" id="J2F-G5-Ike"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yvh-2O-KgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,6 +136,9 @@
                                     <constraint firstAttribute="width" constant="30" id="tUE-7P-TUQ"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="list"/>
+                                <connections>
+                                    <action selector="actionShowPlayList:" destination="L4c-lf-ngC" eventType="touchUpInside" id="fpJ-Gg-EsH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -193,10 +216,10 @@
             </objects>
             <point key="canvasLocation" x="-34.399999999999999" y="846.9265367316342"/>
         </scene>
-        <!--View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="ov6-j1-hBE">
             <objects>
-                <viewController id="S8U-5t-tj0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchviewcontroller" id="S8U-5t-tj0" customClass="SearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u7f-gf-jE9"/>
                         <viewControllerLayoutGuide type="bottom" id="dvJ-D9-Plf"/>
@@ -215,13 +238,51 @@
                                             <constraint firstAttribute="height" constant="10" id="QUK-hL-NUq"/>
                                         </constraints>
                                     </view>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  搜索故事" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WaG-D8-ZBa" customClass="LeftViewTextField">
+                                        <rect key="frame" x="8" y="26.5" width="302" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="hF1-AS-LPt"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrc-fH-dc2">
+                                        <rect key="frame" x="310" y="24.5" width="65" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeC-fe-alf">
+                                                <rect key="frame" x="0.0" y="0.0" width="65" height="40"/>
+                                                <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                                <state key="normal" title="搜索">
+                                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnSearch:" destination="S8U-5t-tj0" eventType="touchUpInside" id="7a7-qN-9ER"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="IeC-fe-alf" firstAttribute="leading" secondItem="yrc-fH-dc2" secondAttribute="leading" id="04J-8V-75M"/>
+                                            <constraint firstAttribute="bottom" secondItem="IeC-fe-alf" secondAttribute="bottom" id="BD1-ef-NxA"/>
+                                            <constraint firstAttribute="height" constant="40" id="Jb3-c7-gBJ"/>
+                                            <constraint firstItem="IeC-fe-alf" firstAttribute="top" secondItem="yrc-fH-dc2" secondAttribute="top" id="Jb5-sS-onP"/>
+                                            <constraint firstAttribute="trailing" secondItem="IeC-fe-alf" secondAttribute="trailing" id="TAf-qa-Spd"/>
+                                            <constraint firstAttribute="width" constant="65" id="hMp-hb-xLR"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="WaG-D8-ZBa" firstAttribute="centerY" secondItem="lC4-OG-Wwm" secondAttribute="centerY" id="2sg-Zc-oYY"/>
                                     <constraint firstAttribute="height" constant="88" id="5fU-11-YfW"/>
+                                    <constraint firstItem="yrc-fH-dc2" firstAttribute="leading" secondItem="WaG-D8-ZBa" secondAttribute="trailing" id="8B2-i6-QMN"/>
+                                    <constraint firstItem="yrc-fH-dc2" firstAttribute="centerY" secondItem="lC4-OG-Wwm" secondAttribute="centerY" id="961-RF-cla"/>
+                                    <constraint firstItem="WaG-D8-ZBa" firstAttribute="leading" secondItem="lC4-OG-Wwm" secondAttribute="leading" constant="8" id="Hun-Kg-mB0"/>
                                     <constraint firstAttribute="trailing" secondItem="1f4-fS-Om8" secondAttribute="trailing" id="QOp-7X-Q3x"/>
                                     <constraint firstItem="1f4-fS-Om8" firstAttribute="leading" secondItem="lC4-OG-Wwm" secondAttribute="leading" id="jvk-8S-qMG"/>
                                     <constraint firstAttribute="bottom" secondItem="1f4-fS-Om8" secondAttribute="bottom" id="lbR-xJ-tZb"/>
+                                    <constraint firstAttribute="trailing" secondItem="yrc-fH-dc2" secondAttribute="trailing" id="s4H-JJ-nRr"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -233,6 +294,9 @@
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="WaG-D8-ZBa" id="4F8-es-V6f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Mh-E1-iR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

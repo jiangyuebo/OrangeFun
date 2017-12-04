@@ -10,6 +10,8 @@
 #import "globalHeader.h"
 #import "JerryViewTools.h"
 
+#define PlayListHeight SCREENHEIGHT * 2/3
+
 @interface PlayViewController ()
 
 @end
@@ -34,13 +36,60 @@
 
 #pragma mark 初始化一些view
 - (void)initView{
-    //进度条设置
+    //设置自定义进度条
     UIImage *minImage = [[UIImage imageNamed:@"progress_orange"] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
     UIImage *maxImage = [[UIImage imageNamed:@"progress"] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
     
     [self.progressSlider setMinimumTrackImage:minImage forState:UIControlStateNormal];
     [self.progressSlider setMaximumTrackImage:maxImage forState:UIControlStateNormal];
     [self.progressSlider setThumbImage:[UIImage imageNamed:@"drag"] forState:UIControlStateNormal];
+    
+    //初始化播放列表界面
+    self.playListView = [JerryViewTools getViewByXibName:@"PlayListView"];
+    self.playListView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, PlayListHeight);
+    [self.view addSubview:self.playListView];
+    //设置播放列表view操作
+    //清除列表按钮
+    UIButton *btnClearPlayList = [self.playListView viewWithTag:1];
+    [btnClearPlayList addTarget:self action:@selector(clearPlayList) forControlEvents:UIControlEventTouchUpInside];
+    //playListView中列表
+    self.tablePlayList = [self.playListView viewWithTag:2];
+    //playListView关闭按钮
+    UIButton *btnCloseView = [self.playListView viewWithTag:3];
+    [btnCloseView addTarget:self action:@selector(closePlayList) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (IBAction)actionShowPlayList:(UIButton *)sender {
+    if (!self.maskView) {
+        //显示遮罩
+        [self showPlayListMask];
+        //显示播放列表view
+        [self playListShowAnimation];
+    }
+}
+
+- (void)playListShowAnimation{
+    [self.view bringSubviewToFront:self.playListView];
+    [UIView animateWithDuration:0.5 animations:^{
+        CGFloat tabbarHeight = self.tabBarController.tabBar.frame.size.height;
+        self.playListView.frame = CGRectMake(
+                                             self.playListView.frame.origin.x,
+                                             SCREENHEIGHT * 1/3 - tabbarHeight,
+                                             self.playListView.frame.size.width,
+                                             self.playListView.frame.size.height
+                                             );
+    }];
+}
+
+- (void)playListHideAnimation{
+    [UIView animateWithDuration:0.5 animations:^{
+        self.playListView.frame = CGRectMake(
+                                             self.playListView.frame.origin.x,
+                                             SCREENHEIGHT,
+                                             self.playListView.frame.size.width,
+                                             self.playListView.frame.size.height
+                                             );
+    }];
 }
 
 #pragma mark 设置圆形封面图片
@@ -75,10 +124,53 @@
     self.tabBarController.navigationItem.title = @"播放";
 }
 
+#pragma mark 列表剩余空间遮罩
+- (void)showPlayListMask{
+    //添加遮罩层
+    self.maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,SCREENWIDTH,SCREENHEIGHT)];
+    self.maskView.backgroundColor = [UIColor blackColor];
+    self.maskView.alpha = 0.0f;
+    [self.view addSubview:self.maskView];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.maskView.alpha = 0.5f;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+#pragma mark 隐藏遮罩
+- (void)hidePlayListMask{
+    //隐藏遮罩
+    [UIView animateWithDuration:0.5 animations:^{
+        self.maskView.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        [self.maskView removeFromSuperview];
+        self.maskView = nil;
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//******************** Play List View Operation **********************
+#pragma mark - 播放列表view操作
+#pragma mark 清除列表
+- (void)clearPlayList{
+    NSLog(@"clear play list ...");
+}
+
+#pragma mark 关闭
+- (void)closePlayList{
+    //缩回playListView
+    [self playListHideAnimation];
+    //去除遮罩
+    [self hidePlayListMask];
+}
+
+//********************************************************************
 
 /*
 #pragma mark - Navigation

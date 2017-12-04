@@ -27,6 +27,12 @@
 		C40A946F1FD04EE9001971A1 /* JerryViewTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A946E1FD04EE9001971A1 /* JerryViewTools.m */; };
 		C40A94721FD05186001971A1 /* UIColor+NSString.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94711FD05186001971A1 /* UIColor+NSString.m */; };
 		C40A94751FD0554D001971A1 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C40A94741FD05539001971A1 /* CoreImage.framework */; };
+		C40A94781FD15FA8001971A1 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94771FD15FA8001971A1 /* SearchViewController.m */; };
+		C40A947C1FD41E15001971A1 /* SingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A947B1FD41E15001971A1 /* SingletonObject.m */; };
+		C40A947F1FD53D41001971A1 /* LeftViewTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A947E1FD53D41001971A1 /* LeftViewTextField.m */; };
+		C40A94861FD54145001971A1 /* DiscoverTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94841FD54145001971A1 /* DiscoverTableCell.m */; };
+		C40A94871FD54145001971A1 /* DiscoverTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94851FD54145001971A1 /* DiscoverTableCell.xib */; };
+		C40A94891FD5520A001971A1 /* PlayListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94881FD5520A001971A1 /* PlayListView.xib */; };
 		C4A58C261FAF70A900E45395 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C251FAF70A900E45395 /* AppDelegate.m */; };
 		C4A58C291FAF70A900E45395 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C281FAF70A900E45395 /* ViewController.m */; };
 		C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2A1FAF70A900E45395 /* Main.storyboard */; };
@@ -72,6 +78,16 @@
 		C40A94701FD05186001971A1 /* UIColor+NSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+NSString.h"; sourceTree = "<group>"; };
 		C40A94711FD05186001971A1 /* UIColor+NSString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+NSString.m"; sourceTree = "<group>"; };
 		C40A94741FD05539001971A1 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		C40A94761FD15FA8001971A1 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		C40A94771FD15FA8001971A1 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		C40A947A1FD41E15001971A1 /* SingletonObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingletonObject.h; sourceTree = "<group>"; };
+		C40A947B1FD41E15001971A1 /* SingletonObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingletonObject.m; sourceTree = "<group>"; };
+		C40A947D1FD53D41001971A1 /* LeftViewTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftViewTextField.h; sourceTree = "<group>"; };
+		C40A947E1FD53D41001971A1 /* LeftViewTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftViewTextField.m; sourceTree = "<group>"; };
+		C40A94831FD54145001971A1 /* DiscoverTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoverTableCell.h; sourceTree = "<group>"; };
+		C40A94841FD54145001971A1 /* DiscoverTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableCell.m; sourceTree = "<group>"; };
+		C40A94851FD54145001971A1 /* DiscoverTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverTableCell.xib; sourceTree = "<group>"; };
+		C40A94881FD5520A001971A1 /* PlayListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayListView.xib; sourceTree = "<group>"; };
 		C4A58C211FAF70A900E45395 /* OrangeFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrangeFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A58C241FAF70A900E45395 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4A58C251FAF70A900E45395 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -142,6 +158,7 @@
 			children = (
 				C40A94351FC73B4C001971A1 /* PlayViewController.h */,
 				C40A94361FC73B4C001971A1 /* PlayViewController.m */,
+				C40A94881FD5520A001971A1 /* PlayListView.xib */,
 			);
 			path = "播放页";
 			sourceTree = "<group>";
@@ -160,6 +177,9 @@
 			children = (
 				C40A943D1FC80C55001971A1 /* DiscoverViewController.h */,
 				C40A943E1FC80C55001971A1 /* DiscoverViewController.m */,
+				C40A94831FD54145001971A1 /* DiscoverTableCell.h */,
+				C40A94841FD54145001971A1 /* DiscoverTableCell.m */,
+				C40A94851FD54145001971A1 /* DiscoverTableCell.xib */,
 			);
 			path = "发现";
 			sourceTree = "<group>";
@@ -219,6 +239,10 @@
 		C40A946C1FD04C2B001971A1 /* 搜索 */ = {
 			isa = PBXGroup;
 			children = (
+				C40A94761FD15FA8001971A1 /* SearchViewController.h */,
+				C40A94771FD15FA8001971A1 /* SearchViewController.m */,
+				C40A947D1FD53D41001971A1 /* LeftViewTextField.h */,
+				C40A947E1FD53D41001971A1 /* LeftViewTextField.m */,
 			);
 			path = "搜索";
 			sourceTree = "<group>";
@@ -229,6 +253,15 @@
 				C40A94741FD05539001971A1 /* CoreImage.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C40A94791FD41DDB001971A1 /* 单例 */ = {
+			isa = PBXGroup;
+			children = (
+				C40A947A1FD41E15001971A1 /* SingletonObject.h */,
+				C40A947B1FD41E15001971A1 /* SingletonObject.m */,
+			);
+			path = "单例";
 			sourceTree = "<group>";
 		};
 		C4A58C181FAF70A900E45395 = {
@@ -256,6 +289,7 @@
 				C40A941D1FB37CFE001971A1 /* 播放器工具 */,
 				C4A58C3A1FAF71F300E45395 /* Request */,
 				C40A94401FC80E0C001971A1 /* Tab页 */,
+				C40A94791FD41DDB001971A1 /* 单例 */,
 				C40A94301FC736AF001971A1 /* 首页 */,
 				C40A946C1FD04C2B001971A1 /* 搜索 */,
 				C40A94341FC73B35001971A1 /* 播放页 */,
@@ -346,6 +380,8 @@
 				C40A94651FCDC452001971A1 /* CategoryStoryCollectionCell.xib in Resources */,
 				C40A94481FC82B44001971A1 /* BannerViewCell.xib in Resources */,
 				C40A945A1FCC8F98001971A1 /* Assets.xcassets in Resources */,
+				C40A94891FD5520A001971A1 /* PlayListView.xib in Resources */,
+				C40A94871FD54145001971A1 /* DiscoverTableCell.xib in Resources */,
 				C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */,
 				C40A94631FCDBD5C001971A1 /* CategoryStoryViewCell.xib in Resources */,
 			);
@@ -359,9 +395,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C40A94621FCDBD5C001971A1 /* CategoryStoryViewCell.m in Sources */,
+				C40A947F1FD53D41001971A1 /* LeftViewTextField.m in Sources */,
+				C40A94861FD54145001971A1 /* DiscoverTableCell.m in Sources */,
 				C40A943B1FC73B77001971A1 /* PlayListViewController.m in Sources */,
 				C40A94431FC80E5D001971A1 /* MainTabBarViewController.m in Sources */,
 				C40A94721FD05186001971A1 /* UIColor+NSString.m in Sources */,
+				C40A94781FD15FA8001971A1 /* SearchViewController.m in Sources */,
 				C40A946F1FD04EE9001971A1 /* JerryViewTools.m in Sources */,
 				C40A94571FCC82C2001971A1 /* SearchBarViewCell.m in Sources */,
 				C40A94271FBD97CB001971A1 /* JerryTools.m in Sources */,
@@ -371,6 +410,7 @@
 				C40A943F1FC80C55001971A1 /* DiscoverViewController.m in Sources */,
 				C40A94371FC73B4C001971A1 /* PlayViewController.m in Sources */,
 				C40A946B1FCDC938001971A1 /* CategoryStoryCollectionCell.m in Sources */,
+				C40A947C1FD41E15001971A1 /* SingletonObject.m in Sources */,
 				C40A944B1FCB09B9001971A1 /* BannerViewCell.m in Sources */,
 				C40A94331FC736F0001971A1 /* MainViewController.m in Sources */,
 				C40A94231FBD977B001971A1 /* BMRequestHelper.m in Sources */,

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PingFang.ttc">
+            <string>PingFangHK-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="97" id="KGk-i7-Jjw" customClass="DiscoverTableCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="96.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zoq-8W-GY2">
+                        <rect key="frame" x="16" y="16" width="65" height="65"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="65" id="IdQ-O9-sjV"/>
+                            <constraint firstAttribute="width" constant="65" id="dYV-cN-zzE"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="爱占便宜的小猪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXm-jW-K2J">
+                        <rect key="frame" x="89" y="16" width="147" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playtime" translatesAutoresizingMaskIntoConstraints="NO" id="WgJ-1L-5BC">
+                        <rect key="frame" x="89" y="66" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="YIn-9f-2rm"/>
+                            <constraint firstAttribute="width" constant="15" id="y5D-Eu-vnI"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100次" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QPu-gK-iVw">
+                        <rect key="frame" x="110" y="66.5" width="33" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLI-lV-vH6">
+                        <rect key="frame" x="279" y="36.5" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="WLI-lV-vH6" secondAttribute="height" multiplier="1:1" id="Tkn-zR-XZD"/>
+                            <constraint firstAttribute="width" constant="25" id="Xph-b1-C5R"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="plus"/>
+                        <connections>
+                            <action selector="addStoryToPlayList:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="q3H-QF-uWZ"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k0j-TS-mY3">
+                        <rect key="frame" x="0.0" y="96" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="QL4-5b-0s0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="WgJ-1L-5BC" firstAttribute="leading" secondItem="zoq-8W-GY2" secondAttribute="trailing" constant="8" id="97b-v5-lXU"/>
+                    <constraint firstItem="QPu-gK-iVw" firstAttribute="centerY" secondItem="WgJ-1L-5BC" secondAttribute="centerY" id="EVy-5h-1zg"/>
+                    <constraint firstItem="zoq-8W-GY2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="UuQ-Qa-YD4"/>
+                    <constraint firstItem="k0j-TS-mY3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZgD-eG-8zV"/>
+                    <constraint firstItem="WLI-lV-vH6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="b1x-D7-OHr"/>
+                    <constraint firstItem="QPu-gK-iVw" firstAttribute="leading" secondItem="WgJ-1L-5BC" secondAttribute="trailing" constant="6" id="c7u-Bj-fSt"/>
+                    <constraint firstAttribute="trailing" secondItem="k0j-TS-mY3" secondAttribute="trailing" id="gFl-yv-sCJ"/>
+                    <constraint firstItem="WgJ-1L-5BC" firstAttribute="bottom" secondItem="zoq-8W-GY2" secondAttribute="bottom" id="gPk-Ug-ObL"/>
+                    <constraint firstItem="zoq-8W-GY2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="q1O-KE-2i3"/>
+                    <constraint firstAttribute="trailing" secondItem="WLI-lV-vH6" secondAttribute="trailing" constant="16" id="qsO-6j-hQg"/>
+                    <constraint firstAttribute="bottom" secondItem="k0j-TS-mY3" secondAttribute="bottom" id="wg6-5Z-ALU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btnAddToPlayList" destination="WLI-lV-vH6" id="rXj-Fl-ikc"/>
+                <outlet property="imageViewCover" destination="zoq-8W-GY2" id="q7v-Ky-1t6"/>
+                <outlet property="labelPlayTimes" destination="QPu-gK-iVw" id="6Ma-Fy-GeQ"/>
+                <outlet property="labelStoryName" destination="pXm-jW-K2J" id="dgd-Mk-S0O"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="164.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="playtime" width="11" height="11"/>
+        <image name="plus" width="200" height="200"/>
+    </resources>
+</document>

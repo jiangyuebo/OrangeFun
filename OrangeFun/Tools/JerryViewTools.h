@@ -37,4 +37,7 @@
 #pragma mark 高斯模糊
 +(UIImage *)coreBlurImage:(UIImage *)image withBlurNumber:(CGFloat)blur;
 
+#pragma mark 返回当前viewController
++ (UIViewController *)topViewController;
+
 @end
