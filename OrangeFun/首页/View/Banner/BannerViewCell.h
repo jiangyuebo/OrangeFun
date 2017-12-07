@@ -12,6 +12,12 @@
 
 @property (strong, nonatomic) IBOutlet UIScrollView *bannerScrollView;
 
-- (void)setBannerURLs:(NSMutableArray *) urlsArray;
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControlBanner;
+
+@property (strong,nonatomic) NSMutableArray *bannerLinkURLArray;
+
+- (void)setBannerDatas:(NSArray *) urlsArray;
+
+@property (nonatomic) BOOL initFlag;
 
 @end

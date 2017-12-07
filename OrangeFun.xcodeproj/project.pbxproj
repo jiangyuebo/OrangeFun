@@ -33,6 +33,13 @@
 		C40A94861FD54145001971A1 /* DiscoverTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94841FD54145001971A1 /* DiscoverTableCell.m */; };
 		C40A94871FD54145001971A1 /* DiscoverTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94851FD54145001971A1 /* DiscoverTableCell.xib */; };
 		C40A94891FD5520A001971A1 /* PlayListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94881FD5520A001971A1 /* PlayListView.xib */; };
+		C40A948D1FD5C537001971A1 /* PlayListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A948B1FD5C537001971A1 /* PlayListViewCell.m */; };
+		C40A948E1FD5C537001971A1 /* PlayListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A948C1FD5C537001971A1 /* PlayListViewCell.xib */; };
+		C40A94911FD6472E001971A1 /* CategoryListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94901FD6472E001971A1 /* CategoryListView.xib */; };
+		C40A94951FD688F9001971A1 /* CategoryListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94931FD688F9001971A1 /* CategoryListViewCell.m */; };
+		C40A94961FD688F9001971A1 /* CategoryListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40A94941FD688F9001971A1 /* CategoryListViewCell.xib */; };
+		C40A94991FD6904C001971A1 /* StoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94981FD6904C001971A1 /* StoryListViewController.m */; };
+		C40A949C1FD7E5E0001971A1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A949B1FD7E5E0001971A1 /* WebViewController.m */; };
 		C4A58C261FAF70A900E45395 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C251FAF70A900E45395 /* AppDelegate.m */; };
 		C4A58C291FAF70A900E45395 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C281FAF70A900E45395 /* ViewController.m */; };
 		C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2A1FAF70A900E45395 /* Main.storyboard */; };
@@ -88,6 +95,17 @@
 		C40A94841FD54145001971A1 /* DiscoverTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableCell.m; sourceTree = "<group>"; };
 		C40A94851FD54145001971A1 /* DiscoverTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverTableCell.xib; sourceTree = "<group>"; };
 		C40A94881FD5520A001971A1 /* PlayListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayListView.xib; sourceTree = "<group>"; };
+		C40A948A1FD5C537001971A1 /* PlayListViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayListViewCell.h; sourceTree = "<group>"; };
+		C40A948B1FD5C537001971A1 /* PlayListViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayListViewCell.m; sourceTree = "<group>"; };
+		C40A948C1FD5C537001971A1 /* PlayListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayListViewCell.xib; sourceTree = "<group>"; };
+		C40A94901FD6472E001971A1 /* CategoryListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryListView.xib; sourceTree = "<group>"; };
+		C40A94921FD688F9001971A1 /* CategoryListViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryListViewCell.h; sourceTree = "<group>"; };
+		C40A94931FD688F9001971A1 /* CategoryListViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryListViewCell.m; sourceTree = "<group>"; };
+		C40A94941FD688F9001971A1 /* CategoryListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryListViewCell.xib; sourceTree = "<group>"; };
+		C40A94971FD6904C001971A1 /* StoryListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoryListViewController.h; sourceTree = "<group>"; };
+		C40A94981FD6904C001971A1 /* StoryListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoryListViewController.m; sourceTree = "<group>"; };
+		C40A949A1FD7E5E0001971A1 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		C40A949B1FD7E5E0001971A1 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		C4A58C211FAF70A900E45395 /* OrangeFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrangeFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A58C241FAF70A900E45395 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4A58C251FAF70A900E45395 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -159,6 +177,11 @@
 				C40A94351FC73B4C001971A1 /* PlayViewController.h */,
 				C40A94361FC73B4C001971A1 /* PlayViewController.m */,
 				C40A94881FD5520A001971A1 /* PlayListView.xib */,
+				C40A948A1FD5C537001971A1 /* PlayListViewCell.h */,
+				C40A948B1FD5C537001971A1 /* PlayListViewCell.m */,
+				C40A948C1FD5C537001971A1 /* PlayListViewCell.xib */,
+				C40A94971FD6904C001971A1 /* StoryListViewController.h */,
+				C40A94981FD6904C001971A1 /* StoryListViewController.m */,
 			);
 			path = "播放页";
 			sourceTree = "<group>";
@@ -196,6 +219,7 @@
 		C40A94441FC82A96001971A1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C40A948F1FD646F2001971A1 /* 分类菜单 */,
 				C40A945B1FCD6E16001971A1 /* 分类故事 */,
 				C40A944E1FCC8222001971A1 /* 搜索框 */,
 				C40A944D1FCC820C001971A1 /* Banner */,
@@ -209,6 +233,8 @@
 				C40A94471FC82B44001971A1 /* BannerViewCell.xib */,
 				C40A94491FCB09B9001971A1 /* BannerViewCell.h */,
 				C40A944A1FCB09B9001971A1 /* BannerViewCell.m */,
+				C40A949A1FD7E5E0001971A1 /* WebViewController.h */,
+				C40A949B1FD7E5E0001971A1 /* WebViewController.m */,
 			);
 			path = Banner;
 			sourceTree = "<group>";
@@ -262,6 +288,17 @@
 				C40A947B1FD41E15001971A1 /* SingletonObject.m */,
 			);
 			path = "单例";
+			sourceTree = "<group>";
+		};
+		C40A948F1FD646F2001971A1 /* 分类菜单 */ = {
+			isa = PBXGroup;
+			children = (
+				C40A94921FD688F9001971A1 /* CategoryListViewCell.h */,
+				C40A94931FD688F9001971A1 /* CategoryListViewCell.m */,
+				C40A94941FD688F9001971A1 /* CategoryListViewCell.xib */,
+				C40A94901FD6472E001971A1 /* CategoryListView.xib */,
+			);
+			path = "分类菜单";
 			sourceTree = "<group>";
 		};
 		C4A58C181FAF70A900E45395 = {
@@ -379,7 +416,10 @@
 				C40A94581FCC82C3001971A1 /* SearchBarViewCell.xib in Resources */,
 				C40A94651FCDC452001971A1 /* CategoryStoryCollectionCell.xib in Resources */,
 				C40A94481FC82B44001971A1 /* BannerViewCell.xib in Resources */,
+				C40A948E1FD5C537001971A1 /* PlayListViewCell.xib in Resources */,
 				C40A945A1FCC8F98001971A1 /* Assets.xcassets in Resources */,
+				C40A94961FD688F9001971A1 /* CategoryListViewCell.xib in Resources */,
+				C40A94911FD6472E001971A1 /* CategoryListView.xib in Resources */,
 				C40A94891FD5520A001971A1 /* PlayListView.xib in Resources */,
 				C40A94871FD54145001971A1 /* DiscoverTableCell.xib in Resources */,
 				C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */,
@@ -395,12 +435,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C40A94621FCDBD5C001971A1 /* CategoryStoryViewCell.m in Sources */,
+				C40A94951FD688F9001971A1 /* CategoryListViewCell.m in Sources */,
 				C40A947F1FD53D41001971A1 /* LeftViewTextField.m in Sources */,
 				C40A94861FD54145001971A1 /* DiscoverTableCell.m in Sources */,
 				C40A943B1FC73B77001971A1 /* PlayListViewController.m in Sources */,
 				C40A94431FC80E5D001971A1 /* MainTabBarViewController.m in Sources */,
 				C40A94721FD05186001971A1 /* UIColor+NSString.m in Sources */,
 				C40A94781FD15FA8001971A1 /* SearchViewController.m in Sources */,
+				C40A94991FD6904C001971A1 /* StoryListViewController.m in Sources */,
 				C40A946F1FD04EE9001971A1 /* JerryViewTools.m in Sources */,
 				C40A94571FCC82C2001971A1 /* SearchBarViewCell.m in Sources */,
 				C40A94271FBD97CB001971A1 /* JerryTools.m in Sources */,
@@ -413,7 +455,9 @@
 				C40A947C1FD41E15001971A1 /* SingletonObject.m in Sources */,
 				C40A944B1FCB09B9001971A1 /* BannerViewCell.m in Sources */,
 				C40A94331FC736F0001971A1 /* MainViewController.m in Sources */,
+				C40A949C1FD7E5E0001971A1 /* WebViewController.m in Sources */,
 				C40A94231FBD977B001971A1 /* BMRequestHelper.m in Sources */,
+				C40A948D1FD5C537001971A1 /* PlayListViewCell.m in Sources */,
 				C4A58C261FAF70A900E45395 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,7 +595,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SV488327T;
 				INFOPLIST_FILE = OrangeFun/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ChengZhang.story.OrangeFun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -566,7 +610,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2SV488327T;
 				INFOPLIST_FILE = OrangeFun/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ChengZhang.story.OrangeFun;
 				PRODUCT_NAME = "$(TARGET_NAME)";

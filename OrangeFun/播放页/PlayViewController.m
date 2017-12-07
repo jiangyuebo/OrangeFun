@@ -9,6 +9,7 @@
 #import "PlayViewController.h"
 #import "globalHeader.h"
 #import "JerryViewTools.h"
+#import "PlayListViewCell.h"
 
 #define PlayListHeight SCREENHEIGHT * 2/3
 
@@ -54,6 +55,13 @@
     [btnClearPlayList addTarget:self action:@selector(clearPlayList) forControlEvents:UIControlEventTouchUpInside];
     //playListView中列表
     self.tablePlayList = [self.playListView viewWithTag:2];
+    //注册列表table的cell
+    self.playListTableCellID = @"playListTableCellID";
+    UINib *playListCellNib = [UINib nibWithNibName:@"PlayListViewCell" bundle:nil];
+    [self.tablePlayList registerNib:playListCellNib forCellReuseIdentifier:self.playListTableCellID];
+    
+    self.tablePlayList.delegate = self;
+    self.tablePlayList.dataSource = self;
     //playListView关闭按钮
     UIButton *btnCloseView = [self.playListView viewWithTag:3];
     [btnCloseView addTarget:self action:@selector(closePlayList) forControlEvents:UIControlEventTouchUpInside];
@@ -148,6 +156,21 @@
         [self.maskView removeFromSuperview];
         self.maskView = nil;
     }];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    PlayListViewCell *playListCell = [self.tablePlayList dequeueReusableCellWithIdentifier:self.playListTableCellID];
+    
+    return playListCell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 10;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
 }
 
 - (void)didReceiveMemoryWarning {

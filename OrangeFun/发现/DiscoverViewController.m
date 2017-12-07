@@ -40,10 +40,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     DiscoverTableCell *storyItemCell = [self.tableDiscover dequeueReusableCellWithIdentifier:self.storyCellID];
+    //设置选中样式，无
+    storyItemCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     [storyItemCell.imageViewCover setImage:[UIImage imageNamed:@"xiaozhu"]];
     
     return storyItemCell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    [self.tabBarController setSelectedIndex:1];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -53,6 +59,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 96;
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

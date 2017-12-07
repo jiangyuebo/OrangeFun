@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlayViewController : UIViewController
+@interface PlayViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 //进度条
 @property (strong, nonatomic) IBOutlet UISlider *progressSlider;
@@ -37,5 +37,6 @@
 @property (strong,nonatomic) UIView *playListView;
 //列表中table
 @property (strong,nonatomic) UITableView *tablePlayList;
+@property (strong,nonatomic) NSString *playListTableCellID;
 
 @end

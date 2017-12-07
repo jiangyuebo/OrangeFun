@@ -15,14 +15,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZ4-hw-i0h">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LZ4-hw-i0h">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                 </scrollView>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="pBs-PA-u6L">
+                    <rect key="frame" x="168" y="103" width="39" height="37"/>
+                </pageControl>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="LZ4-hw-i0h" secondAttribute="trailing" id="3Q2-Xz-IGT"/>
                 <constraint firstItem="LZ4-hw-i0h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3UX-37-qxf"/>
                 <constraint firstItem="LZ4-hw-i0h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6jV-hr-kn3"/>
+                <constraint firstAttribute="bottom" secondItem="pBs-PA-u6L" secondAttribute="bottom" id="Ip1-qd-F3A"/>
+                <constraint firstItem="pBs-PA-u6L" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dZP-NI-2d7"/>
                 <constraint firstAttribute="bottom" secondItem="LZ4-hw-i0h" secondAttribute="bottom" id="t39-uD-Bt8"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
@@ -30,6 +35,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bannerScrollView" destination="LZ4-hw-i0h" id="ACV-uS-qXR"/>
+                <outlet property="pageControlBanner" destination="pBs-PA-u6L" id="vKa-2E-hPo"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="-210"/>
         </view>

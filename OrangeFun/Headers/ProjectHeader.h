@@ -16,4 +16,12 @@
 //搜索页面
 #define viewcontroller_search @"searchviewcontroller"
 
+//故事列表页面
+#define viewcontroller_storylist @"storylistviewcontroller"
+
+//webview
+#define viewcontroller_webview @"webviewcontroller"
+//linkURL
+#define key_banner_link @"keybannerlink"
+
 #endif /* ProjectHeader_h */

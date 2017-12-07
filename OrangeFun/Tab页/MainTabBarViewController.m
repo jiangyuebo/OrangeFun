@@ -18,6 +18,9 @@
     [super viewDidLoad];
     //设置自定义bar item 图标
     [self setCustomTabBarItem];
+    
+    //
+    self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
 }
 
 #pragma mark 设置自定义TAB BAR ITEM 图标
