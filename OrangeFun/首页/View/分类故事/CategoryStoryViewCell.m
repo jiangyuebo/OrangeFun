@@ -25,12 +25,25 @@
     [self.categoryStoryCollectionView registerNib:collectionCellNib forCellWithReuseIdentifier:self.collectionCellId];
 }
 
+- (void)setCollectionData:(NSArray *) datas{
+    self.collectionDataArray = datas;
+}
+
 //cell
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     CategoryStoryCollectionCell *collectionCell = [self.categoryStoryCollectionView dequeueReusableCellWithReuseIdentifier:self.collectionCellId forIndexPath:indexPath];
     
-    UIImage *exampleCoverImage = [UIImage imageNamed:@"xiaozhu"];
+    UIImage *exampleCoverImage;
+    
+    if ([self.collectionDataArray  count] > 0) {
+        //真实数据
+        exampleCoverImage = [UIImage imageNamed:@"xiaozhu"];
+    }else{
+        //占位
+        exampleCoverImage = [UIImage imageNamed:@"xiaozhu"];
+    }
+
     [collectionCell.coverImageView setImage:exampleCoverImage];
     
     return collectionCell;
@@ -38,7 +51,14 @@
 
 //total count
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 6;
+    
+    if ([self.collectionDataArray  count] > 0) {
+        //真实数据
+        return [self.collectionDataArray count];
+    }else{
+        //占位
+        return 6;
+    }
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{

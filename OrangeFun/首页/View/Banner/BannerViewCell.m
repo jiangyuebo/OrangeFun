@@ -11,6 +11,8 @@
 #import "globalHeader.h"
 #import "ProjectHeader.h"
 
+#import <SDWebImage/UIImageView+WebCache.h>
+
 @implementation BannerViewCell
 
 - (void)setBannerDatas:(NSArray *) urlsArray{
@@ -47,11 +49,12 @@
             NSString *logoURL = [bannerDataItem objectForKey:@"logoUrl"];
             NSURL *logoImageURL = [NSURL URLWithString:logoURL];
             //获取网络图片
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                UIImage *bannerImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:logoImageURL]];
-                
-                [bannerImageView setImage:bannerImage];
-            });
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                UIImage *bannerImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:logoImageURL]];
+//
+//                [bannerImageView setImage:bannerImage];
+//            });
+            [bannerImageView sd_setImageWithURL:logoImageURL];
             
             //添加点击事件
             bannerImageView.userInteractionEnabled = YES;

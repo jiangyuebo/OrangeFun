@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F399667EE070C6F9F1771AA /* libPods-OrangeFun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 030DD2513EA5E94C92CF96C8 /* libPods-OrangeFun.a */; };
 		C40A94201FB37E61001971A1 /* JerryAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A941F1FB37E61001971A1 /* JerryAVPlayer.m */; };
 		C40A94231FBD977B001971A1 /* BMRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94211FBD977B001971A1 /* BMRequestHelper.m */; };
 		C40A94271FBD97CB001971A1 /* JerryTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94251FBD97CB001971A1 /* JerryTools.m */; };
@@ -48,6 +49,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		030DD2513EA5E94C92CF96C8 /* libPods-OrangeFun.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OrangeFun.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B49597F75728F93128ED018 /* Pods-OrangeFun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeFun.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeFun/Pods-OrangeFun.debug.xcconfig"; sourceTree = "<group>"; };
+		46E6EDAFB76380052B3737E2 /* Pods-OrangeFun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeFun.release.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeFun/Pods-OrangeFun.release.xcconfig"; sourceTree = "<group>"; };
 		C40A941E1FB37E61001971A1 /* JerryAVPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JerryAVPlayer.h; sourceTree = "<group>"; };
 		C40A941F1FB37E61001971A1 /* JerryAVPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JerryAVPlayer.m; sourceTree = "<group>"; };
 		C40A94211FBD977B001971A1 /* BMRequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BMRequestHelper.m; path = OrangeFun/BMRequestHelper.m; sourceTree = SOURCE_ROOT; };
@@ -123,12 +127,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				C40A94751FD0554D001971A1 /* CoreImage.framework in Frameworks */,
+				7F399667EE070C6F9F1771AA /* libPods-OrangeFun.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B637DB2559BA171EF8F3F89 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B49597F75728F93128ED018 /* Pods-OrangeFun.debug.xcconfig */,
+				46E6EDAFB76380052B3737E2 /* Pods-OrangeFun.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C40A941D1FB37CFE001971A1 /* 播放器工具 */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				C40A94741FD05539001971A1 /* CoreImage.framework */,
+				030DD2513EA5E94C92CF96C8 /* libPods-OrangeFun.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -307,6 +322,7 @@
 				C4A58C231FAF70A900E45395 /* OrangeFun */,
 				C4A58C221FAF70A900E45395 /* Products */,
 				C40A94731FD05538001971A1 /* Frameworks */,
+				7B637DB2559BA171EF8F3F89 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -361,9 +377,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4A58C371FAF70A900E45395 /* Build configuration list for PBXNativeTarget "OrangeFun" */;
 			buildPhases = (
+				79AA0AB87DBF8E7B2A356D1E /* [CP] Check Pods Manifest.lock */,
 				C4A58C1D1FAF70A900E45395 /* Sources */,
 				C4A58C1E1FAF70A900E45395 /* Frameworks */,
 				C4A58C1F1FAF70A900E45395 /* Resources */,
+				9635AAA8632FFCCB6A634008 /* [CP] Embed Pods Frameworks */,
+				B8CAA45DD8F962A50DAA32C5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -428,6 +447,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79AA0AB87DBF8E7B2A356D1E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OrangeFun-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9635AAA8632FFCCB6A634008 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OrangeFun/Pods-OrangeFun-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8CAA45DD8F962A50DAA32C5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OrangeFun/Pods-OrangeFun-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C4A58C1D1FAF70A900E45395 /* Sources */ = {
@@ -590,10 +660,11 @@
 		};
 		C4A58C381FAF70A900E45395 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B49597F75728F93128ED018 /* Pods-OrangeFun.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2SV488327T;
+				DEVELOPMENT_TEAM = RQJ8RFJ7F6;
 				INFOPLIST_FILE = OrangeFun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -605,10 +676,11 @@
 		};
 		C4A58C391FAF70A900E45395 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46E6EDAFB76380052B3737E2 /* Pods-OrangeFun.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2SV488327T;
+				DEVELOPMENT_TEAM = RQJ8RFJ7F6;
 				INFOPLIST_FILE = OrangeFun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

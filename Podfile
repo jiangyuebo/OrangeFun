@@ -7,4 +7,6 @@ target 'OrangeFun' do
 
   # Pods for OrangeFun
 
+pod 'SDWebImage', '~> 4.1.0'
+
 end

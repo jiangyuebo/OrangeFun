@@ -14,6 +14,8 @@
 
 @property (strong,nonatomic) NSString *collectionCellId;
 
+@property (strong,nonatomic) NSArray *collectionDataArray;
+
 - (void)setCollectionData:(NSArray *) datas;
 
 @end
