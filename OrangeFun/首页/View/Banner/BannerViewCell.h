@@ -13,11 +13,11 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *bannerScrollView;
 
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControlBanner;
-
+//记录LINK以供点击事件调用
 @property (strong,nonatomic) NSMutableArray *bannerLinkURLArray;
 
-- (void)setBannerDatas:(NSArray *) urlsArray;
+@property (strong,nonatomic) NSArray *bannerDataArray;
 
-@property (nonatomic) BOOL initFlag;
+- (void)reloadBannerData;
 
 @end

@@ -24,4 +24,10 @@
 //linkURL
 #define key_banner_link @"keybannerlink"
 
+//*******************字段们************************
+//banner data
+#define mainpage_column_banner_logoURL @"logoUrl"
+#define mainpage_column_banner_bannerURL @"bannerUrl"
+
+
 #endif /* ProjectHeader_h */

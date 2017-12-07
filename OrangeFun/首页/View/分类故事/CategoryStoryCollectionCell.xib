@@ -24,7 +24,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="161" height="205"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gDn-0b-oIl">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noimg" translatesAutoresizingMaskIntoConstraints="NO" id="gDn-0b-oIl">
                         <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="gDn-0b-oIl" secondAttribute="height" multiplier="1:1" id="YXf-fA-nz9"/>
@@ -66,4 +66,7 @@
             <point key="canvasLocation" x="32.5" y="-184.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="noimg" width="111" height="111"/>
+    </resources>
 </document>

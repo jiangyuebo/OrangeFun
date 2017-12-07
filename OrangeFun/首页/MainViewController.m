@@ -29,8 +29,8 @@
 
 @property (strong,nonatomic) NSString *categoryListCellId;
 
-//banner cell
-@property (strong,nonatomic) BannerViewCell *bannerCell;
+//main data array
+@property (strong,nonatomic) NSMutableArray *mainPageDataArray;
 
 @end
 
@@ -40,6 +40,10 @@
     [super viewDidLoad];
     //去掉TableView顶上空白
     self.navigationController.navigationBar.translucent = NO;
+    self.mainPageDataArray = [NSMutableArray array];
+    
+    //初始化主界面数据数组
+    [self initMainPageDataArray];
     
     self.mainPageTable.dataSource = self;
     self.mainPageTable.delegate = self;
@@ -52,6 +56,23 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     self.tabBarController.navigationItem.title = @"橙娃故事";
+}
+
+#pragma mark 初始化主界面列表数据
+- (void)initMainPageDataArray{
+    //banner init data
+    NSDictionary *bannerDic = [NSDictionary dictionaryWithObject:@"" forKey:mainpage_column_banner_logoURL];
+    
+    NSArray *bannerDataArray = [NSArray arrayWithObject:bannerDic];
+    [self.mainPageDataArray addObject:bannerDataArray];
+    
+    //category list data
+    NSArray *categoryListDataArray = [NSArray array];
+    [self.mainPageDataArray addObject:categoryListDataArray];
+    
+    //search bar data
+    NSArray *searchBarData = [NSArray array];
+    [self.mainPageDataArray addObject:searchBarData];
 }
 
 - (void)loadData{
@@ -97,18 +118,30 @@
 
 #pragma mark 解析网络数据
 - (void)parseData:(NSDictionary *) dataInfo{
+    //设置主界面列表值
+    [self.mainPageDataArray removeAllObjects];
+    
     //获取banner数据
-    NSArray *bannersArray = [dataInfo objectForKey:@"banners"];
+    NSArray *bannerDataArray = [dataInfo objectForKey:@"banners"];
+    [self.mainPageDataArray addObject:bannerDataArray];
     
-    dispatch_sync(dispatch_get_main_queue(), ^{
-       [self.bannerCell setBannerDatas:bannersArray];
-    });
+    //category list cell
+    NSArray *categoryListDataArray = [NSArray array];
+    [self.mainPageDataArray addObject:categoryListDataArray];
     
+    //search bar data
+    NSArray *searchBarData = [NSArray array];
+    [self.mainPageDataArray addObject:searchBarData];
+
     //获取热门故事数据
     NSArray *storiesArray = [dataInfo objectForKey:@"stories"];
     
     //获取系列故事
     NSArray *seriasArray = [dataInfo objectForKey:@"serias"];
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        [self.mainPageTable reloadData];
+    });
 }
 
 #pragma mark 为首页table注册cell ui
@@ -145,11 +178,11 @@
     
     if (indexPath.row == 0) {
         //获取banner
-        self.bannerCell = [self.mainPageTable dequeueReusableCellWithIdentifier:self.bannerCellId];
-        //设置banner图片
-//        [self.bannerCell setBannerDatas:nil];
+        BannerViewCell *bannerCell = [self.mainPageTable dequeueReusableCellWithIdentifier:self.bannerCellId];
+        bannerCell.bannerDataArray = [self.mainPageDataArray objectAtIndex:0];
+        [bannerCell reloadBannerData];
         
-        return self.bannerCell;
+        return bannerCell;
     }
     
     if (indexPath.row == 1) {
@@ -165,13 +198,7 @@
         return searchBarCell;
     }
     
-    if (indexPath.row == 3) {
-        //获取分类故事
-        CategoryStoryViewCell *categoryStoryCell = [self.mainPageTable dequeueReusableCellWithIdentifier:self.categoryStoryCellId];
-        return categoryStoryCell;
-    }
-    
-    if (indexPath.row == 4) {
+    if (indexPath.row >= 3) {
         //获取分类故事
         CategoryStoryViewCell *categoryStoryCell = [self.mainPageTable dequeueReusableCellWithIdentifier:self.categoryStoryCellId];
         return categoryStoryCell;
@@ -181,7 +208,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return [self.mainPageDataArray count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -198,11 +225,7 @@
         return 68;
     }
     
-    if (indexPath.row == 3) {
-        return 330;
-    }
-    
-    if (indexPath.row == 4) {
+    if (indexPath.row >= 3) {
         return 330;
     }
     

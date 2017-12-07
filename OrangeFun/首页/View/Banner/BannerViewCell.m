@@ -15,46 +15,33 @@
 
 @implementation BannerViewCell
 
-- (void)setBannerDatas:(NSArray *) urlsArray{
+- (void)reloadBannerData{
     
-    if (!urlsArray) {
-        self.initFlag = YES;
-        //如果为空，添加占位图片
-        UIImage *image = [UIImage imageNamed:@"banner"];
-        urlsArray = [NSArray arrayWithObjects:image,image,image, nil];
-    }else{
-        self.initFlag = NO;
-        self.bannerLinkURLArray = [NSMutableArray array];
-    }
-
-    self.bannerScrollView.contentSize = CGSizeMake(SCREENWIDTH * urlsArray.count, 0);
-
+    self.bannerScrollView.contentSize = CGSizeMake(SCREENWIDTH * self.bannerDataArray.count, 0);
+    
     //开始插入图片
-    for (int i = 0; i < [urlsArray count]; i++) {
-        
+    for (int i = 0; i < [self.bannerDataArray count]; i++) {
         UIImageView *bannerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * SCREENWIDTH, 0, SCREENWIDTH, SCREENWIDTH/banner_width * banner_height)];
         bannerImageView.tag = i;
         
-        if (self.initFlag) {
-            //初始化占位图片
-            [bannerImageView setImage:urlsArray[i]];
+        NSDictionary *bannerDataDic = [self.bannerDataArray objectAtIndex:i];
+        NSString *logoURL = [bannerDataDic objectForKey:mainpage_column_banner_logoURL];
+        if ([logoURL isEqualToString:@""]) {
+            //初始化的
+            UIImage *noBannerImage = [UIImage imageNamed:@"nobanner"];
+            [bannerImageView setImage:noBannerImage];
         }else{
             //网络加载图片
             //获取banner对象
-            NSDictionary *bannerDataItem = urlsArray[i];
+            NSDictionary *bannerDataItem = self.bannerDataArray[i];
             //活动链接
-            NSString *bannerURL = [bannerDataItem objectForKey:@"bannerUrl"];
+            NSString *bannerURL = [bannerDataItem objectForKey:mainpage_column_banner_bannerURL];
             [self.bannerLinkURLArray addObject:bannerURL];
             //图片地址
-            NSString *logoURL = [bannerDataItem objectForKey:@"logoUrl"];
+            NSString *logoURL = [bannerDataItem objectForKey:mainpage_column_banner_logoURL];
             NSURL *logoImageURL = [NSURL URLWithString:logoURL];
             //获取网络图片
-//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//                UIImage *bannerImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:logoImageURL]];
-//
-//                [bannerImageView setImage:bannerImage];
-//            });
-            [bannerImageView sd_setImageWithURL:logoImageURL];
+            [bannerImageView sd_setImageWithURL:logoImageURL placeholderImage:[UIImage imageNamed:@"nobanner"]];
             
             //添加点击事件
             bannerImageView.userInteractionEnabled = YES;
@@ -72,7 +59,7 @@
     
     //设置page control
     self.pageControlBanner.currentPage = 0;
-    self.pageControlBanner.numberOfPages = [urlsArray count];
+    self.pageControlBanner.numberOfPages = [self.bannerDataArray count];
     self.pageControlBanner.hidesForSinglePage = YES;
 }
 
