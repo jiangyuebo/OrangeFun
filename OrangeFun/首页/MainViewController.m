@@ -122,7 +122,7 @@
     [self.mainPageDataArray removeAllObjects];
     
     //获取banner数据
-    NSArray *bannerDataArray = [dataInfo objectForKey:@"banners"];
+    NSArray *bannerDataArray = [dataInfo objectForKey:mainpage_column_banners];
     [self.mainPageDataArray addObject:bannerDataArray];
     
     //category list cell
@@ -134,10 +134,19 @@
     [self.mainPageDataArray addObject:searchBarData];
 
     //获取热门故事数据
-    NSArray *storiesArray = [dataInfo objectForKey:@"stories"];
+    NSArray *storiesArray = [dataInfo objectForKey:mainpage_column_category_stories];
+    NSMutableDictionary *categoryStoriesDic = [NSMutableDictionary dictionary];
+    [categoryStoriesDic setObject:mainpage_value_category_type_hot forKey:mainpage_key_category_type];
+    [categoryStoriesDic setObject:storiesArray forKey:mainpage_column_category_stories];
+    [self.mainPageDataArray addObject:categoryStoriesDic];
     
     //获取系列故事
-    NSArray *seriasArray = [dataInfo objectForKey:@"serias"];
+    NSArray *seriasArray = [dataInfo objectForKey:mainpage_column_category_serias];
+    for (int i = 0; i < [seriasArray count]; i++) {
+        NSDictionary *categoryStoryDic = seriasArray[i];
+        
+        [self.mainPageDataArray addObject:categoryStoryDic];
+    }
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         [self.mainPageTable reloadData];
@@ -201,6 +210,25 @@
     if (indexPath.row >= 3) {
         //获取分类故事
         CategoryStoryViewCell *categoryStoryCell = [self.mainPageTable dequeueReusableCellWithIdentifier:self.categoryStoryCellId];
+        NSMutableDictionary *dataDic = [self.mainPageDataArray objectAtIndex:indexPath.row];
+        
+        NSString *categoryType = [dataDic objectForKey:mainpage_key_category_type];
+        if ([categoryType isEqualToString:mainpage_value_category_type_hot]) {
+            //热门故事
+            NSArray *storyArray = [dataDic objectForKey:mainpage_column_category_stories];
+            categoryStoryCell.categoryName.text = @"热门故事";
+            categoryStoryCell.collectionDataArray = storyArray;
+        }else{
+            //专辑故事
+            categoryStoryCell.seriaID =  [dataDic objectForKey:mainpage_column_category_seriaID];
+            categoryStoryCell.categoryName.text = [dataDic objectForKey:mainpage_column_category_seriaName];
+            
+            NSArray *storyArray = [dataDic objectForKey:mainpage_column_category_stories];
+            categoryStoryCell.collectionDataArray = storyArray;
+            
+        }
+        [categoryStoryCell.categoryStoryCollectionView reloadData];
+        
         return categoryStoryCell;
     }
     

@@ -10,6 +10,13 @@
 
 @interface CategoryStoryViewCell : UITableViewCell<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 
+//专辑故事信息
+@property (strong,nonatomic) NSString *seriaID;
+@property (strong,nonatomic) NSString *seriaLogoURLString;
+
+//分类块名称
+@property (strong, nonatomic) IBOutlet UILabel *categoryName;
+
 @property (strong, nonatomic) IBOutlet UICollectionView *categoryStoryCollectionView;
 
 @property (strong,nonatomic) NSString *collectionCellId;

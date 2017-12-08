@@ -8,6 +8,8 @@
 
 #import "CategoryStoryViewCell.h"
 #import "CategoryStoryCollectionCell.h"
+#import "ProjectHeader.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation CategoryStoryViewCell
 
@@ -29,22 +31,32 @@
     self.collectionDataArray = datas;
 }
 
+- (IBAction)btnMoreAction:(UIButton *)sender {
+    
+}
+
 //cell
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     CategoryStoryCollectionCell *collectionCell = [self.categoryStoryCollectionView dequeueReusableCellWithReuseIdentifier:self.collectionCellId forIndexPath:indexPath];
     
-    UIImage *exampleCoverImage;
+    //解析数据
+    NSDictionary *storyDataDic = [self.collectionDataArray objectAtIndex:indexPath.row];
     
-    if ([self.collectionDataArray  count] > 0) {
-        //真实数据
-        exampleCoverImage = [UIImage imageNamed:@"xiaozhu"];
-    }else{
-        //占位
-        exampleCoverImage = [UIImage imageNamed:@"xiaozhu"];
-    }
-
-    [collectionCell.coverImageView setImage:exampleCoverImage];
+    //获取故事封面地址
+    NSString *logoURLString = [storyDataDic objectForKey:mainpage_column_category_logoURL];
+    
+    //获取故事名称
+    NSString *storyName = [storyDataDic objectForKey:mainpage_column_category_story_name];
+    
+    //播放地址
+//    NSString *storyPlayURLString = [storyDataDic objectForKey:mainpage_column_category_story_playURL];
+    
+    //设置封面图片
+    NSURL *coverImageURL = [NSURL URLWithString:logoURLString];
+    [collectionCell.coverImageView sd_setImageWithURL:coverImageURL placeholderImage:[UIImage imageNamed:@"nobanner"]];
+    //设置故事名
+    collectionCell.storyName.text = storyName;
     
     return collectionCell;
 }

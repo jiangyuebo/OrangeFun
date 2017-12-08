@@ -48,6 +48,9 @@
                                 <state key="normal" title="更多">
                                     <color key="titleColor" red="0.96862745098039216" green="0.39215686274509803" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnMoreAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XA0-MP-ne1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -93,6 +96,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="categoryName" destination="ned-rc-47y" id="VU8-7z-uk6"/>
                 <outlet property="categoryStoryCollectionView" destination="4V7-uw-hut" id="JeP-HJ-uzI"/>
             </connections>
             <point key="canvasLocation" x="34" y="64.5"/>

@@ -26,8 +26,23 @@
 
 //*******************字段们************************
 //banner data
+#define mainpage_column_banners @"banners"
 #define mainpage_column_banner_logoURL @"logoUrl"
 #define mainpage_column_banner_bannerURL @"bannerUrl"
+//category story data
+#define mainpage_key_category_type @"type"
+#define mainpage_value_category_type_hot @"hot"
+#define mainpage_value_category_type_serias @"serias"
+
+#define mainpage_column_category_seriaID @"seriaID"
+#define mainpage_column_category_seriaName @"seriaName"
+#define mainpage_column_category_seriaCategory @"seriaCategory"
+#define mainpage_column_category_logoURL @"logoUrl"
+#define mainpage_column_category_story_name @"storyName"
+#define mainpage_column_category_story_playURL @"playUrl"
+
+#define mainpage_column_category_serias @"serias"
+#define mainpage_column_category_stories @"stories"
 
 
 #endif /* ProjectHeader_h */

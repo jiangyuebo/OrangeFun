@@ -34,9 +34,7 @@
             //网络加载图片
             //获取banner对象
             NSDictionary *bannerDataItem = self.bannerDataArray[i];
-            //活动链接
-            NSString *bannerURL = [bannerDataItem objectForKey:mainpage_column_banner_bannerURL];
-            [self.bannerLinkURLArray addObject:bannerURL];
+            
             //图片地址
             NSString *logoURL = [bannerDataItem objectForKey:mainpage_column_banner_logoURL];
             NSURL *logoImageURL = [NSURL URLWithString:logoURL];
@@ -68,12 +66,16 @@
 }
 
 #pragma mark banner图片点击
-- (void)bannerClickedAction:(UIGestureRecognizer *)gestureRecognizer{
-    UIImageView *clickedImageView = (UIImageView *)gestureRecognizer.view;
+- (void)bannerClickedAction:(UIGestureRecognizer *)sender{
+    UIImageView *clickedImageView = (UIImageView *)sender.view;
+    NSUInteger tag = clickedImageView.tag;
     //获取链接URL
-    NSString *urlString = [self.bannerLinkURLArray objectAtIndex:clickedImageView.tag];
+    NSDictionary *bannerDataDic = [self.bannerDataArray objectAtIndex:tag];
+    //活动链接
+    NSString *bannerURLString = [bannerDataDic objectForKey:mainpage_column_banner_bannerURL];
+    
     NSMutableDictionary *passDic = [NSMutableDictionary dictionary];
-    [passDic setObject:urlString forKey:key_banner_link];
+    [passDic setObject:bannerURLString forKey:key_banner_link];
     //跳转到web view
     [JerryViewTools jumpFrom:[JerryViewTools topViewController] ToViewController:viewcontroller_webview carryDataDic:passDic];
 }
