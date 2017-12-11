@@ -18,4 +18,10 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *btnAddToPlayList;
 
+@property (strong, nonatomic) IBOutlet UIImageView *imageViewPlayCount;
+
+@property (strong, nonatomic) IBOutlet UIWebView *webViewGif;
+
+
+
 @end

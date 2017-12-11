@@ -34,25 +34,25 @@
                                     <constraint firstAttribute="width" secondItem="rt6-uR-97f" secondAttribute="height" multiplier="1:1" id="r2a-e2-9Uf"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shenhua" translatesAutoresizingMaskIntoConstraints="NO" id="8Qi-NO-etL">
+                            <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shenhua" translatesAutoresizingMaskIntoConstraints="NO" id="8Qi-NO-etL">
                                 <rect key="frame" x="536.5" y="15" width="97.5" height="98"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8Qi-NO-etL" secondAttribute="height" multiplier="1:1" id="fbK-e2-JuS"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yuyan" translatesAutoresizingMaskIntoConstraints="NO" id="uaB-i9-RnJ">
+                            <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yuyan" translatesAutoresizingMaskIntoConstraints="NO" id="uaB-i9-RnJ">
                                 <rect key="frame" x="145.5" y="15" width="97.5" height="98"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uaB-i9-RnJ" secondAttribute="height" multiplier="1:1" id="sKX-MD-9Gc"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guoxue" translatesAutoresizingMaskIntoConstraints="NO" id="L1l-4z-ldt">
+                            <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guoxue" translatesAutoresizingMaskIntoConstraints="NO" id="L1l-4z-ldt">
                                 <rect key="frame" x="406" y="15" width="97.5" height="98"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="L1l-4z-ldt" secondAttribute="height" multiplier="1:1" id="B76-hv-4Kx"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shuiqian" translatesAutoresizingMaskIntoConstraints="NO" id="6wV-5s-CG0">
+                            <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shuiqian" translatesAutoresizingMaskIntoConstraints="NO" id="6wV-5s-CG0">
                                 <rect key="frame" x="275.5" y="15" width="97.5" height="98"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="6wV-5s-CG0" secondAttribute="height" multiplier="1:1" id="H0a-XH-75l"/>
@@ -100,25 +100,25 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yingyu" translatesAutoresizingMaskIntoConstraints="NO" id="wsG-UJ-kWl">
+                            <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yingyu" translatesAutoresizingMaskIntoConstraints="NO" id="wsG-UJ-kWl">
                                 <rect key="frame" x="14" y="141.5" width="98.5" height="98.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wsG-UJ-kWl" secondAttribute="height" multiplier="1:1" id="Wd3-tj-9wF"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baike" translatesAutoresizingMaskIntoConstraints="NO" id="wzr-aC-jrI">
+                            <imageView userInteractionEnabled="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="baike" translatesAutoresizingMaskIntoConstraints="NO" id="wzr-aC-jrI">
                                 <rect key="frame" x="145" y="142" width="98" height="97.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wzr-aC-jrI" secondAttribute="height" multiplier="1:1" id="4nm-3A-M0f"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mingren" translatesAutoresizingMaskIntoConstraints="NO" id="msQ-lu-TS6">
+                            <imageView userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mingren" translatesAutoresizingMaskIntoConstraints="NO" id="msQ-lu-TS6">
                                 <rect key="frame" x="275.5" y="141.5" width="98" height="98.5"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mingzhu" translatesAutoresizingMaskIntoConstraints="NO" id="xVR-3Y-cyN">
+                            <imageView userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mingzhu" translatesAutoresizingMaskIntoConstraints="NO" id="xVR-3Y-cyN">
                                 <rect key="frame" x="405" y="142" width="98" height="97.5"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huiben" translatesAutoresizingMaskIntoConstraints="NO" id="XUj-6G-dSQ">
+                            <imageView userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huiben" translatesAutoresizingMaskIntoConstraints="NO" id="XUj-6G-dSQ">
                                 <rect key="frame" x="536" y="142" width="98" height="97.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XUj-6G-dSQ" secondAttribute="height" multiplier="1:1" id="ItT-TZ-waf"/>

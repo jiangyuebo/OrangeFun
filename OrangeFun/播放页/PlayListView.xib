@@ -27,12 +27,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4W-Cf-7iZ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                     <subviews>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGJ-pO-Vg0">
-                            <rect key="frame" x="299" y="8" width="62" height="30"/>
-                            <state key="normal" title="清除列表">
-                                <color key="titleColor" red="0.96862745098039216" green="0.39215686274509803" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            </state>
-                        </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2U-N1-nqn">
                             <rect key="frame" x="0.0" y="44" width="375" height="1"/>
                             <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
@@ -40,12 +34,18 @@
                                 <constraint firstAttribute="height" constant="1" id="wJr-Gb-8dY"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGJ-pO-Vg0">
+                            <rect key="frame" x="8" y="8" width="62" height="30"/>
+                            <state key="normal" title="播放列表">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="X2U-N1-nqn" firstAttribute="leading" secondItem="a4W-Cf-7iZ" secondAttribute="leading" id="5sW-RD-dsM"/>
-                        <constraint firstItem="YGJ-pO-Vg0" firstAttribute="centerY" secondItem="a4W-Cf-7iZ" secondAttribute="centerY" id="iOf-z3-IJP"/>
-                        <constraint firstAttribute="trailing" secondItem="YGJ-pO-Vg0" secondAttribute="trailing" constant="14" id="rqr-6T-yCX"/>
+                        <constraint firstItem="YGJ-pO-Vg0" firstAttribute="centerY" secondItem="a4W-Cf-7iZ" secondAttribute="centerY" id="aQ0-cl-oyl"/>
+                        <constraint firstItem="YGJ-pO-Vg0" firstAttribute="leading" secondItem="a4W-Cf-7iZ" secondAttribute="leading" constant="8" id="jNZ-Wd-F8m"/>
                         <constraint firstAttribute="bottom" secondItem="X2U-N1-nqn" secondAttribute="bottom" id="sR2-FJ-JUN"/>
                         <constraint firstAttribute="trailing" secondItem="X2U-N1-nqn" secondAttribute="trailing" id="umw-zs-btY"/>
                         <constraint firstAttribute="height" constant="45" id="uzH-Vd-Gcb"/>

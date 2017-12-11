@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JerryAVPlayerDelegate.h"
 
-@interface PlayViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface PlayViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,JerryAVPlayerDelegate>
 
 //进度条
 @property (strong, nonatomic) IBOutlet UISlider *progressSlider;

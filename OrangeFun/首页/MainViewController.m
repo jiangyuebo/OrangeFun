@@ -31,6 +31,8 @@
 
 //main data array
 @property (strong,nonatomic) NSMutableArray *mainPageDataArray;
+//main category list icon name
+@property (strong,nonatomic) NSArray *categoryNameArray;
 
 @end
 
@@ -41,6 +43,7 @@
     //去掉TableView顶上空白
     self.navigationController.navigationBar.translucent = NO;
     self.mainPageDataArray = [NSMutableArray array];
+    self.categoryNameArray = [NSArray arrayWithObjects:@"童话",@"寓言",@"睡前",@"国学",@"神话",@"英语",@"百科",@"名人",@"名著",@"绘本", nil];
     
     //初始化主界面数据数组
     [self initMainPageDataArray];
@@ -197,6 +200,16 @@
     if (indexPath.row == 1) {
         //类型列表
         CategoryListViewCell *categoryListCell = [self.mainPageTable dequeueReusableCellWithIdentifier:self.categoryListCellId];
+        
+        //绑定点击事件
+        for (int i = 0; i < 10; i++) {
+            UIImageView *categoryImageView = [categoryListCell viewWithTag:i];
+            
+            categoryImageView.userInteractionEnabled = YES;
+            UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickCategoryAction:)];
+            [categoryImageView addGestureRecognizer:singleTap];
+        }
+        
         //设置category list
         return categoryListCell;
     }
@@ -216,6 +229,7 @@
         if ([categoryType isEqualToString:mainpage_value_category_type_hot]) {
             //热门故事
             NSArray *storyArray = [dataDic objectForKey:mainpage_column_category_stories];
+            categoryStoryCell.seriaID = @"";
             categoryStoryCell.categoryName.text = @"热门故事";
             categoryStoryCell.collectionDataArray = storyArray;
         }else{
@@ -233,6 +247,17 @@
     }
     
     return nil;
+}
+
+#pragma mark 点击类型分类
+- (void)clickCategoryAction:(UIGestureRecognizer *)sender{
+    UIImageView *categoryImageView = (UIImageView *)sender.view;
+    NSUInteger tag = categoryImageView.tag;
+    
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setObject:[self.categoryNameArray objectAtIndex:tag] forKey:mainpage_column_category_name];
+    
+    [JerryViewTools jumpFrom:self ToViewController:viewcontroller_categorylist carryDataDic:dataDic];
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

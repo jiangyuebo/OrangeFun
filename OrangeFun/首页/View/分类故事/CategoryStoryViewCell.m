@@ -8,7 +8,9 @@
 
 #import "CategoryStoryViewCell.h"
 #import "CategoryStoryCollectionCell.h"
+#import "AppDelegate.h"
 #import "ProjectHeader.h"
+#import "JerryViewTools.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation CategoryStoryViewCell
@@ -33,6 +35,34 @@
 
 - (IBAction)btnMoreAction:(UIButton *)sender {
     
+    NSLog(@"seriaID : %@",self.seriaID);
+    
+    NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
+    [dataDic setObject:@"more" forKey:@"type"];
+    if (self.seriaID) {
+        [dataDic setObject:self.seriaID forKey:@"seriaID"];
+    }else{
+        [dataDic setObject:@"" forKey:@"seriaID"];
+    }
+    [dataDic setObject:self.categoryName.text forKey:@"categoryName"];
+
+    [JerryViewTools jumpFrom:[JerryViewTools topViewController] ToViewController:viewcontroller_storylist carryDataDic:dataDic];
+}
+
+#pragma mark 点击故事
+- (void)storyClickedAction:(UIGestureRecognizer *)sender{
+    UIImageView *storyCoverImageView = (UIImageView *)sender.view;
+    NSUInteger tag = storyCoverImageView.tag;
+    //获取播放URL
+    NSDictionary *storyDataDic = [self.collectionDataArray objectAtIndex:tag];
+    
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.jerryPlayer addPlayItemToList:storyDataDic];
+    
+    [appDelegate.jerryPlayer prepareToPlayer];
+    
+    [appDelegate.jerryPlayer play];
+    
 }
 
 //cell
@@ -48,15 +78,18 @@
     
     //获取故事名称
     NSString *storyName = [storyDataDic objectForKey:mainpage_column_category_story_name];
-    
-    //播放地址
-//    NSString *storyPlayURLString = [storyDataDic objectForKey:mainpage_column_category_story_playURL];
+    //设置故事名
+    collectionCell.storyName.text = storyName;
     
     //设置封面图片
     NSURL *coverImageURL = [NSURL URLWithString:logoURLString];
     [collectionCell.coverImageView sd_setImageWithURL:coverImageURL placeholderImage:[UIImage imageNamed:@"nobanner"]];
-    //设置故事名
-    collectionCell.storyName.text = storyName;
+    collectionCell.coverImageView.tag = indexPath.row;
+    
+    //设置点击事件
+    collectionCell.coverImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(storyClickedAction:)];
+    [collectionCell.coverImageView addGestureRecognizer:singleTap];
     
     return collectionCell;
 }

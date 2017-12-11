@@ -18,6 +18,8 @@
 
 //故事列表页面
 #define viewcontroller_storylist @"storylistviewcontroller"
+//故事分类列表页面
+#define viewcontroller_categorylist @"categorylistviewcontroller"
 
 //webview
 #define viewcontroller_webview @"webviewcontroller"
@@ -43,6 +45,8 @@
 
 #define mainpage_column_category_serias @"serias"
 #define mainpage_column_category_stories @"stories"
+
+#define mainpage_column_category_name @"categoryname"
 
 
 #endif /* ProjectHeader_h */

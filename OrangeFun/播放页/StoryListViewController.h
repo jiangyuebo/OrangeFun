@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StoryListViewController : UIViewController
+@interface StoryListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+
+@property (strong,nonatomic) NSMutableDictionary *passDataDic;
+
+@property (strong, nonatomic) IBOutlet UITableView *storyListTable;
+
+@property (strong, nonatomic) IBOutlet UILabel *storyCountLabel;
+
+@property (strong,nonatomic) NSString *storyCellId;
 
 @end

@@ -14,6 +14,13 @@
 
 //获取首页数据
 #define URL_REQUEST_STORY_GET_INDEX @"v1/story/getIndex"
-
+//获取发现数据
+#define URL_REQUEST_STORY_GET_DESCOVER @"v1/story/discovery"
+//获取分类中的系列
+#define URL_REQUEST_STORY_GET_CATEGORY @"v1/story/getSerias"
+//获取热门故事
+#define URL_REQUEST_STORY_GET_CATEGORY_HOT @"v1/story/getStories"
+//获取专辑故事
+#define URL_REQUEST_STORY_GET_CATEGORY_SERIA @"v1/story/getSeria"
 
 #endif /* RequestURLHeader_h */

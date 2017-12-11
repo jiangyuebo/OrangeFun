@@ -1,60 +1,54 @@
 //
-//  DiscoverViewController.m
+//  CategoryListViewController.m
 //  OrangeFun
 //
-//  Created by Jerry on 2017/11/24.
+//  Created by Jerry on 2017/12/9.
 //  Copyright © 2017年 Jerry. All rights reserved.
 //
 
-#import "DiscoverViewController.h"
-#import "DiscoverTableCell.h"
-#import "globalHeader.h"
+#import "CategoryListViewController.h"
 #import "RequestURLHeader.h"
 #import "ProjectHeader.h"
-
 #import "BMRequestHelper.h"
+#import "DiscoverTableCell.h"
 #import "JerryViewTools.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
-#import <UIImage+GIF.h>
 
-@interface DiscoverViewController ()
+@interface CategoryListViewController ()
 
-@property (strong,nonatomic) NSArray *discoverDataArray;
+@property (strong,nonatomic) NSString *discoverTableCellId;
+
+@property (strong,nonatomic) NSArray *categoryListArray;
 
 @end
 
-@implementation DiscoverViewController
+@implementation CategoryListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.discoverDataArray = [NSArray array];
-    self.tableDiscover.delegate = self;
-    self.tableDiscover.dataSource = self;
+    NSString *categoryName = [self.passDataDic objectForKey:mainpage_column_category_name];
+    self.title = categoryName;
     
-    //注册cell
-    [self registNibForTable];
+    self.catagoryListTable.delegate = self;
+    self.catagoryListTable.dataSource = self;
+    
+    [self registerTableCell];
     
     [self loadData];
 }
 
-#pragma mark 为首页table注册cell ui
-- (void)registNibForTable{
-    self.storyCellID = @"storyCellID";
+- (void)registerTableCell{
+    self.discoverTableCellId = @"discoverTableCell";
     
     UINib *discoverTableCellNib = [UINib nibWithNibName:@"DiscoverTableCell" bundle:nil];
-    [self.tableDiscover registerNib:discoverTableCellNib forCellReuseIdentifier:self.storyCellID];
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    self.tabBarController.navigationItem.title = @"发现";
+    [self.catagoryListTable registerNib:discoverTableCellNib forCellReuseIdentifier:self.discoverTableCellId];
 }
 
 - (void)loadData{
     BMRequestHelper *requestHelper = [[BMRequestHelper alloc] init];
-    NSString *url_story_index = [NSString stringWithFormat:@"%@%@",URL_REQUEST_STORY,URL_REQUEST_STORY_GET_DESCOVER];
+    NSString *url_story_index = [NSString stringWithFormat:@"%@%@?seriaCategory=%@",URL_REQUEST_STORY,URL_REQUEST_STORY_GET_CATEGORY,[self.passDataDic objectForKey:mainpage_column_category_name]];
     NSLog(@"url_story_index = %@",url_story_index);
     
     [requestHelper getRequestAsynchronousToUrl:url_story_index andCallback:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -69,10 +63,10 @@
                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
                 if (httpResponse.statusCode == 200) {
                     NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-                    self.discoverDataArray = dataArray;
+                    self.categoryListArray = dataArray;
                     
                     dispatch_sync(dispatch_get_main_queue(), ^{
-                        [self.tableDiscover reloadData];
+                        [self.catagoryListTable reloadData];
                     });
                 }else{
                     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
@@ -94,11 +88,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DiscoverTableCell *storyItemCell = [self.tableDiscover dequeueReusableCellWithIdentifier:self.storyCellID];
+    
+    DiscoverTableCell *storyItemCell = [self.catagoryListTable dequeueReusableCellWithIdentifier:self.discoverTableCellId];
     //设置选中样式，无
     storyItemCell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    NSDictionary *dataItemDic = [self.discoverDataArray objectAtIndex:indexPath.row];
+    NSDictionary *dataItemDic = [self.categoryListArray objectAtIndex:indexPath.row];
     NSString *logoURLString = [dataItemDic objectForKey:@"logoUrl"];
     NSLog(@"logoURLString : %@",logoURLString);
     NSString *itemName = [dataItemDic objectForKey:@"seriaName"];
@@ -109,11 +104,6 @@
     
     [storyItemCell.imageViewCover sd_setImageWithURL:coverURL placeholderImage:[UIImage imageNamed:@"nobanner"]];
     
-//    NSString *path = [[NSBundle mainBundle] pathForResource:@"animation" ofType:@"gif"];
-//    NSURL *url = [NSURL URLWithString:path];
-//    [storyItemCell.webViewGif loadRequest:[NSURLRequest requestWithURL:url]];
-//    storyItemCell.webViewGif.scalesPageToFit = YES;
-    
     storyItemCell.labelPlayTimes.hidden = YES;
     storyItemCell.btnAddToPlayList.hidden = YES;
     storyItemCell.imageViewPlayCount.hidden = YES;
@@ -121,18 +111,18 @@
     return storyItemCell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *dataDic = [self.discoverDataArray objectAtIndex:indexPath.row];
-    NSMutableDictionary *dataMuta = [NSMutableDictionary dictionaryWithDictionary:dataDic];
-    [JerryViewTools jumpFrom:self ToViewController:viewcontroller_storylist carryDataDic:dataMuta];
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.discoverDataArray count];
+    return [self.categoryListArray count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 96;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *dataDic = [self.categoryListArray objectAtIndex:indexPath.row];
+    NSMutableDictionary *dataMuta = [NSMutableDictionary dictionaryWithDictionary:dataDic];
+    [JerryViewTools jumpFrom:self ToViewController:viewcontroller_storylist carryDataDic:dataMuta];
 }
 
 #pragma mark toast提示

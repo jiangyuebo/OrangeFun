@@ -16,9 +16,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
-    
+    //初始化播放器
+    self.jerryPlayer = [[JerryAVPlayer alloc] init];
+    //初始化播放列表
+    self.jerryPlayer.playItemList = [NSMutableArray array];
     
     return YES;
 }

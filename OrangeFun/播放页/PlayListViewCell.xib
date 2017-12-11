@@ -36,33 +36,18 @@
                         <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRV-TF-aKx">
-                        <rect key="frame" x="250" y="0.0" width="70" height="44"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="70" id="AV6-QF-b2M"/>
-                        </constraints>
-                        <inset key="contentEdgeInsets" minX="45" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <state key="normal" title="Button" image="delete"/>
-                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="YRV-TF-aKx" secondAttribute="bottom" id="2ED-nX-vWr"/>
-                    <constraint firstItem="YRV-TF-aKx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="4Cl-Se-q1J"/>
                     <constraint firstAttribute="bottom" secondItem="ayg-DT-NsD" secondAttribute="bottom" id="9zD-gf-sxi"/>
                     <constraint firstAttribute="trailing" secondItem="ayg-DT-NsD" secondAttribute="trailing" id="dS7-fW-eDE"/>
                     <constraint firstItem="YYY-eI-ECz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="22" id="kMc-jt-FSW"/>
                     <constraint firstItem="ayg-DT-NsD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="meL-Xq-7m4"/>
                     <constraint firstItem="YYY-eI-ECz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tlS-xc-rRj"/>
-                    <constraint firstAttribute="trailing" secondItem="YRV-TF-aKx" secondAttribute="trailing" id="vzE-Li-C5T"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="btnDelete" destination="YRV-TF-aKx" id="vyy-9d-7WU"/>
                 <outlet property="labelStoryName" destination="YYY-eI-ECz" id="7Oj-JU-QfU"/>
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="delete" width="10" height="10"/>
-    </resources>
 </document>

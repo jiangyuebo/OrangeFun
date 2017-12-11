@@ -8,12 +8,21 @@
 
 #import "PlayViewController.h"
 #import "globalHeader.h"
+#import "ProjectHeader.h"
 #import "JerryViewTools.h"
 #import "PlayListViewCell.h"
+#import "AppDelegate.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #define PlayListHeight SCREENHEIGHT * 2/3
 
 @interface PlayViewController ()
+
+@property (strong,nonatomic) UIImageView *backgroundImageView;
+
+@property (strong,nonatomic) UIImageView *coverImageView;
+
+@property (strong,nonatomic) NSNumber *totalTimeNumber;
 
 @end
 
@@ -22,17 +31,171 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIImage *testImage = [UIImage imageNamed:@"xiaozhu"];
-    //背景
-    [self addBackgroundView:testImage];
-    
     [self initView];
+    
+    //广播
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"player" object:nil];
 }
 
-- (void)viewDidLayoutSubviews{
-    UIImage *testImage = [UIImage imageNamed:@"xiaozhu"];
-    //封面
-    [self setCoverInDisk:testImage];
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark 播放暂停按钮点击
+- (IBAction)controlBtnAction:(UIButton *)sender {
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    BOOL isPlaying = appDelegate.jerryPlayer.isPlaying;
+    
+    if (isPlaying) {
+        //正在播放，暂停
+        [appDelegate.jerryPlayer pausePlay];
+        [self setControlPlaying];
+    }else{
+        //未播放，开始
+        [appDelegate.jerryPlayer continuePlay];
+        [self setControlStop];
+    }
+}
+
+- (IBAction)previousAction:(UIButton *)sender {
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.jerryPlayer previous];
+    
+    [self.tablePlayList reloadData];
+    [self setGaosiBackgound];
+    [self setControlStop];
+}
+
+- (IBAction)nextAction:(UIButton *)sender {
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.jerryPlayer next];
+    
+    [self.tablePlayList reloadData];
+    [self setGaosiBackgound];
+    [self setControlStop];
+}
+
+- (void)setControlPlaying{
+    [self.playControlButton setBackgroundImage:[UIImage imageNamed:@"btnPlay"] forState:UIControlStateNormal];
+}
+
+- (void)setControlStop{
+    [self.playControlButton setBackgroundImage:[UIImage imageNamed:@"btnStop"] forState:UIControlStateNormal];
+}
+
+- (void)receiveNotification:(NSNotification *) notification{
+    NSDictionary *playStatus = notification.userInfo;
+    NSNumber *current = [playStatus objectForKey:@"current"];
+    NSNumber *total = [playStatus objectForKey:@"total"];
+    
+    self.totalTimeNumber = total;
+    
+    //转换时间 得到描述
+    int current_second = [current intValue];
+    int total_second = [total intValue];
+    
+    int played_min = current_second / 60;
+    int played_second = current_second % 60;
+    
+    int totaltime_min = total_second / 60;
+    int totaltime_second = total_second % 60;
+    
+    NSString *played_min_str;
+    if (played_min < 10) {
+        played_min_str = [NSString stringWithFormat:@"0%d",played_min];
+    }else{
+        played_min_str = [NSString stringWithFormat:@"%d",played_min];
+    }
+    
+    NSString *played_second_str;
+    if (played_second < 10) {
+        played_second_str = [NSString stringWithFormat:@"0%d",played_second];
+    }else{
+        played_second_str = [NSString stringWithFormat:@"%d",played_second];
+    }
+    
+    NSString *total_min_str;
+    if (totaltime_min < 10) {
+        total_min_str = [NSString stringWithFormat:@"0%d",totaltime_min];
+    }else{
+        total_min_str = [NSString stringWithFormat:@"%d",totaltime_min];
+    }
+    
+    NSString *totaltime_second_str;
+    if (totaltime_second < 10) {
+        totaltime_second_str = [NSString stringWithFormat:@"0%d",totaltime_second];
+    }else{
+        totaltime_second_str = [NSString stringWithFormat:@"%d",totaltime_second];
+    }
+    
+    NSString *playedTimeString = [NSString stringWithFormat:@"%@:%@",played_min_str,played_second_str];
+    NSString *totalTimeString = [NSString stringWithFormat:@"%@:%@",total_min_str,totaltime_second_str];
+    self.progressTime.text = playedTimeString;
+    self.totalTime.text = totalTimeString;
+    
+    CGFloat progressFloat = [current floatValue] / [total floatValue];
+    self.progressSlider.continuous = YES;
+    [self.progressSlider setValue:progressFloat];
+
+}
+
+- (IBAction)progressChanged:(UISlider *)sender {
+    CGFloat sliderValue = sender.value;
+    
+    if (self.totalTimeNumber) {
+        float totalTimeFloat = [self.totalTimeNumber floatValue];
+        float time = sliderValue * totalTimeFloat;
+        
+        AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate.jerryPlayer jumpTimePlay:time];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    appDelegate.jerryPlayer.jerryDelegate = self;
+    
+    [self.tablePlayList reloadData];
+    
+    [self setGaosiBackgound];
+    
+    //播放按钮
+    if (appDelegate.jerryPlayer.isPlaying) {
+        [self setControlStop];
+    }else{
+        [self setControlPlaying];
+    }
+}
+
+#pragma mark 设置背景模糊图片
+- (void)setGaosiBackgound{
+    //当前故事
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSDictionary *item = appDelegate.jerryPlayer.currentItem;
+    //故事名
+    NSString *storyName = [item objectForKey:mainpage_column_category_story_name];
+    self.navigationController.title = storyName;
+    
+    NSString *logoURLString = [item objectForKey:mainpage_column_category_logoURL];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager.imageDownloader downloadImageWithURL:[NSURL URLWithString:logoURLString] options:SDWebImageDownloaderHighPriority progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        
+    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+        //背景
+        NSLog(@"图片下载完成");
+        
+        [self.backgroundImageView removeFromSuperview];
+        [self addBackgroundView:image];
+        
+        [self.coverImageView removeFromSuperview];
+        [self setCoverInDisk:image];
+        
+    }];
 }
 
 #pragma mark 初始化一些view
@@ -44,6 +207,7 @@
     [self.progressSlider setMinimumTrackImage:minImage forState:UIControlStateNormal];
     [self.progressSlider setMaximumTrackImage:maxImage forState:UIControlStateNormal];
     [self.progressSlider setThumbImage:[UIImage imageNamed:@"drag"] forState:UIControlStateNormal];
+    [self.progressSlider setValue:0];
     
     //初始化播放列表界面
     self.playListView = [JerryViewTools getViewByXibName:@"PlayListView"];
@@ -62,6 +226,7 @@
     
     self.tablePlayList.delegate = self;
     self.tablePlayList.dataSource = self;
+    
     //playListView关闭按钮
     UIButton *btnCloseView = [self.playListView viewWithTag:3];
     [btnCloseView addTarget:self action:@selector(closePlayList) forControlEvents:UIControlEventTouchUpInside];
@@ -86,6 +251,12 @@
                                              self.playListView.frame.size.width,
                                              self.playListView.frame.size.height
                                              );
+    } completion:^(BOOL finished) {
+        AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        NSUInteger index = [appDelegate.jerryPlayer.playItemList indexOfObject:appDelegate.jerryPlayer.currentItem];
+        
+        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [self.tablePlayList scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
     }];
 }
 
@@ -102,29 +273,30 @@
 
 #pragma mark 设置圆形封面图片
 - (void)setCoverInDisk:(UIImage *) cover{
-    UIImageView *coverImageView = [[UIImageView alloc] initWithImage:cover];
-    [coverImageView setFrame:CGRectMake(7, 7, self.coverDiskImageView.frame.size.width - 14, self.coverDiskImageView.frame.size.height - 14)];
-    coverImageView.layer.cornerRadius = coverImageView.frame.size.width / 2;//裁成圆角
-    coverImageView.layer.masksToBounds = YES;//隐藏裁剪掉的部分
+    self.coverImageView = [[UIImageView alloc] initWithImage:cover];
+    [self.coverImageView setFrame:CGRectMake(7, 7, self.coverDiskImageView.frame.size.width - 14, self.coverDiskImageView.frame.size.height - 14)];
+    self.coverImageView.layer.cornerRadius = self.coverImageView.frame.size.width / 2;//裁成圆角
+    self.coverImageView.layer.masksToBounds = YES;//隐藏裁剪掉的部分
     
-    [self.coverDiskImageView addSubview:coverImageView];
+    [self.coverDiskImageView addSubview:self.coverImageView];
 }
 
 #pragma mark 设置背景图（封面高斯模糊 + 20%黑色遮罩）
 - (void)addBackgroundView:(UIImage *) coverImage {
     //高斯模糊
     UIImage *gaussianImage = [JerryViewTools coreBlurImage:coverImage withBlurNumber:20];
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(- SCREENWIDTH/2, - SCREENHEIGHT/2, 2 * SCREENWIDTH, 2 * SCREENHEIGHT)];
-    [backgroundImageView setImage:gaussianImage];
+    
+    self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(- SCREENWIDTH/2, - SCREENHEIGHT/2, 2 * SCREENWIDTH, 2 * SCREENHEIGHT)];
+    [self.backgroundImageView setImage:gaussianImage];
     
     //黑色遮罩
-    UIView *blackMaskView = [[UIView alloc] initWithFrame:backgroundImageView.frame];
+    UIView *blackMaskView = [[UIView alloc] initWithFrame:self.backgroundImageView.frame];
     [blackMaskView setBackgroundColor:[UIColor blackColor]];
     [blackMaskView setAlpha:0.2];
 
-    [backgroundImageView addSubview:blackMaskView];
-    [self.view addSubview:backgroundImageView];
-    [self.view sendSubviewToBack:backgroundImageView];
+    [self.backgroundImageView addSubview:blackMaskView];
+    [self.view addSubview:self.backgroundImageView];
+    [self.view sendSubviewToBack:self.backgroundImageView];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -162,15 +334,46 @@
     
     PlayListViewCell *playListCell = [self.tablePlayList dequeueReusableCellWithIdentifier:self.playListTableCellID];
     
+    playListCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSArray *playListArray = appDelegate.jerryPlayer.playItemList;
+    NSDictionary *dataDic = [playListArray objectAtIndex:indexPath.row];
+    
+    playListCell.labelStoryName.text = [dataDic objectForKey:mainpage_column_category_story_name];
+    
+    if (appDelegate.jerryPlayer.currentItem == [appDelegate.jerryPlayer.playItemList objectAtIndex:indexPath.row]) {
+        playListCell.labelStoryName.textColor = [UIColor orangeColor];
+    }else{
+        playListCell.labelStoryName.textColor = [UIColor blackColor];
+    }
+    
     return playListCell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSArray *playListArray = appDelegate.jerryPlayer.playItemList;
+    NSUInteger count = [playListArray count];
+    return count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSDictionary *selectedDic = [appDelegate.jerryPlayer.playItemList objectAtIndex:indexPath.row];
+    
+    
+    [appDelegate.jerryPlayer prepareToPlayerAtCurrentItem:selectedDic];
+    [appDelegate.jerryPlayer play];
+    
+    [self.tablePlayList reloadData];
+    
+    [self setGaosiBackgound];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -193,6 +396,13 @@
     [self hidePlayListMask];
 }
 
+- (void)playEnd{
+    NSLog(@"in player controller");
+}
+
+- (void)playingStatus:(NSMutableDictionary *) status{
+    NSLog(@"in player controller");
+}
 //********************************************************************
 
 /*
