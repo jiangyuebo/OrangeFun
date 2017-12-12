@@ -7,6 +7,8 @@
 //
 
 #import "SearchViewController.h"
+#import "ProjectHeader.h"
+#import "JerryViewTools.h"
 
 @interface SearchViewController ()
 
@@ -17,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"搜索";
     //搜索框背景图片
     UIImage *searchBgImage = [UIImage imageNamed:@"searchbg"];
     UIImage *resizeBgImage = [searchBgImage resizableImageWithCapInsets:UIEdgeInsetsMake(15, 18, 15, 18)];
@@ -28,7 +31,21 @@
 }
 
 - (IBAction)btnSearch:(UIButton *)sender {
+    //检查是否合法
+    NSString *searchText = self.searchTextField.text;
     
+    if (![searchText isEqualToString:@""]) {
+        //跳转
+        NSMutableDictionary *passDic = [NSMutableDictionary dictionary];
+        [passDic setObject:searchText forKey:search_keyword];
+        [JerryViewTools jumpFrom:self ToViewController:viewcontroller_searchdiplay carryDataDic:passDic];
+    }else{
+        [self showToastText:@"要输入内容才能查询哟~"];
+    }
+}
+
+- (void)showToastText:(NSString *) text{
+    [JerryViewTools showCZToastInViewController:self andText:text];
 }
 
 - (void)didReceiveMemoryWarning {

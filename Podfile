@@ -9,4 +9,6 @@ target 'OrangeFun' do
 
 pod 'SDWebImage', '~> 4.1.0'
 
+pod 'MJRefresh'
+
 end

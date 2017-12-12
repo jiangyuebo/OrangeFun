@@ -20,6 +20,8 @@
 #define viewcontroller_storylist @"storylistviewcontroller"
 //故事分类列表页面
 #define viewcontroller_categorylist @"categorylistviewcontroller"
+//查询结果页
+#define viewcontroller_searchdiplay @"searchdisplayviewcontroller"
 
 //webview
 #define viewcontroller_webview @"webviewcontroller"
@@ -47,6 +49,8 @@
 #define mainpage_column_category_stories @"stories"
 
 #define mainpage_column_category_name @"categoryname"
+
+#define search_keyword @"keyword"
 
 
 #endif /* ProjectHeader_h */

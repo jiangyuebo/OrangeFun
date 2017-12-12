@@ -22,5 +22,7 @@
 #define URL_REQUEST_STORY_GET_CATEGORY_HOT @"v1/story/getStories"
 //获取专辑故事
 #define URL_REQUEST_STORY_GET_CATEGORY_SERIA @"v1/story/getSeria"
+//查询
+#define URL_REQUEST_STORY_GET_SEARCH @"v1/story/search"
 
 #endif /* RequestURLHeader_h */

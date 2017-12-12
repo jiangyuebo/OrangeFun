@@ -19,6 +19,8 @@
 #import "BMRequestHelper.h"
 #import "RequestURLHeader.h"
 
+#import "MJRefresh.h"
+
 @interface MainViewController ()
 
 @property (strong,nonatomic) NSString *bannerCellId;
@@ -50,6 +52,8 @@
     
     self.mainPageTable.dataSource = self;
     self.mainPageTable.delegate = self;
+    
+    self.mainPageTable.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     
     [self registNibForTable];
 
@@ -101,6 +105,8 @@
                     }else{
                         //解析数据
                         [self parseData:jsonDic];
+                        
+                        [self.mainPageTable.mj_header endRefreshing];
                     }
                 }else{
                     [self toastText:@"数据出错"];

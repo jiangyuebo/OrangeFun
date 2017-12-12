@@ -43,6 +43,7 @@
 		C40A949C1FD7E5E0001971A1 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A949B1FD7E5E0001971A1 /* WebViewController.m */; };
 		C45A9B7F1FDB077E00E7B3E8 /* CategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C45A9B7E1FDB077E00E7B3E8 /* CategoryListViewController.m */; };
 		C45A9B831FDEF37000E7B3E8 /* animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = C45A9B821FDEF36F00E7B3E8 /* animation.gif */; };
+		C45A9B861FDF12C700E7B3E8 /* SearchDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C45A9B851FDF12C700E7B3E8 /* SearchDisplayViewController.m */; };
 		C4A58C261FAF70A900E45395 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C251FAF70A900E45395 /* AppDelegate.m */; };
 		C4A58C291FAF70A900E45395 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C281FAF70A900E45395 /* ViewController.m */; };
 		C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2A1FAF70A900E45395 /* Main.storyboard */; };
@@ -116,6 +117,8 @@
 		C45A9B7E1FDB077E00E7B3E8 /* CategoryListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryListViewController.m; sourceTree = "<group>"; };
 		C45A9B801FDBA66300E7B3E8 /* JerryAVPlayerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JerryAVPlayerDelegate.h; sourceTree = "<group>"; };
 		C45A9B821FDEF36F00E7B3E8 /* animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = animation.gif; sourceTree = "<group>"; };
+		C45A9B841FDF12C700E7B3E8 /* SearchDisplayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchDisplayViewController.h; sourceTree = "<group>"; };
+		C45A9B851FDF12C700E7B3E8 /* SearchDisplayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchDisplayViewController.m; sourceTree = "<group>"; };
 		C4A58C211FAF70A900E45395 /* OrangeFun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OrangeFun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4A58C241FAF70A900E45395 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4A58C251FAF70A900E45395 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -290,6 +293,8 @@
 				C40A94771FD15FA8001971A1 /* SearchViewController.m */,
 				C40A947D1FD53D41001971A1 /* LeftViewTextField.h */,
 				C40A947E1FD53D41001971A1 /* LeftViewTextField.m */,
+				C45A9B841FDF12C700E7B3E8 /* SearchDisplayViewController.h */,
+				C45A9B851FDF12C700E7B3E8 /* SearchDisplayViewController.m */,
 			);
 			path = "搜索";
 			sourceTree = "<group>";
@@ -507,9 +512,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-OrangeFun/Pods-OrangeFun-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -526,6 +534,7 @@
 				C40A94621FCDBD5C001971A1 /* CategoryStoryViewCell.m in Sources */,
 				C40A94951FD688F9001971A1 /* CategoryListViewCell.m in Sources */,
 				C40A947F1FD53D41001971A1 /* LeftViewTextField.m in Sources */,
+				C45A9B861FDF12C700E7B3E8 /* SearchDisplayViewController.m in Sources */,
 				C40A94861FD54145001971A1 /* DiscoverTableCell.m in Sources */,
 				C40A943B1FC73B77001971A1 /* PlayListViewController.m in Sources */,
 				C40A94431FC80E5D001971A1 /* MainTabBarViewController.m in Sources */,

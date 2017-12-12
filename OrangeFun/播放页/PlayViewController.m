@@ -200,6 +200,7 @@
 
 #pragma mark 初始化一些view
 - (void)initView{
+    
     //设置自定义进度条
     UIImage *minImage = [[UIImage imageNamed:@"progress_orange"] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
     UIImage *maxImage = [[UIImage imageNamed:@"progress"] resizableImageWithCapInsets:UIEdgeInsetsZero resizingMode:UIImageResizingModeTile];
@@ -286,7 +287,7 @@
     //高斯模糊
     UIImage *gaussianImage = [JerryViewTools coreBlurImage:coverImage withBlurNumber:20];
     
-    self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(- SCREENWIDTH/2, - SCREENHEIGHT/2, 2 * SCREENWIDTH, 2 * SCREENHEIGHT)];
+    self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(- (SCREENWIDTH/2 + 50), - (SCREENHEIGHT/2 + 50), 2 * (SCREENWIDTH + 50), 2 * (SCREENHEIGHT + 50))];
     [self.backgroundImageView setImage:gaussianImage];
     
     //黑色遮罩
