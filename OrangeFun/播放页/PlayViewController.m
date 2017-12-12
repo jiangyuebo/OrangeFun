@@ -35,10 +35,17 @@
     
     //广播
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"player" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playingFinish) name:@"playstatus" object:nil];
 }
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark 播放完成监听
+- (void)playingFinish{
+    [self nextAction:nil];
 }
 
 #pragma mark 播放暂停按钮点击

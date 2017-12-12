@@ -27,6 +27,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playingFinish) name:@"playstatus" object:nil];
+    
     self.storyListTable.dataSource = self;
     self.storyListTable.delegate = self;
     
@@ -53,6 +55,17 @@
             }
         }
     }
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark 播放完成监听 刷新列表更新显示
+- (void)playingFinish{
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.jerryPlayer next];
+    [self.storyListTable reloadData];
 }
 
 - (void)loadData:(NSString *) categoryId{

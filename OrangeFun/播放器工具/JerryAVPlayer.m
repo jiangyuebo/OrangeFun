@@ -188,6 +188,7 @@
     
     self.isPlaying = NO;
     NSLog(@"播放完成");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"playstatus" object:nil userInfo:nil];
 }
 
 #pragma mark 切换当前播放条目到指定条目

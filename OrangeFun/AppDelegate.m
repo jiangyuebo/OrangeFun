@@ -21,6 +21,11 @@
     //初始化播放列表
     self.jerryPlayer.playItemList = [NSMutableArray array];
     
+    //锁屏播放
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    [audioSession setActive:YES error:nil];
+    
     return YES;
 }
 
