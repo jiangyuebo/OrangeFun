@@ -71,7 +71,7 @@
                         NSArray *seriasArray = [resultDic objectForKey:@"serias"];
                         [self.searchResultArray addObjectsFromArray:seriasArray];
                         
-                        resultTextString = [NSString stringWithFormat:@"有%lu个专辑结果",[seriasArray count]];
+                        resultTextString = [NSString stringWithFormat:@"有%lu个专辑结果",(unsigned long)[seriasArray count]];
                     }
                     
                     if ([resultDic objectForKey:@"stories"]) {
@@ -79,7 +79,7 @@
                         NSArray *storyArray = [resultDic objectForKey:@"stories"];
                         [self.searchResultArray addObjectsFromArray:storyArray];
                         
-                        resultTextString = [NSString stringWithFormat:@"有%lu个故事结果",[storyArray count]];
+                        resultTextString = [NSString stringWithFormat:@"有%lu个故事结果",(unsigned long)[storyArray count]];
                     }
                     
                     dispatch_sync(dispatch_get_main_queue(), ^{

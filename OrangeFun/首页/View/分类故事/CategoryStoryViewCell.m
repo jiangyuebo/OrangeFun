@@ -9,6 +9,7 @@
 #import "CategoryStoryViewCell.h"
 #import "CategoryStoryCollectionCell.h"
 #import "AppDelegate.h"
+#import "globalHeader.h"
 #import "ProjectHeader.h"
 #import "JerryViewTools.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -108,7 +109,11 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    return CGSizeMake(90, 130);
+    NSLog(@"screen width : %f",SCREENWIDTH);
+    
+    CGFloat width = SCREENWIDTH / 3 - 20;
+    CGFloat height = 130 * width / 90;
+    return CGSizeMake(width, height);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -285,7 +285,12 @@
     }
     
     if (indexPath.row >= 3) {
-        return 330;
+        if (SCREENWIDTH > 330) {
+            //plus
+            return 400;
+        }else{
+            return 330;
+        }
     }
     
     return 30;
