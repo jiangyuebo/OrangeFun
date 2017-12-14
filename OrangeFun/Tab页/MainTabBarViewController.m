@@ -19,8 +19,40 @@
     //设置自定义bar item 图标
     [self setCustomTabBarItem];
     
+    //添加手势
+    UISwipeGestureRecognizer *recognizerLeft;
+    recognizerLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [recognizerLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [self.view addGestureRecognizer:recognizerLeft];
+    
+    UISwipeGestureRecognizer *recognizerRight;
+    recognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [recognizerRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer:recognizerRight];
+    
     //
     self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+}
+
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *) recognizer{
+    NSUInteger selectedIndex = [self selectedIndex];
+    
+    NSArray *viewsInTabArray =  [self viewControllers];
+    NSUInteger controllersCount = [viewsInTabArray count];
+    
+    if (recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
+        NSLog(@"左滑");
+        if (selectedIndex < (controllersCount - 1)) {
+            [self setSelectedViewController:viewsInTabArray[selectedIndex + 1]];
+        }
+    }
+    
+    if (recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+        NSLog(@"右滑");
+        if (selectedIndex > 0) {
+            [self setSelectedViewController:viewsInTabArray[selectedIndex - 1]];
+        }
+    }
 }
 
 #pragma mark 设置自定义TAB BAR ITEM 图标
@@ -54,6 +86,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark tab 切换代理方法
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
+    
+    
+    
+    return YES;
 }
 
 /*

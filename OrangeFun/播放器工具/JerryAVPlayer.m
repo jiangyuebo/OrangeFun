@@ -8,6 +8,7 @@
 
 #import "JerryAVPlayer.h"
 #import "ProjectHeader.h"
+#import "JerryTools.h"
 
 @interface JerryAVPlayer()
 
@@ -133,6 +134,9 @@
             NSMutableDictionary *playTimeDic = [NSMutableDictionary dictionary];
             NSNumber *currentN = [NSNumber numberWithFloat:current];
             NSNumber *totalN = [NSNumber numberWithFloat:total];
+            
+            weakSelf.currentTime = current;
+            weakSelf.totalTime = total;
             
             [playTimeDic setObject:currentN forKey:@"current"];
             [playTimeDic setObject:totalN forKey:@"total"];

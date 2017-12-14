@@ -15,6 +15,7 @@
 #import "CategoryStoryViewCell.h"
 #import "CategoryListViewCell.h"
 #import "JerryViewTools.h"
+#import "AppDelegate.h"
 
 #import "BMRequestHelper.h"
 #import "RequestURLHeader.h"
@@ -45,7 +46,7 @@
     //去掉TableView顶上空白
     self.navigationController.navigationBar.translucent = NO;
     self.mainPageDataArray = [NSMutableArray array];
-    self.categoryNameArray = [NSArray arrayWithObjects:@"童话",@"寓言",@"睡前",@"国学",@"神话",@"英语",@"百科",@"名人",@"名著",@"绘本", nil];
+    self.categoryNameArray = [NSArray arrayWithObjects:@"童话",@"寓言",@"睡前",@"国学",@"神话",@"英语",@"百科",@"绘本",@"名著",@"其他", nil];
     
     //初始化主界面数据数组
     [self initMainPageDataArray];
@@ -63,6 +64,29 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     self.tabBarController.navigationItem.title = @"橙娃故事";
+    
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    //根据是否正在播放，显示右上角GIF图标
+    if (appDelegate.jerryPlayer.isPlaying) {
+        [self createPlayingGifView];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    if (self.playingGifWebView) {
+        [self.playingGifWebView removeFromSuperview];
+    }
+}
+
+- (void)createPlayingGifView{
+    self.playingGifWebView = [[UIWebView alloc] initWithFrame:CGRectMake(SCREENWIDTH - (30 + 8), 25, 30, 30)];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"animation" ofType:@"gif"];
+    NSURL *url = [NSURL URLWithString:path];
+    [self.playingGifWebView loadRequest:[NSURLRequest requestWithURL:url]];
+    self.playingGifWebView.scalesPageToFit = YES;
+    
+    [self.navigationController.view addSubview:self.playingGifWebView];
 }
 
 #pragma mark 初始化主界面列表数据
@@ -261,8 +285,8 @@
     NSUInteger tag = categoryImageView.tag;
     
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
-    [dataDic setObject:[self.categoryNameArray objectAtIndex:tag] forKey:mainpage_column_category_name];
-    
+    NSString *cateName = [self.categoryNameArray objectAtIndex:tag];
+    [dataDic setObject:cateName forKey:mainpage_column_category_name];
     [JerryViewTools jumpFrom:self ToViewController:viewcontroller_categorylist carryDataDic:dataDic];
 }
 

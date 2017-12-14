@@ -12,4 +12,6 @@
 //首页布局列表
 @property (strong, nonatomic) IBOutlet UITableView *mainPageTable;
 
+@property (strong,nonatomic) UIWebView *playingGifWebView;
+
 @end

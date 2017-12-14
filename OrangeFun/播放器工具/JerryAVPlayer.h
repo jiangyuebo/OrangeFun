@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "JerryAVPlayerDelegate.h"
+//#import "AppDelegate.h"
 
 @interface JerryAVPlayer : NSObject
-
 
 @property (nonatomic) id<JerryAVPlayerDelegate> jerryDelegate;
 //播放器实例
@@ -23,6 +23,9 @@
 @property (strong,nonatomic) NSDictionary *currentItem;
 
 @property (nonatomic) BOOL isPlaying;
+
+@property (nonatomic) float currentTime;
+@property (nonatomic) float totalTime;
 
 #pragma mark step1 : 设置播放列表,list中存储URL字符串
 - (void)setPlayerItemList:(NSMutableArray *) playItemList;

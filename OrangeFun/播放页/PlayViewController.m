@@ -12,7 +12,10 @@
 #import "JerryViewTools.h"
 #import "PlayListViewCell.h"
 #import "AppDelegate.h"
+#import "UIColor+NSString.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <MediaPlayer/MPNowPlayingInfoCenter.h>
+#import <MediaPlayer/MPMediaItem.h>
 
 #define PlayListHeight SCREENHEIGHT * 2/3
 
@@ -24,12 +27,17 @@
 
 @property (strong,nonatomic) NSNumber *totalTimeNumber;
 
+@property (strong,nonatomic) UIImage *currentCoverImage;
+
 @end
 
 @implementation PlayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
     
     [self initView];
     
@@ -50,36 +58,46 @@
 
 #pragma mark 播放暂停按钮点击
 - (IBAction)controlBtnAction:(UIButton *)sender {
-    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    BOOL isPlaying = appDelegate.jerryPlayer.isPlaying;
     
-    if (isPlaying) {
-        //正在播放，暂停
-        [appDelegate.jerryPlayer pausePlay];
-        [self setControlPlaying];
-    }else{
-        //未播放，开始
-        [appDelegate.jerryPlayer continuePlay];
-        [self setControlStop];
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    if (appDelegate.jerryPlayer.currentItem) {
+        BOOL isPlaying = appDelegate.jerryPlayer.isPlaying;
+        
+        if (isPlaying) {
+            //正在播放，暂停
+            [appDelegate.jerryPlayer pausePlay];
+            [self setControlPlaying];
+        }else{
+            //未播放，开始
+            [appDelegate.jerryPlayer continuePlay];
+            [self setControlStop];
+        }
     }
 }
 
 - (IBAction)previousAction:(UIButton *)sender {
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.jerryPlayer previous];
     
-    [self.tablePlayList reloadData];
-    [self setGaosiBackgound];
-    [self setControlStop];
+    if (appDelegate.jerryPlayer.currentItem) {
+        [appDelegate.jerryPlayer previous];
+        
+        [self.tablePlayList reloadData];
+        [self setControllerBackgound];
+        [self setControlStop];
+    }
 }
 
 - (IBAction)nextAction:(UIButton *)sender {
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.jerryPlayer next];
     
-    [self.tablePlayList reloadData];
-    [self setGaosiBackgound];
-    [self setControlStop];
+    if (appDelegate.jerryPlayer.currentItem) {
+        [appDelegate.jerryPlayer next];
+        
+        [self.tablePlayList reloadData];
+        [self setControllerBackgound];
+        [self setControlStop];
+    }
 }
 
 - (void)setControlPlaying{
@@ -168,7 +186,7 @@
     
     [self.tablePlayList reloadData];
     
-    [self setGaosiBackgound];
+    [self setControllerBackgound];
     
     //播放按钮
     if (appDelegate.jerryPlayer.isPlaying) {
@@ -178,31 +196,68 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+}
+
 #pragma mark 设置背景模糊图片
-- (void)setGaosiBackgound{
+- (void)setControllerBackgound{
     //当前故事
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSDictionary *item = appDelegate.jerryPlayer.currentItem;
-    //故事名
-    NSString *storyName = [item objectForKey:mainpage_column_category_story_name];
-    self.navigationController.title = storyName;
     
-    NSString *logoURLString = [item objectForKey:mainpage_column_category_logoURL];
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    [manager.imageDownloader downloadImageWithURL:[NSURL URLWithString:logoURLString] options:SDWebImageDownloaderHighPriority progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+    //判断当前是否有故事在播放
+    if (item) {
+        //故事名
+        NSString *storyName = [item objectForKey:mainpage_column_category_story_name];
+        self.storyNameLabel.text = storyName;
         
-    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
-        //背景
-        NSLog(@"图片下载完成");
+        NSString *logoURLString = [item objectForKey:mainpage_column_category_logoURL];
+        SDWebImageManager *manager = [SDWebImageManager sharedManager];
+        [manager.imageDownloader downloadImageWithURL:[NSURL URLWithString:logoURLString] options:SDWebImageDownloaderHighPriority progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+            
+        } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+            self.currentCoverImage = image;
+            
+            //背景
+            [self.backgroundImageView removeFromSuperview];
+            [self addBackgroundView:image];
+            
+            [self.coverImageView removeFromSuperview];
+            [self setCoverInDisk:image];
+        }];
         
-        [self.backgroundImageView removeFromSuperview];
-        [self addBackgroundView:image];
+        self.progressSlider.enabled = YES;
+        self.playControlButton.enabled = YES;
+        self.prevButton.enabled = YES;
+        self.nextButton.enabled = YES;
+    }else{
+        //无故事播放
+        //默认背景图片
+        UIImage *defautBackgroundImage = [UIImage imageNamed:@"default-bg"];
+        //默认封面图片
+        UIImage *defautCoverImage = [UIImage imageNamed:@"default-logo"];
         
-        [self.coverImageView removeFromSuperview];
-        [self setCoverInDisk:image];
+        if (self.backgroundImageView) {
+            [self.backgroundImageView removeFromSuperview];
+            [self addBackgroundView:defautBackgroundImage];
+        }else{
+            [self addBackgroundView:defautBackgroundImage];
+        }
         
-    }];
+        if (self.coverImageView) {
+            [self.coverImageView removeFromSuperview];
+            [self setCoverInDisk:defautCoverImage];
+        }else{
+            [self setCoverInDisk:defautCoverImage];
+        }
+        
+        self.progressSlider.enabled = NO;
+        self.playControlButton.enabled = NO;
+        self.prevButton.enabled = NO;
+        self.nextButton.enabled = NO;
+    }
 }
 
 #pragma mark 初始化一些view
@@ -309,7 +364,12 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    self.tabBarController.navigationItem.title = @"播放";
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 #pragma mark 列表剩余空间遮罩
@@ -381,7 +441,7 @@
     
     [self.tablePlayList reloadData];
     
-    [self setGaosiBackgound];
+    [self setControllerBackgound];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -412,6 +472,33 @@
     NSLog(@"in player controller");
 }
 //********************************************************************
+
+- (void)configNowPlayingCenter {
+    NSLog(@"锁屏设置");
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSDictionary *currentItemDic = appDelegate.jerryPlayer.currentItem;
+    // BASE_INFO_FUN(@"配置NowPlayingCenter");
+    NSMutableDictionary * info = [NSMutableDictionary dictionary];
+    //音乐的标题
+    [info setObject:[currentItemDic objectForKey:mainpage_column_category_story_name] forKey:MPMediaItemPropertyTitle];
+    //音乐的艺术家
+    NSString *author= @"橙娃";
+    [info setObject:author forKey:MPMediaItemPropertyArtist];
+    //音乐的播放时间
+    [info setObject:@(appDelegate.jerryPlayer.currentTime) forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+    //音乐的播放速度
+    [info setObject:@(1) forKey:MPNowPlayingInfoPropertyPlaybackRate];
+    //音乐的总时间
+    [info setObject:@(appDelegate.jerryPlayer.totalTime) forKey:MPMediaItemPropertyPlaybackDuration];
+    //音乐的封面
+    if (self.currentCoverImage) {
+        MPMediaItemArtwork * artwork = [[MPMediaItemArtwork alloc] initWithImage:self.currentCoverImage];
+        [info setObject:artwork forKey:MPMediaItemPropertyArtwork];
+    }
+    
+    //完成设置
+    [[MPNowPlayingInfoCenter defaultCenter]setNowPlayingInfo:info];
+}
 
 /*
 #pragma mark - Navigation

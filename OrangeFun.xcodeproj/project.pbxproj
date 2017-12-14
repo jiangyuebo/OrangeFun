@@ -49,6 +49,7 @@
 		C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2A1FAF70A900E45395 /* Main.storyboard */; };
 		C4A58C311FAF70A900E45395 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2F1FAF70A900E45395 /* LaunchScreen.storyboard */; };
 		C4A58C341FAF70A900E45395 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C331FAF70A900E45395 /* main.m */; };
+		C4FD4B171FE18C6B00752417 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FD4B161FE18C2E00752417 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		C4A58C301FAF70A900E45395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4A58C321FAF70A900E45395 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4A58C331FAF70A900E45395 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C4FD4B161FE18C2E00752417 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4FD4B171FE18C6B00752417 /* MediaPlayer.framework in Frameworks */,
 				C40A94751FD0554D001971A1 /* CoreImage.framework in Frameworks */,
 				7F399667EE070C6F9F1771AA /* libPods-OrangeFun.a in Frameworks */,
 			);
@@ -302,6 +305,7 @@
 		C40A94731FD05538001971A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4FD4B161FE18C2E00752417 /* MediaPlayer.framework */,
 				C40A94741FD05539001971A1 /* CoreImage.framework */,
 				030DD2513EA5E94C92CF96C8 /* libPods-OrangeFun.a */,
 			);

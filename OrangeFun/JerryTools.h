@@ -24,4 +24,9 @@
 #pragma mark 删除
 +(void)removeInfo:(NSString *)name;
 
+#pragma mark 判断是否后台运行
++(BOOL) runningInBackground;
+#pragma mark 判断是否前台运行
++(BOOL) runningInForeground;
+
 @end

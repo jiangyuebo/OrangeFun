@@ -112,13 +112,13 @@
                                     <constraint firstAttribute="width" secondItem="wzr-aC-jrI" secondAttribute="height" multiplier="1:1" id="4nm-3A-M0f"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mingren" translatesAutoresizingMaskIntoConstraints="NO" id="msQ-lu-TS6">
+                            <imageView userInteractionEnabled="NO" tag="7" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huiben" translatesAutoresizingMaskIntoConstraints="NO" id="msQ-lu-TS6">
                                 <rect key="frame" x="275.5" y="141.5" width="98" height="98.5"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" tag="8" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mingzhu" translatesAutoresizingMaskIntoConstraints="NO" id="xVR-3Y-cyN">
                                 <rect key="frame" x="405" y="142" width="98" height="97.5"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="huiben" translatesAutoresizingMaskIntoConstraints="NO" id="XUj-6G-dSQ">
+                            <imageView userInteractionEnabled="NO" tag="9" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="other" translatesAutoresizingMaskIntoConstraints="NO" id="XUj-6G-dSQ">
                                 <rect key="frame" x="536" y="142" width="98" height="97.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XUj-6G-dSQ" secondAttribute="height" multiplier="1:1" id="ItT-TZ-waf"/>
@@ -136,7 +136,7 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名人" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wh7-H5-cOp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="绘本" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wh7-H5-cOp">
                                 <rect key="frame" x="309.5" y="240" width="30" height="21"/>
                                 <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="15"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -148,7 +148,7 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="绘本" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLH-qa-HXh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="其他" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLH-qa-HXh">
                                 <rect key="frame" x="570.5" y="239.5" width="30" height="21"/>
                                 <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="15"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -252,8 +252,8 @@
         <image name="baike" width="48" height="48"/>
         <image name="guoxue" width="48" height="48"/>
         <image name="huiben" width="48" height="48"/>
-        <image name="mingren" width="48" height="48"/>
         <image name="mingzhu" width="48" height="48"/>
+        <image name="other" width="48" height="48"/>
         <image name="shenhua" width="48" height="48"/>
         <image name="shuiqian" width="48" height="48"/>
         <image name="tonghua" width="48" height="48"/>

@@ -59,4 +59,20 @@
     
 }
 
++(BOOL) runningInBackground
+{
+    UIApplicationState state = [UIApplication sharedApplication].applicationState;
+    BOOL result = (state == UIApplicationStateBackground);
+    
+    return result;
+}
+
++(BOOL) runningInForeground
+{
+    UIApplicationState state = [UIApplication sharedApplication].applicationState;
+    BOOL result = (state == UIApplicationStateActive);
+    
+    return result;
+}
+
 @end
