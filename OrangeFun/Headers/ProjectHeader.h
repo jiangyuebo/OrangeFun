@@ -54,5 +54,9 @@
 
 #define search_keyword @"keyword"
 
+//*********************存储key
+//搜索历史记录
+#define storage_key_search_history @"searchhistory"
+
 
 #endif /* ProjectHeader_h */

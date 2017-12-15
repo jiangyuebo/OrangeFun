@@ -49,7 +49,8 @@
 		C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2A1FAF70A900E45395 /* Main.storyboard */; };
 		C4A58C311FAF70A900E45395 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2F1FAF70A900E45395 /* LaunchScreen.storyboard */; };
 		C4A58C341FAF70A900E45395 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C331FAF70A900E45395 /* main.m */; };
-		C4B6129C1FE3C6C200DD4DB2 /* HeaderSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B6129B1FE3C6C200DD4DB2 /* HeaderSearchView.xib */; };
+		C4B612A31FE42EF800DD4DB2 /* HistoryTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B612A11FE42EF800DD4DB2 /* HistoryTableCell.m */; };
+		C4B612A41FE42EF800DD4DB2 /* HistoryTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B612A21FE42EF800DD4DB2 /* HistoryTableCell.xib */; };
 		C4FD4B171FE18C6B00752417 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FD4B161FE18C2E00752417 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -130,7 +131,9 @@
 		C4A58C301FAF70A900E45395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4A58C321FAF70A900E45395 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4A58C331FAF70A900E45395 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C4B6129B1FE3C6C200DD4DB2 /* HeaderSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderSearchView.xib; sourceTree = "<group>"; };
+		C4B612A01FE42EF800DD4DB2 /* HistoryTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryTableCell.h; sourceTree = "<group>"; };
+		C4B612A11FE42EF800DD4DB2 /* HistoryTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTableCell.m; sourceTree = "<group>"; };
+		C4B612A21FE42EF800DD4DB2 /* HistoryTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableCell.xib; sourceTree = "<group>"; };
 		C4FD4B161FE18C2E00752417 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -300,7 +303,9 @@
 				C40A947E1FD53D41001971A1 /* LeftViewTextField.m */,
 				C45A9B841FDF12C700E7B3E8 /* SearchDisplayViewController.h */,
 				C45A9B851FDF12C700E7B3E8 /* SearchDisplayViewController.m */,
-				C4B6129B1FE3C6C200DD4DB2 /* HeaderSearchView.xib */,
+				C4B612A01FE42EF800DD4DB2 /* HistoryTableCell.h */,
+				C4B612A11FE42EF800DD4DB2 /* HistoryTableCell.m */,
+				C4B612A21FE42EF800DD4DB2 /* HistoryTableCell.xib */,
 			);
 			path = "搜索";
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4A58C311FAF70A900E45395 /* LaunchScreen.storyboard in Resources */,
+				C4B612A41FE42EF800DD4DB2 /* HistoryTableCell.xib in Resources */,
 				C40A94581FCC82C3001971A1 /* SearchBarViewCell.xib in Resources */,
 				C40A94651FCDC452001971A1 /* CategoryStoryCollectionCell.xib in Resources */,
 				C40A94481FC82B44001971A1 /* BannerViewCell.xib in Resources */,
@@ -470,7 +476,6 @@
 				C40A945A1FCC8F98001971A1 /* Assets.xcassets in Resources */,
 				C40A94961FD688F9001971A1 /* CategoryListViewCell.xib in Resources */,
 				C40A94911FD6472E001971A1 /* CategoryListView.xib in Resources */,
-				C4B6129C1FE3C6C200DD4DB2 /* HeaderSearchView.xib in Resources */,
 				C40A94891FD5520A001971A1 /* PlayListView.xib in Resources */,
 				C40A94871FD54145001971A1 /* DiscoverTableCell.xib in Resources */,
 				C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */,
@@ -554,6 +559,7 @@
 				C40A94571FCC82C2001971A1 /* SearchBarViewCell.m in Sources */,
 				C40A94271FBD97CB001971A1 /* JerryTools.m in Sources */,
 				C4A58C291FAF70A900E45395 /* ViewController.m in Sources */,
+				C4B612A31FE42EF800DD4DB2 /* HistoryTableCell.m in Sources */,
 				C4A58C341FAF70A900E45395 /* main.m in Sources */,
 				C40A94201FB37E61001971A1 /* JerryAVPlayer.m in Sources */,
 				C40A943F1FC80C55001971A1 /* DiscoverViewController.m in Sources */,

@@ -396,6 +396,10 @@
     } completion:^(BOOL finished) {
         
     }];
+    
+    //增加点击事件
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closePlayList)];
+    [self.maskView addGestureRecognizer:singleTap];
 }
 
 #pragma mark 隐藏遮罩

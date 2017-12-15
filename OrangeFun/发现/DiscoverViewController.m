@@ -18,6 +18,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <UIImage+GIF.h>
 
+#import "MJRefresh.h"
+
 @interface DiscoverViewController ()
 
 @property (strong,nonatomic) NSArray *discoverDataArray;
@@ -32,6 +34,8 @@
     self.discoverDataArray = [NSArray array];
     self.tableDiscover.delegate = self;
     self.tableDiscover.dataSource = self;
+    
+    self.tableDiscover.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     
     //注册cell
     [self registNibForTable];
@@ -73,6 +77,8 @@
                     
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [self.tableDiscover reloadData];
+                        
+                        [self.tableDiscover.mj_header endRefreshing];
                     });
                 }else{
                     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];

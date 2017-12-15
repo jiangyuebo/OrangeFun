@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LeftViewTextField.h"
 
 @interface SearchViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet LeftViewTextField *searchTextField;
+@property (strong, nonatomic) IBOutlet UITableView *historyTable;
+
+@property (strong, nonatomic) IBOutlet UIView *noResultView;
+
+@property (strong, nonatomic) IBOutlet UIButton *historyClearBtn;
 
 @end

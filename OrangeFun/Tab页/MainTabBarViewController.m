@@ -33,9 +33,9 @@
     //自定义navigation bar
     //颜色
     self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
-    //文字
+    //返回按钮
     UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] init];
-    backButtonItem.title = @"";
+    backButtonItem.title = @"返回";
     self.navigationItem.backBarButtonItem = backButtonItem;
 }
 
