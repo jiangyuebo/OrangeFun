@@ -40,4 +40,7 @@
 #pragma mark 返回当前viewController
 + (UIViewController *)topViewController;
 
+#pragma mark 当前是否最上层view controller
++ (BOOL)isTopViewContoller:(UIViewController *) viewController;
+
 @end

@@ -49,6 +49,7 @@
 		C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2A1FAF70A900E45395 /* Main.storyboard */; };
 		C4A58C311FAF70A900E45395 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4A58C2F1FAF70A900E45395 /* LaunchScreen.storyboard */; };
 		C4A58C341FAF70A900E45395 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C331FAF70A900E45395 /* main.m */; };
+		C4B6129C1FE3C6C200DD4DB2 /* HeaderSearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B6129B1FE3C6C200DD4DB2 /* HeaderSearchView.xib */; };
 		C4FD4B171FE18C6B00752417 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FD4B161FE18C2E00752417 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +130,7 @@
 		C4A58C301FAF70A900E45395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4A58C321FAF70A900E45395 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4A58C331FAF70A900E45395 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C4B6129B1FE3C6C200DD4DB2 /* HeaderSearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderSearchView.xib; sourceTree = "<group>"; };
 		C4FD4B161FE18C2E00752417 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -298,6 +300,7 @@
 				C40A947E1FD53D41001971A1 /* LeftViewTextField.m */,
 				C45A9B841FDF12C700E7B3E8 /* SearchDisplayViewController.h */,
 				C45A9B851FDF12C700E7B3E8 /* SearchDisplayViewController.m */,
+				C4B6129B1FE3C6C200DD4DB2 /* HeaderSearchView.xib */,
 			);
 			path = "搜索";
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				C40A945A1FCC8F98001971A1 /* Assets.xcassets in Resources */,
 				C40A94961FD688F9001971A1 /* CategoryListViewCell.xib in Resources */,
 				C40A94911FD6472E001971A1 /* CategoryListView.xib in Resources */,
+				C4B6129C1FE3C6C200DD4DB2 /* HeaderSearchView.xib in Resources */,
 				C40A94891FD5520A001971A1 /* PlayListView.xib in Resources */,
 				C40A94871FD54145001971A1 /* DiscoverTableCell.xib in Resources */,
 				C4A58C2C1FAF70A900E45395 /* Main.storyboard in Resources */,

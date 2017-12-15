@@ -65,6 +65,8 @@
     [super viewDidAppear:animated];
     self.tabBarController.navigationItem.title = @"橙娃故事";
     
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     //根据是否正在播放，显示右上角GIF图标
     if (appDelegate.jerryPlayer.isPlaying) {
@@ -81,6 +83,12 @@
 
 - (void)createPlayingGifView{
     self.playingGifWebView = [[UIWebView alloc] initWithFrame:CGRectMake(SCREENWIDTH - (30 + 8), 25, 30, 30)];
+    //设置不可拖动
+    self.playingGifWebView.scrollView.bounces = NO;
+    self.playingGifWebView.scrollView.showsVerticalScrollIndicator = NO;
+    self.playingGifWebView.scrollView.showsHorizontalScrollIndicator = NO;
+    self.playingGifWebView.scrollView.scrollEnabled = NO;
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"animation" ofType:@"gif"];
     NSURL *url = [NSURL URLWithString:path];
     [self.playingGifWebView loadRequest:[NSURLRequest requestWithURL:url]];

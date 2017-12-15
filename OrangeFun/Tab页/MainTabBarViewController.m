@@ -30,8 +30,13 @@
     [recognizerRight setDirection:UISwipeGestureRecognizerDirectionRight];
     [self.view addGestureRecognizer:recognizerRight];
     
-    //
+    //自定义navigation bar
+    //颜色
     self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+    //文字
+    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] init];
+    backButtonItem.title = @"";
+    self.navigationItem.backBarButtonItem = backButtonItem;
 }
 
 - (void)handleSwipeFrom:(UISwipeGestureRecognizer *) recognizer{

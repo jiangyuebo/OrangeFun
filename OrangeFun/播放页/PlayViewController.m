@@ -100,6 +100,10 @@
     }
 }
 
+- (IBAction)backAction:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)setControlPlaying{
     [self.playControlButton setBackgroundImage:[UIImage imageNamed:@"btnPlay"] forState:UIControlStateNormal];
 }
@@ -193,6 +197,13 @@
         [self setControlStop];
     }else{
         [self setControlPlaying];
+    }
+    
+    if ([JerryViewTools isTopViewContoller:self]) {
+        //是第一层级
+        self.backBtn.hidden = YES;
+    }else{
+        self.backBtn.hidden = NO;
     }
 }
 

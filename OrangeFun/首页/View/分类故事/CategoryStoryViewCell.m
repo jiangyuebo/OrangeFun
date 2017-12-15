@@ -54,7 +54,7 @@
 - (void)storyClickedAction:(UIGestureRecognizer *)sender{
     UIImageView *storyCoverImageView = (UIImageView *)sender.view;
     NSUInteger tag = storyCoverImageView.tag;
-    //获取播放URL
+    //获取待播放对象
     NSDictionary *storyDataDic = [self.collectionDataArray objectAtIndex:tag];
     
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -64,6 +64,11 @@
     
     [appDelegate.jerryPlayer play];
     
+    //跳转到播放页
+    UIViewController *topViewController = [JerryViewTools topViewController];
+    [topViewController.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    [JerryViewTools jumpFrom:topViewController ToViewController: viewcontroller_playview];
 }
 
 //cell

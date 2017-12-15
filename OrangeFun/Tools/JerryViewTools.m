@@ -170,4 +170,15 @@
     return nil;
 }
 
+#pragma mark 当前是否最上层view controller
++ (BOOL)isTopViewContoller:(UIViewController *) viewController{
+    //判断当前是否TOP View(是否TAB页签跳转过来)
+    NSUInteger count = viewController.navigationController.viewControllers.count;
+    if (count == 1) {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
 @end

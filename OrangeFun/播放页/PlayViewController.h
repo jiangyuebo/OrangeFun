@@ -34,6 +34,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *storyNameLabel;
 
+@property (strong, nonatomic) IBOutlet UIButton *backBtn;
+
 //列表剩余空间遮罩
 @property (strong,nonatomic) UIView *maskView;
 //列表view

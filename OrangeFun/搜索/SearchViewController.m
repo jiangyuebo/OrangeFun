@@ -28,6 +28,10 @@
     UIImageView *littlePicView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"search"]];
     self.searchTextField.leftView = littlePicView;
     self.searchTextField.leftViewMode = UITextFieldViewModeAlways;
+    
+//    UIView *headerView = [self.view viewWithTag:1];
+//    headerView.frame = CGRectMake(20, 0, 50, 44);
+//    self.navigationItem.titleView = headerView;
 }
 
 - (IBAction)btnSearch:(UIButton *)sender {

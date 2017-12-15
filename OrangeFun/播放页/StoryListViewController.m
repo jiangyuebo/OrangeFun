@@ -61,6 +61,12 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
 #pragma mark 播放完成监听 刷新列表更新显示
 - (void)playingFinish{
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -346,6 +352,10 @@
         [appDelegate.jerryPlayer play];
         
         [self.storyListTable reloadData];
+        
+        //跳转到播放页
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+        [JerryViewTools jumpFrom:self ToViewController:viewcontroller_playview];
     }
 }
 

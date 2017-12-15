@@ -22,6 +22,8 @@
 #define viewcontroller_categorylist @"categorylistviewcontroller"
 //查询结果页
 #define viewcontroller_searchdiplay @"searchdisplayviewcontroller"
+//故事播放页
+#define viewcontroller_playview @"playviewcontroller"
 
 //webview
 #define viewcontroller_webview @"webviewcontroller"
