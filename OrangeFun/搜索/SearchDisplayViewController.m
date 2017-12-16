@@ -82,17 +82,16 @@
                         //有故事
                         NSArray *storyArray = [resultDic objectForKey:@"stories"];
                         [self.searchResultArray addObjectsFromArray:storyArray];
-                        
-                        resultTextString = [NSString stringWithFormat:@"有%lu个故事结果",(unsigned long)[storyArray count]];
                     }
                     
                     dispatch_sync(dispatch_get_main_queue(), ^{
-                        [self.searchResultTable reloadData];
-                        
-                        if (resultTextString) {
-                            self.resulText.text = resultTextString;
+                        if ([self.searchResultArray count] > 0) {
+                            //有内容
+                            self.noSearchResultView.hidden = YES;
+                            [self.searchResultTable reloadData];
                         }else{
-                            self.resulText.text = [NSString stringWithFormat:@"啥都没搜到"];
+                            //无内容
+                            self.noSearchResultView.hidden = NO;
                         }
                     });
                 }else{

@@ -66,7 +66,15 @@
                     self.categoryListArray = dataArray;
                     
                     dispatch_sync(dispatch_get_main_queue(), ^{
-                        [self.catagoryListTable reloadData];
+                        
+                        if ([self.categoryListArray count] > 0) {
+                            //有数据
+                            self.noSearchResultView.hidden = YES;
+                            [self.catagoryListTable reloadData];
+                        }else{
+                            //无数据
+                            self.noSearchResultView.hidden = NO;
+                        }
                     });
                 }else{
                     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];

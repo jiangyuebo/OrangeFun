@@ -10,4 +10,8 @@
 
 @interface HistoryTableCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *searchKeywordLabel;
+
+@property (strong, nonatomic) IBOutlet UIButton *deleteItemBtn;
+
 @end

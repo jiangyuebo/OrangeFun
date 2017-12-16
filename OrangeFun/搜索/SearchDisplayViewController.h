@@ -14,7 +14,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *searchResultTable;
 
-@property (strong, nonatomic) IBOutlet UILabel *resulText;
-
+@property (strong, nonatomic) IBOutlet UIView *noSearchResultView;
 
 @end

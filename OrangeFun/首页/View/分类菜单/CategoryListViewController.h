@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *catagoryListTable;
 
+@property (strong, nonatomic) IBOutlet UIView *noSearchResultView;
+
 @property (strong,nonatomic) NSMutableDictionary *passDataDic;
 
 @end

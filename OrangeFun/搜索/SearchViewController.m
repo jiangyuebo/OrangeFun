@@ -12,12 +12,15 @@
 #import "JerryTools.h"
 #import "globalHeader.h"
 #import "LeftViewTextField.h"
+#import "HistoryTableCell.h"
 
 @interface SearchViewController ()
 
 @property (strong,nonatomic) LeftViewTextField *leftViewTextField;
 
 @property (strong,nonatomic) NSMutableArray *searchHistoryArray;
+
+@property (strong,nonatomic) NSString *searchHistoryCellId;
 
 @end
 
@@ -28,7 +31,20 @@
     
     self.title = @"返回";
     
+    self.searchHistoryCellId = @"searchHistoryCellId";
+    UINib *playListCellNib = [UINib nibWithNibName:@"HistoryTableCell" bundle:nil];
+    [self.historyTable registerNib:playListCellNib forCellReuseIdentifier:self.searchHistoryCellId];
+    
+    self.historyTable.delegate = self;
+    self.historyTable.dataSource = self;
+    
     [self initView];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self prepareHistory];
 }
 
 - (void)btnSearch:(UIButton *)sender {
@@ -45,7 +61,7 @@
         [JerryViewTools jumpFrom:self ToViewController:viewcontroller_searchdiplay carryDataDic:passDic];
         
         //记录搜索内容
-        
+        [self saveSearchKeyWord:searchText];
     }else{
         [self showToastText:@"要输入内容才能查询哟~"];
     }
@@ -56,7 +72,7 @@
     //搜索框
     [self createNavigationBarSearchArea];
     
-    
+    [self.historyClearBtn addTarget:self action:@selector(clearAllHistory) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark 创建导航栏上的搜索框
@@ -97,15 +113,78 @@
 }
 
 #pragma mark 准备搜索历史记录数据
-- (NSMutableArray *)prepareHistoryArray{
-    NSMutableArray *searchHistoryArray = [NSMutableArray array];
+- (void)prepareHistory{
+    self.searchHistoryArray = [NSMutableArray array];
     
     NSString *searchHistoryString = (NSString *)[JerryTools readInfo:storage_key_search_history];
-    if (searchHistoryString) {
+    if (searchHistoryString && ![searchHistoryString isEqualToString:@""]) {
         NSLog(@"有内容");
+        self.historyClearBtn.hidden = NO;
+        self.noResultView.hidden = YES;
+        
+        NSArray *dataArray = [searchHistoryString componentsSeparatedByString:@","];
+        
+        [self.searchHistoryArray addObjectsFromArray:dataArray];
+        
+        long index = [self.searchHistoryArray indexOfObject:@""];
+        if (index > -1) {
+            [self.searchHistoryArray removeObjectAtIndex:index];
+        }
+        
+        [self.historyTable reloadData];
+    }else{
+        NSLog(@"无内容");
+        self.historyClearBtn.hidden = YES;
+        self.noResultView.hidden = NO;
+    }
+}
+
+#pragma mark 记录搜索历史
+- (void)saveSearchKeyWord:(NSString *) keyword{
+    NSString *oldSearchHistoryString = (NSString *)[JerryTools readInfo:storage_key_search_history];
+    NSString *newSearchHistoryString;
+    if (oldSearchHistoryString) {
+        NSLog(@"有history");
+        //判断是否超过5个
+        NSArray *dataArray = [oldSearchHistoryString componentsSeparatedByString:@","];
+        //判断是否已存在
+        
+        if (![dataArray containsObject:keyword]) {
+            if ([dataArray count] < 5) {
+                //继续添加
+                newSearchHistoryString = [NSString stringWithFormat:@"%@,%@",keyword,oldSearchHistoryString];
+            }else{
+                //删除掉最早的，加入新的
+                NSMutableArray *newKeyWordArray = [NSMutableArray arrayWithArray:dataArray];
+                [newKeyWordArray removeLastObject];
+                [newKeyWordArray insertObject:keyword atIndex:0];
+                
+                newSearchHistoryString = [newKeyWordArray componentsJoinedByString:@","];
+            }
+        }
+    }else{
+        NSLog(@"无history");
+        newSearchHistoryString = [NSString stringWithFormat:@"%@",keyword];
     }
     
-    return searchHistoryArray;
+    [JerryTools saveInfo:newSearchHistoryString name:storage_key_search_history];
+}
+
+#pragma mark 删除指定历史记录
+- (void)deleteSearchHistoryItem:(id) sender{
+    UIButton *deleteBtn = (UIButton *)sender;
+    
+    [self.searchHistoryArray removeObjectAtIndex:(long)deleteBtn.tag];
+
+    NSString *newSearchHistoryString = [self.searchHistoryArray componentsJoinedByString:@","];
+    [JerryTools saveInfo:newSearchHistoryString name:storage_key_search_history];
+
+    [self prepareHistory];
+}
+
+- (void)clearAllHistory{
+    [JerryTools saveInfo:@"" name:storage_key_search_history];
+    [self prepareHistory];
 }
 
 - (void)hideKeyboard{
@@ -123,6 +202,35 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    HistoryTableCell *historyTableCell = [self.historyTable dequeueReusableCellWithIdentifier:self.searchHistoryCellId];
+    
+    historyTableCell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NSString *keyword = [self.searchHistoryArray objectAtIndex:indexPath.row];
+    historyTableCell.searchKeywordLabel.text = keyword;
+    
+    historyTableCell.deleteItemBtn.tag = indexPath.row;
+    
+    [historyTableCell.deleteItemBtn addTarget:self action:@selector(deleteSearchHistoryItem:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return historyTableCell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.searchHistoryArray count];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *searchKeyword = [self.searchHistoryArray objectAtIndex:indexPath.row];
+    self.leftViewTextField.text = searchKeyword;
 }
 
 /*
