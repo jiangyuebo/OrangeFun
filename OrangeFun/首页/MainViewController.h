@@ -14,4 +14,6 @@
 
 @property (strong,nonatomic) UIWebView *playingGifWebView;
 
+@property (strong,nonatomic) UIImageView *noPlayingImageView;
+
 @end

@@ -70,7 +70,10 @@
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     //根据是否正在播放，显示右上角GIF图标
     if (appDelegate.jerryPlayer.isPlaying) {
+        //正在播放，添加动态小图标
         [self createPlayingGifView];
+    }else{
+        [self createNoPlayingImageView];
     }
 }
 
@@ -78,6 +81,11 @@
     [super viewWillDisappear:animated];
     if (self.playingGifWebView) {
         [self.playingGifWebView removeFromSuperview];
+    }
+    
+    if (self.noPlayingImageView) {
+        [self.noPlayingImageView removeFromSuperview];
+        self.noPlayingImageView = nil;
     }
 }
 
@@ -95,6 +103,30 @@
     self.playingGifWebView.scalesPageToFit = YES;
     
     [self.navigationController.view addSubview:self.playingGifWebView];
+    
+    //覆盖点击事件view
+    UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [maskView setBackgroundColor:[UIColor clearColor]];
+    [self.playingGifWebView addSubview:maskView];
+    
+    //为GIF添加点击事件
+    maskView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *webSingleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickGIF)];
+    [maskView addGestureRecognizer:webSingleTap];
+}
+
+- (void)clickGIF{
+    //跳转到播放页
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [JerryViewTools jumpFrom:self ToViewController:viewcontroller_playview];
+}
+
+- (void)createNoPlayingImageView{
+    self.noPlayingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREENWIDTH - (30 + 8), 25, 30, 30)];
+    UIImage *image = [UIImage imageNamed:@"motionless"];
+    [self.noPlayingImageView setImage:image];
+    
+    [self.navigationController.view addSubview:self.noPlayingImageView];
 }
 
 #pragma mark 初始化主界面列表数据

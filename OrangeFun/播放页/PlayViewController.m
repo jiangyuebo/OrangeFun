@@ -101,7 +101,7 @@
 }
 
 - (IBAction)backAction:(UIButton *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)setControlPlaying{

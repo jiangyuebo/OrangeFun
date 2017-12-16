@@ -54,13 +54,19 @@
 - (void)storyClickedAction:(UIGestureRecognizer *)sender{
     UIImageView *storyCoverImageView = (UIImageView *)sender.view;
     NSUInteger tag = storyCoverImageView.tag;
+    
+    NSLog(@"collectionDataArray : %@",self.collectionDataArray);
+    
     //获取待播放对象
     NSDictionary *storyDataDic = [self.collectionDataArray objectAtIndex:tag];
     
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.jerryPlayer addPlayItemToList:storyDataDic];
+//    [appDelegate.jerryPlayer addPlayItemToList:storyDataDic];
+    [appDelegate.jerryPlayer addSeriaPlayItemToList:self.collectionDataArray];
     
-    [appDelegate.jerryPlayer prepareToPlayer];
+    [appDelegate.jerryPlayer prepareToPlayerAtCurrentItem:storyDataDic];
+    
+//    [appDelegate.jerryPlayer prepareToPlayer];
     
     [appDelegate.jerryPlayer play];
     

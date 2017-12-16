@@ -115,6 +115,7 @@
 #pragma mark 准备搜索历史记录数据
 - (void)prepareHistory{
     self.searchHistoryArray = [NSMutableArray array];
+    NSLog(@"self.searchHistoryArray : %@",self.searchHistoryArray);
     
     NSString *searchHistoryString = (NSString *)[JerryTools readInfo:storage_key_search_history];
     if (searchHistoryString && ![searchHistoryString isEqualToString:@""]) {
@@ -125,10 +126,13 @@
         NSArray *dataArray = [searchHistoryString componentsSeparatedByString:@","];
         
         [self.searchHistoryArray addObjectsFromArray:dataArray];
-        
-        long index = [self.searchHistoryArray indexOfObject:@""];
-        if (index > -1) {
-            [self.searchHistoryArray removeObjectAtIndex:index];
+        NSLog(@"self.searchHistoryArray : %@",self.searchHistoryArray);
+        if ([self.searchHistoryArray containsObject:@""]) {
+            long index = -1;
+            index = [self.searchHistoryArray indexOfObject:@""];
+            if (index > -1) {
+                [self.searchHistoryArray removeObjectAtIndex:index];
+            }
         }
         
         [self.historyTable reloadData];
@@ -173,8 +177,8 @@
 #pragma mark 删除指定历史记录
 - (void)deleteSearchHistoryItem:(id) sender{
     UIButton *deleteBtn = (UIButton *)sender;
-    
-    [self.searchHistoryArray removeObjectAtIndex:(long)deleteBtn.tag];
+    long index = deleteBtn.tag;
+    [self.searchHistoryArray removeObjectAtIndex:index];
 
     NSString *newSearchHistoryString = [self.searchHistoryArray componentsJoinedByString:@","];
     [JerryTools saveInfo:newSearchHistoryString name:storage_key_search_history];
