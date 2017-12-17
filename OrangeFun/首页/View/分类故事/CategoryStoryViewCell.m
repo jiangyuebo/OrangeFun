@@ -61,12 +61,9 @@
     NSDictionary *storyDataDic = [self.collectionDataArray objectAtIndex:tag];
     
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//    [appDelegate.jerryPlayer addPlayItemToList:storyDataDic];
     [appDelegate.jerryPlayer addSeriaPlayItemToList:self.collectionDataArray];
     
     [appDelegate.jerryPlayer prepareToPlayerAtCurrentItem:storyDataDic];
-    
-//    [appDelegate.jerryPlayer prepareToPlayer];
     
     [appDelegate.jerryPlayer play];
     

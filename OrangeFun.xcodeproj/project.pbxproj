@@ -51,6 +51,10 @@
 		C4A58C341FAF70A900E45395 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4A58C331FAF70A900E45395 /* main.m */; };
 		C4B612A31FE42EF800DD4DB2 /* HistoryTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B612A11FE42EF800DD4DB2 /* HistoryTableCell.m */; };
 		C4B612A41FE42EF800DD4DB2 /* HistoryTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B612A21FE42EF800DD4DB2 /* HistoryTableCell.xib */; };
+		C4B612A81FE54D7D00DD4DB2 /* PlayHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B612A71FE54D7D00DD4DB2 /* PlayHistoryViewController.m */; };
+		C4B612AC1FE5504B00DD4DB2 /* PlayHistoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B612AA1FE5504B00DD4DB2 /* PlayHistoryViewCell.m */; };
+		C4B612AD1FE5504B00DD4DB2 /* PlayHistoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4B612AB1FE5504B00DD4DB2 /* PlayHistoryViewCell.xib */; };
+		C4B612B01FE5542700DD4DB2 /* HistoryTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B612AF1FE5542700DD4DB2 /* HistoryTool.m */; };
 		C4FD4B171FE18C6B00752417 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FD4B161FE18C2E00752417 /* MediaPlayer.framework */; };
 /* End PBXBuildFile section */
 
@@ -134,6 +138,13 @@
 		C4B612A01FE42EF800DD4DB2 /* HistoryTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryTableCell.h; sourceTree = "<group>"; };
 		C4B612A11FE42EF800DD4DB2 /* HistoryTableCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTableCell.m; sourceTree = "<group>"; };
 		C4B612A21FE42EF800DD4DB2 /* HistoryTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableCell.xib; sourceTree = "<group>"; };
+		C4B612A61FE54D7D00DD4DB2 /* PlayHistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayHistoryViewController.h; sourceTree = "<group>"; };
+		C4B612A71FE54D7D00DD4DB2 /* PlayHistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayHistoryViewController.m; sourceTree = "<group>"; };
+		C4B612A91FE5504B00DD4DB2 /* PlayHistoryViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayHistoryViewCell.h; sourceTree = "<group>"; };
+		C4B612AA1FE5504B00DD4DB2 /* PlayHistoryViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayHistoryViewCell.m; sourceTree = "<group>"; };
+		C4B612AB1FE5504B00DD4DB2 /* PlayHistoryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayHistoryViewCell.xib; sourceTree = "<group>"; };
+		C4B612AE1FE5542700DD4DB2 /* HistoryTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryTool.h; sourceTree = "<group>"; };
+		C4B612AF1FE5542700DD4DB2 /* HistoryTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryTool.m; sourceTree = "<group>"; };
 		C4FD4B161FE18C2E00752417 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -251,6 +262,7 @@
 		C40A94441FC82A96001971A1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C4B612A51FE54D4B00DD4DB2 /* 播放历史 */,
 				C40A948F1FD646F2001971A1 /* 分类菜单 */,
 				C40A945B1FCD6E16001971A1 /* 分类故事 */,
 				C40A944E1FCC8222001971A1 /* 搜索框 */,
@@ -405,6 +417,20 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		C4B612A51FE54D4B00DD4DB2 /* 播放历史 */ = {
+			isa = PBXGroup;
+			children = (
+				C4B612A61FE54D7D00DD4DB2 /* PlayHistoryViewController.h */,
+				C4B612A71FE54D7D00DD4DB2 /* PlayHistoryViewController.m */,
+				C4B612A91FE5504B00DD4DB2 /* PlayHistoryViewCell.h */,
+				C4B612AA1FE5504B00DD4DB2 /* PlayHistoryViewCell.m */,
+				C4B612AB1FE5504B00DD4DB2 /* PlayHistoryViewCell.xib */,
+				C4B612AE1FE5542700DD4DB2 /* HistoryTool.h */,
+				C4B612AF1FE5542700DD4DB2 /* HistoryTool.m */,
+			);
+			path = "播放历史";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -466,6 +492,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4B612AD1FE5504B00DD4DB2 /* PlayHistoryViewCell.xib in Resources */,
 				C4A58C311FAF70A900E45395 /* LaunchScreen.storyboard in Resources */,
 				C4B612A41FE42EF800DD4DB2 /* HistoryTableCell.xib in Resources */,
 				C40A94581FCC82C3001971A1 /* SearchBarViewCell.xib in Resources */,
@@ -550,10 +577,13 @@
 				C45A9B861FDF12C700E7B3E8 /* SearchDisplayViewController.m in Sources */,
 				C40A94861FD54145001971A1 /* DiscoverTableCell.m in Sources */,
 				C40A943B1FC73B77001971A1 /* PlayListViewController.m in Sources */,
+				C4B612B01FE5542700DD4DB2 /* HistoryTool.m in Sources */,
 				C40A94431FC80E5D001971A1 /* MainTabBarViewController.m in Sources */,
 				C40A94721FD05186001971A1 /* UIColor+NSString.m in Sources */,
 				C40A94781FD15FA8001971A1 /* SearchViewController.m in Sources */,
+				C4B612A81FE54D7D00DD4DB2 /* PlayHistoryViewController.m in Sources */,
 				C45A9B7F1FDB077E00E7B3E8 /* CategoryListViewController.m in Sources */,
+				C4B612AC1FE5504B00DD4DB2 /* PlayHistoryViewCell.m in Sources */,
 				C40A94991FD6904C001971A1 /* StoryListViewController.m in Sources */,
 				C40A946F1FD04EE9001971A1 /* JerryViewTools.m in Sources */,
 				C40A94571FCC82C2001971A1 /* SearchBarViewCell.m in Sources */,
@@ -711,7 +741,7 @@
 				INFOPLIST_FILE = OrangeFun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.story.OrangeFun;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growtree.OrangeGrowup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -727,7 +757,7 @@
 				INFOPLIST_FILE = OrangeFun/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.story.OrangeFun;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growtree.OrangeGrowup;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

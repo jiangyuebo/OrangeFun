@@ -59,11 +59,40 @@
     [self registNibForTable];
 
     [self loadData];
+    
+    //注册广播
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playingFinish) name:notification_key_play_finished object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playingStart) name:notification_key_play_start object:nil];
+}
+
+- (void)playingFinish{
+    NSLog(@"播放完成");
+    if (self.isViewLoaded && self.view.window) {
+        NSLog(@"正在显示");
+        [self createNoPlayingImageView];
+    }
+}
+
+- (void)playingStart{
+    NSLog(@"播放开始");
+    if (self.isViewLoaded && self.view.window) {
+        NSLog(@"正在显示");
+        [self createPlayingGifView];
+    }
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)retryFetchData{
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    self.tabBarController.navigationItem.title = @"橙娃故事";
+    self.tabBarController.navigationItem.title = @"橙娃";
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
@@ -81,6 +110,21 @@
     [super viewWillDisappear:animated];
     if (self.playingGifWebView) {
         [self.playingGifWebView removeFromSuperview];
+        self.playingGifWebView = nil;
+    }
+    
+    if (self.noPlayingImageView) {
+        [self.noPlayingImageView removeFromSuperview];
+        self.noPlayingImageView = nil;
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+    if (self.playingGifWebView) {
+        [self.playingGifWebView removeFromSuperview];
+        self.playingGifWebView = nil;
     }
     
     if (self.noPlayingImageView) {
@@ -90,6 +134,12 @@
 }
 
 - (void)createPlayingGifView{
+    
+    //去除静态小图标
+    if (self.noPlayingImageView) {
+        [self.noPlayingImageView removeFromSuperview];
+    }
+    
     self.playingGifWebView = [[UIWebView alloc] initWithFrame:CGRectMake(SCREENWIDTH - (30 + 8), 25, 30, 30)];
     //设置不可拖动
     self.playingGifWebView.scrollView.bounces = NO;
@@ -122,11 +172,27 @@
 }
 
 - (void)createNoPlayingImageView{
+    //去除动画小图标
+    if (self.playingGifWebView) {
+        [self.playingGifWebView removeFromSuperview];
+    }
+    
     self.noPlayingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREENWIDTH - (30 + 8), 25, 30, 30)];
     UIImage *image = [UIImage imageNamed:@"motionless"];
     [self.noPlayingImageView setImage:image];
     
     [self.navigationController.view addSubview:self.noPlayingImageView];
+    
+    //添加点击事件
+    self.noPlayingImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *noPlayingSingleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickNoPlayingImageView)];
+    [self.noPlayingImageView addGestureRecognizer:noPlayingSingleTap];
+}
+
+#pragma mark 点击静态播放图片
+- (void)clickNoPlayingImageView{
+    //跳转到播放历史页
+    [JerryViewTools jumpFrom:self ToViewController:viewcontroller_playedhistory];
 }
 
 #pragma mark 初始化主界面列表数据

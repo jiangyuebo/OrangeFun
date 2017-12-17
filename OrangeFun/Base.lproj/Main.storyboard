@@ -262,6 +262,112 @@
             </objects>
             <point key="canvasLocation" x="-34.399999999999999" y="846.9265367316342"/>
         </scene>
+        <!--Play History View Controller-->
+        <scene sceneID="nQB-gV-lV8">
+            <objects>
+                <viewController storyboardIdentifier="playhistoryviewcontroller" id="ohe-5a-5yD" customClass="PlayHistoryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZWu-Qd-R9i"/>
+                        <viewControllerLayoutGuide type="bottom" id="6ci-Qs-hrq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5iq-Dj-3Cg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0h-AS-rnW">
+                                <rect key="frame" x="0.0" y="74" width="375" height="40"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4d-UK-Hrm">
+                                        <rect key="frame" x="0.0" y="39" width="375" height="1"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="cld-Ip-KbV"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="播放历史" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpD-Cq-EMM">
+                                        <rect key="frame" x="8" y="8.5" width="68" height="24"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="17"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6P7-di-IGT">
+                                        <rect key="frame" x="307" y="3.5" width="60" height="33"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="15"/>
+                                        <state key="normal" title="清除历史">
+                                            <color key="titleColor" red="0.96862745100000003" green="0.3921568627" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="y4d-UK-Hrm" firstAttribute="leading" secondItem="j0h-AS-rnW" secondAttribute="leading" id="1Ch-O2-NFU"/>
+                                    <constraint firstAttribute="trailing" secondItem="y4d-UK-Hrm" secondAttribute="trailing" id="2cb-qB-7J4"/>
+                                    <constraint firstAttribute="trailing" secondItem="6P7-di-IGT" secondAttribute="trailing" constant="8" id="HNf-fE-UvC"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gpD-Cq-EMM" secondAttribute="trailing" constant="20" symbolic="YES" id="IYn-Ty-fuv"/>
+                                    <constraint firstAttribute="bottom" secondItem="y4d-UK-Hrm" secondAttribute="bottom" id="ZAt-Ns-6Sm"/>
+                                    <constraint firstItem="6P7-di-IGT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="j0h-AS-rnW" secondAttribute="leading" constant="20" symbolic="YES" id="arA-Fo-hnD"/>
+                                    <constraint firstItem="gpD-Cq-EMM" firstAttribute="leading" secondItem="j0h-AS-rnW" secondAttribute="leading" constant="8" id="fVi-mc-h0u"/>
+                                    <constraint firstAttribute="height" constant="40" id="s7P-xX-vI5"/>
+                                    <constraint firstItem="6P7-di-IGT" firstAttribute="centerY" secondItem="j0h-AS-rnW" secondAttribute="centerY" id="uds-7X-JYt"/>
+                                    <constraint firstItem="gpD-Cq-EMM" firstAttribute="centerY" secondItem="j0h-AS-rnW" secondAttribute="centerY" id="zdS-TQ-Lh0"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0EP-mk-QEt">
+                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="opO-JC-WaN">
+                                <rect key="frame" x="0.0" y="114" width="375" height="553"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nosearch" translatesAutoresizingMaskIntoConstraints="NO" id="Uqp-MO-vub">
+                                        <rect key="frame" x="131.5" y="50" width="112.5" height="112.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Uqp-MO-vub" secondAttribute="height" multiplier="1:1" id="tud-Ss-wjr"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="哎呀，没有相关的信息！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9Q-Kp-db2">
+                                        <rect key="frame" x="110" y="182.5" width="154" height="20"/>
+                                        <fontDescription key="fontDescription" name="PingFangHK-Regular" family="PingFang HK" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Z9Q-Kp-db2" firstAttribute="top" secondItem="Uqp-MO-vub" secondAttribute="bottom" constant="20" id="NKL-dN-sht"/>
+                                    <constraint firstItem="Uqp-MO-vub" firstAttribute="width" secondItem="opO-JC-WaN" secondAttribute="width" multiplier="0.3" id="Uga-YM-BD4"/>
+                                    <constraint firstItem="Uqp-MO-vub" firstAttribute="top" secondItem="opO-JC-WaN" secondAttribute="top" constant="50" id="VMy-DT-dda"/>
+                                    <constraint firstItem="Uqp-MO-vub" firstAttribute="centerX" secondItem="opO-JC-WaN" secondAttribute="centerX" id="j9z-AT-9Yu"/>
+                                    <constraint firstItem="Z9Q-Kp-db2" firstAttribute="centerX" secondItem="opO-JC-WaN" secondAttribute="centerX" id="kBf-Ot-W1D"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="opO-JC-WaN" secondAttribute="trailing" id="2Uc-ho-mgc"/>
+                            <constraint firstItem="opO-JC-WaN" firstAttribute="leading" secondItem="5iq-Dj-3Cg" secondAttribute="leading" id="6Xx-pI-GTO"/>
+                            <constraint firstAttribute="trailing" secondItem="j0h-AS-rnW" secondAttribute="trailing" id="83h-Ni-d3A"/>
+                            <constraint firstAttribute="trailing" secondItem="0EP-mk-QEt" secondAttribute="trailing" id="Pbs-8c-LZ4"/>
+                            <constraint firstItem="6ci-Qs-hrq" firstAttribute="top" secondItem="0EP-mk-QEt" secondAttribute="bottom" id="W3u-9Q-c6i"/>
+                            <constraint firstItem="0EP-mk-QEt" firstAttribute="top" secondItem="j0h-AS-rnW" secondAttribute="bottom" id="a5n-C9-jhl"/>
+                            <constraint firstItem="j0h-AS-rnW" firstAttribute="leading" secondItem="5iq-Dj-3Cg" secondAttribute="leading" id="axz-7a-f0T"/>
+                            <constraint firstItem="6ci-Qs-hrq" firstAttribute="top" secondItem="opO-JC-WaN" secondAttribute="bottom" id="d1v-JT-ECI"/>
+                            <constraint firstItem="j0h-AS-rnW" firstAttribute="top" secondItem="ZWu-Qd-R9i" secondAttribute="bottom" constant="10" id="ezV-VL-nj8"/>
+                            <constraint firstItem="opO-JC-WaN" firstAttribute="top" secondItem="j0h-AS-rnW" secondAttribute="bottom" id="pmM-qN-idT"/>
+                            <constraint firstItem="0EP-mk-QEt" firstAttribute="leading" secondItem="5iq-Dj-3Cg" secondAttribute="leading" id="qko-si-o2z"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="clearAllHistoryBtn" destination="6P7-di-IGT" id="6Y1-4J-Wvr"/>
+                        <outlet property="noResultView" destination="opO-JC-WaN" id="ds1-8x-o3t"/>
+                        <outlet property="playedHistoryTable" destination="0EP-mk-QEt" id="f9F-f9-SOt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oJc-hb-BfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-783.20000000000005" y="1631.3343328335834"/>
+        </scene>
         <!--Search View Controller-->
         <scene sceneID="ov6-j1-hBE">
             <objects>

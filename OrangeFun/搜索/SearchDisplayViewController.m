@@ -44,6 +44,12 @@
     [self loadData:keyword];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
 - (void)registNibForTable{
     self.resultCellId = @"resultCellId";
     
@@ -181,6 +187,9 @@
     
     [self.searchResultTable reloadData];
     
+    //跳转到播放页
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [JerryViewTools jumpFrom:self ToViewController:viewcontroller_playview];
 }
 
 #pragma mark 如果正在播放，则显示GIF

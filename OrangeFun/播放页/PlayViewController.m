@@ -44,7 +44,9 @@
     //广播
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNotification:) name:@"player" object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playingFinish) name:@"playstatus" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playingFinish) name:notification_key_play_finished object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(becomeForegroundMode) name:notification_key_become_foreground object:nil];
 }
 
 - (void)dealloc{
@@ -54,6 +56,10 @@
 #pragma mark 播放完成监听
 - (void)playingFinish{
     [self nextAction:nil];
+}
+
+- (void)becomeForegroundMode{
+    [self initPlayView];
 }
 
 #pragma mark 播放暂停按钮点击
@@ -92,6 +98,7 @@
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     if (appDelegate.jerryPlayer.currentItem) {
+        NSLog(@"next in PlayViewController ... ");
         [appDelegate.jerryPlayer next];
         
         [self.tablePlayList reloadData];
@@ -183,7 +190,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSLog(@"viewWillAppear ... ");
     
+    [self initPlayView];
+}
+
+- (void)initPlayView{
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     appDelegate.jerryPlayer.jerryDelegate = self;
@@ -488,32 +500,32 @@
 }
 //********************************************************************
 
-- (void)configNowPlayingCenter {
-    NSLog(@"锁屏设置");
-    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    NSDictionary *currentItemDic = appDelegate.jerryPlayer.currentItem;
-    // BASE_INFO_FUN(@"配置NowPlayingCenter");
-    NSMutableDictionary * info = [NSMutableDictionary dictionary];
-    //音乐的标题
-    [info setObject:[currentItemDic objectForKey:mainpage_column_category_story_name] forKey:MPMediaItemPropertyTitle];
-    //音乐的艺术家
-    NSString *author= @"橙娃";
-    [info setObject:author forKey:MPMediaItemPropertyArtist];
-    //音乐的播放时间
-    [info setObject:@(appDelegate.jerryPlayer.currentTime) forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
-    //音乐的播放速度
-    [info setObject:@(1) forKey:MPNowPlayingInfoPropertyPlaybackRate];
-    //音乐的总时间
-    [info setObject:@(appDelegate.jerryPlayer.totalTime) forKey:MPMediaItemPropertyPlaybackDuration];
-    //音乐的封面
-    if (self.currentCoverImage) {
-        MPMediaItemArtwork * artwork = [[MPMediaItemArtwork alloc] initWithImage:self.currentCoverImage];
-        [info setObject:artwork forKey:MPMediaItemPropertyArtwork];
-    }
-    
-    //完成设置
-    [[MPNowPlayingInfoCenter defaultCenter]setNowPlayingInfo:info];
-}
+//- (void)configNowPlayingCenter {
+//    NSLog(@"锁屏设置");
+//    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    NSDictionary *currentItemDic = appDelegate.jerryPlayer.currentItem;
+//    // BASE_INFO_FUN(@"配置NowPlayingCenter");
+//    NSMutableDictionary * info = [NSMutableDictionary dictionary];
+//    //音乐的标题
+//    [info setObject:[currentItemDic objectForKey:mainpage_column_category_story_name] forKey:MPMediaItemPropertyTitle];
+//    //音乐的艺术家
+//    NSString *author= @"橙娃";
+//    [info setObject:author forKey:MPMediaItemPropertyArtist];
+//    //音乐的播放时间
+//    [info setObject:@(appDelegate.jerryPlayer.currentTime) forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+//    //音乐的播放速度
+//    [info setObject:@(1) forKey:MPNowPlayingInfoPropertyPlaybackRate];
+//    //音乐的总时间
+//    [info setObject:@(appDelegate.jerryPlayer.totalTime) forKey:MPMediaItemPropertyPlaybackDuration];
+//    //音乐的封面
+//    if (self.currentCoverImage) {
+//        MPMediaItemArtwork * artwork = [[MPMediaItemArtwork alloc] initWithImage:self.currentCoverImage];
+//        [info setObject:artwork forKey:MPMediaItemPropertyArtwork];
+//    }
+//    
+//    //完成设置
+//    [[MPNowPlayingInfoCenter defaultCenter]setNowPlayingInfo:info];
+//}
 
 /*
 #pragma mark - Navigation

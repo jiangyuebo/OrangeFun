@@ -45,6 +45,8 @@
     [super viewWillAppear:animated];
     
     [self prepareHistory];
+    
+    self.leftViewTextField.text = @"";
 }
 
 - (void)btnSearch:(UIButton *)sender {
@@ -234,7 +236,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *searchKeyword = [self.searchHistoryArray objectAtIndex:indexPath.row];
-    self.leftViewTextField.text = searchKeyword;
+    
+    //开始搜索
+    NSMutableDictionary *passDic = [NSMutableDictionary dictionary];
+    [passDic setObject:searchKeyword forKey:search_keyword];
+    [JerryViewTools jumpFrom:self ToViewController:viewcontroller_searchdiplay carryDataDic:passDic];
 }
 
 /*

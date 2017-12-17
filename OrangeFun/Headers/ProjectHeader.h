@@ -24,6 +24,8 @@
 #define viewcontroller_searchdiplay @"searchdisplayviewcontroller"
 //故事播放页
 #define viewcontroller_playview @"playviewcontroller"
+//播放历史页
+#define viewcontroller_playedhistory @"playhistoryviewcontroller"
 
 //webview
 #define viewcontroller_webview @"webviewcontroller"
@@ -57,6 +59,15 @@
 //*********************存储key
 //搜索历史记录
 #define storage_key_search_history @"searchhistory"
+//播放历史记录
+#define storage_key_played_history @"playhistory"
 
+//**********************广播KEY
+//播放完成
+#define notification_key_play_finished @"playfinish"
+//播放开始
+#define notification_key_play_start @"playstart"
+//恢复前台播放
+#define notification_key_become_foreground @"foregroundplay"
 
 #endif /* ProjectHeader_h */

@@ -45,10 +45,11 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6D-TA-wqv">
-                        <rect key="frame" x="252" y="0.0" width="60" height="35.5"/>
+                        <rect key="frame" x="240" y="0.0" width="80" height="35.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="vH4-Fn-8fp"/>
+                            <constraint firstAttribute="width" constant="80" id="vH4-Fn-8fp"/>
                         </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
                         <state key="normal" image="close"/>
                     </button>
                 </subviews>
@@ -59,7 +60,7 @@
                     <constraint firstItem="Z6D-TA-wqv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HkI-NY-WK3"/>
                     <constraint firstItem="3jq-dP-Qxo" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PUY-0y-7lI"/>
                     <constraint firstItem="OAD-Lu-oCq" firstAttribute="top" secondItem="Z6D-TA-wqv" secondAttribute="bottom" id="a26-6T-v8P"/>
-                    <constraint firstAttribute="trailing" secondItem="Z6D-TA-wqv" secondAttribute="trailing" constant="8" id="bFs-Iu-SV8"/>
+                    <constraint firstAttribute="trailing" secondItem="Z6D-TA-wqv" secondAttribute="trailing" id="bFs-Iu-SV8"/>
                     <constraint firstAttribute="trailing" secondItem="OAD-Lu-oCq" secondAttribute="trailing" id="c0I-Hs-tzb"/>
                     <constraint firstAttribute="bottom" secondItem="OAD-Lu-oCq" secondAttribute="bottom" id="eKM-kx-fZ9"/>
                     <constraint firstItem="8Vy-5p-6hP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="x7X-kK-Oa9"/>

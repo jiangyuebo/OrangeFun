@@ -9,10 +9,17 @@
 #import "JerryAVPlayer.h"
 #import "ProjectHeader.h"
 #import "JerryTools.h"
+#import "HistoryTool.h"
+
+#import <MediaPlayer/MPNowPlayingInfoCenter.h>
+#import <MediaPlayer/MPMediaItem.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface JerryAVPlayer()
 
 @property (strong,nonatomic) id timeObserver;
+
+@property (assign,nonatomic) BOOL isConfig;
 
 @end
 
@@ -138,12 +145,22 @@
             weakSelf.currentTime = current;
             weakSelf.totalTime = total;
             
+            [weakSelf setNowPlayCenter];
+            
             [playTimeDic setObject:currentN forKey:@"current"];
             [playTimeDic setObject:totalN forKey:@"total"];
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"player" object:@"player" userInfo:playTimeDic];
         }
     }];
+}
+
+#pragma mark 设置 now play center
+- (void)setNowPlayCenter{
+    if (!self.isConfig) {
+        [self configNowPlayingCenter];
+        self.isConfig = YES;
+    }
 }
 
 #pragma makr 上一首
@@ -162,6 +179,7 @@
 
 #pragma mark 下一首
 - (void)next{
+    NSLog(@"下一首 in avplayer");
     if (self.playItemList) {
         if ([self.playItemList count] > 1) {
             NSUInteger currentIndex = [self.playItemList indexOfObject:self.currentItem];
@@ -192,7 +210,7 @@
     
     self.isPlaying = NO;
     NSLog(@"播放完成");
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"playstatus" object:nil userInfo:nil];
+    [self performSelector:@selector(sendFinishNotification) withObject:nil afterDelay:1.0];
 }
 
 #pragma mark 切换当前播放条目到指定条目
@@ -246,6 +264,16 @@
     }
 }
 
+#pragma mark 发送开始播放广播
+- (void)sendStartNotification{
+    [[NSNotificationCenter defaultCenter] postNotificationName:notification_key_play_start object:nil userInfo:nil];
+}
+
+#pragma mark 发送播放完成广播
+- (void)sendFinishNotification{
+    [[NSNotificationCenter defaultCenter] postNotificationName:notification_key_play_finished object:nil userInfo:nil];
+}
+
 #pragma mark KVO监听回调
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     //播放器状态
@@ -254,7 +282,13 @@
             case AVPlayerStatusReadyToPlay:
                 NSLog(@"播放功能就绪");
                 if (_player) {
+                    self.isConfig = NO;
                     [_player play];
+                    //将当前播放数据加入播放历史记录
+                    [HistoryTool saveDataItem:self.currentItem];
+                    
+                    //广播：播放开始
+                    [self performSelector:@selector(sendStartNotification) withObject:nil afterDelay:1.0];
                 }
                 break;
             case AVPlayerStatusUnknown:
@@ -282,7 +316,38 @@
     }
 }
 //*****************************************************************************************
-
+- (void)configNowPlayingCenter {
+    NSLog(@"锁屏设置");
+    // BASE_INFO_FUN(@"配置NowPlayingCenter");
+    NSMutableDictionary * info = [NSMutableDictionary dictionary];
+    //音乐的标题
+    [info setObject:[self.currentItem objectForKey:mainpage_column_category_story_name] forKey:MPMediaItemPropertyTitle];
+    //音乐的艺术家
+    NSString *author= @"橙娃";
+    [info setObject:author forKey:MPMediaItemPropertyArtist];
+    //时间轴
+    float centerCurrentTime = self.currentTime;
+    float centerTotalTime = self.totalTime;
+    [info setObject:@(centerCurrentTime) forKey:MPNowPlayingInfoPropertyElapsedPlaybackTime];
+    //音乐的播放速度
+    [info setObject:@(1) forKey:MPNowPlayingInfoPropertyPlaybackRate];
+    [info setObject:@(centerTotalTime) forKey:MPMediaItemPropertyPlaybackDuration];
+    
+    //读取封面
+    NSString *logoURLString = [self.currentItem objectForKey:@"logoUrl"];
+    NSURL *coverURL = [NSURL URLWithString:logoURLString];
+    
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager.imageDownloader downloadImageWithURL:coverURL options:SDWebImageDownloaderHighPriority progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        
+    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+        MPMediaItemArtwork * artwork = [[MPMediaItemArtwork alloc] initWithImage:image];
+        [info setObject:artwork forKey:MPMediaItemPropertyArtwork];
+        
+        //完成设置
+        [[MPNowPlayingInfoCenter defaultCenter]setNowPlayingInfo:info];
+    }];
+}
 
 
 @end

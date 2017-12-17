@@ -37,9 +37,7 @@
         NSLog(@"保存的数据或键值为空，请注意");
         return;
     }
-    
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:name];
-    
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

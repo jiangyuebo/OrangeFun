@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playingFinish) name:@"playstatus" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playingFinish) name:notification_key_play_finished object:nil];
     
     self.storyListTable.dataSource = self;
     self.storyListTable.delegate = self;
@@ -63,14 +63,14 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 #pragma mark 播放完成监听 刷新列表更新显示
 - (void)playingFinish{
-    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.jerryPlayer next];
+//    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    [appDelegate.jerryPlayer next];
+    NSLog(@"playingFinish in StoryListViewController ...");
     [self.storyListTable reloadData];
 }
 
@@ -249,16 +249,23 @@
                 storyItemCell.labelPlayTimes.text = [NSString stringWithFormat:@"%@次",playCount];
                 
                 //判断当前是否在播放
-                if ([self currentDicIsPlaying:dataItemDic]) {
-                    storyItemCell.webViewGif.hidden = NO;
-                    NSString *path = [[NSBundle mainBundle] pathForResource:@"animation" ofType:@"gif"];
-                    NSURL *url = [NSURL URLWithString:path];
-                    [storyItemCell.webViewGif loadRequest:[NSURLRequest requestWithURL:url]];
-                    storyItemCell.webViewGif.scalesPageToFit = YES;
+                AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                
+                if (appDelegate.jerryPlayer.isPlaying) {
+                    //正在播放,判断哪一个在播放
+                    if ([self currentDicIsPlaying:dataItemDic]) {
+                        storyItemCell.webViewGif.hidden = NO;
+                        NSString *path = [[NSBundle mainBundle] pathForResource:@"animation" ofType:@"gif"];
+                        NSURL *url = [NSURL URLWithString:path];
+                        [storyItemCell.webViewGif loadRequest:[NSURLRequest requestWithURL:url]];
+                        storyItemCell.webViewGif.scalesPageToFit = YES;
+                    }else{
+                        storyItemCell.webViewGif.hidden = YES;
+                    }
                 }else{
+                    //没有播放
                     storyItemCell.webViewGif.hidden = YES;
                 }
-                
                 return storyItemCell;
             }
         }

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ProjectHeader.h"
 
 @interface AppDelegate ()
 
@@ -20,7 +21,6 @@
     self.jerryPlayer = [[JerryAVPlayer alloc] init];
     //初始化播放列表
     self.jerryPlayer.playItemList = [NSMutableArray array];
-    
     return YES;
 }
 
@@ -70,7 +70,8 @@ UIBackgroundTaskIdentifier _bgTaskId;
     NSLog(@"applicationDidBecomeActive ...");
     if (self.jerryPlayer.isPlaying) {
         NSLog(@"end background task ...");
-//        [[UIApplication sharedApplication] endBackgroundTask:self.jerryPlayer.newTaskId];
+        //恢复前台播放，发送广播
+        [[NSNotificationCenter defaultCenter] postNotificationName:notification_key_become_foreground object:nil];
     }
 }
 
@@ -94,7 +95,7 @@ UIBackgroundTaskIdentifier _bgTaskId;
                 [self.jerryPlayer previous];
                 break;
             case UIEventSubtypeRemoteControlNextTrack:
-                NSLog(@"下一首");
+                NSLog(@"next in AppDelegate ... ");
                 [self.jerryPlayer next];
                 break;
                 
