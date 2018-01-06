@@ -29,6 +29,11 @@
 
 @property (strong,nonatomic) UIImage *currentCoverImage;
 
+
+@property (strong,nonatomic) CABasicAnimation *coverAnimation;
+
+@property (assign,nonatomic) BOOL pauseStatusWhenIn;
+
 @end
 
 @implementation PlayViewController
@@ -74,10 +79,34 @@
             //正在播放，暂停
             [appDelegate.jerryPlayer pausePlay];
             [self setControlPlaying];
+            
+            //获取到当前view时间
+            CFTimeInterval currTimeoffset = [self.coverDiskImageView.layer convertTime:CACurrentMediaTime() fromLayer:nil];
+            self.coverDiskImageView.layer.speed = 0.0;
+            self.coverDiskImageView.layer.timeOffset = currTimeoffset;
         }else{
             //未播放，开始
             [appDelegate.jerryPlayer continuePlay];
             [self setControlStop];
+            
+            if (self.pauseStatusWhenIn) {
+                //
+                NSLog(@"创建动画/.....");
+                self.coverAnimation = [JerryViewTools startRotationAnimationWithView:self.coverDiskImageView];
+                self.pauseStatusWhenIn = NO;
+            }
+            
+            //继续动画
+            //1.将动画的时间偏移量作为暂停的时间点
+            CFTimeInterval pauseTime = self.coverDiskImageView.layer.timeOffset;
+            
+            //2.计算出开始时间
+            CFTimeInterval begin = CACurrentMediaTime() - pauseTime;
+            
+            [self.coverDiskImageView.layer setTimeOffset:0];
+            [self.coverDiskImageView.layer setBeginTime:begin];
+            
+            self.coverDiskImageView.layer.speed = 1.0;
         }
     }
 }
@@ -119,6 +148,8 @@
     [self.playControlButton setBackgroundImage:[UIImage imageNamed:@"btnStop"] forState:UIControlStateNormal];
 }
 
+
+float fromValue = 0.0f;
 - (void)receiveNotification:(NSNotification *) notification{
     NSDictionary *playStatus = notification.userInfo;
     NSNumber *current = [playStatus objectForKey:@"current"];
@@ -173,6 +204,12 @@
     self.progressSlider.continuous = YES;
     [self.progressSlider setValue:progressFloat];
 
+    //旋转动画
+//    [UIView animateWithDuration:2.0f animations:^{
+//        CGAffineTransform currentTransform = self.coverDiskImageView.transform;
+//        CGAffineTransform newTransform = CGAffineTransformRotate(currentTransform, M_PI/10); // 在现在的基础上旋转指定角度
+//        self.coverDiskImageView.transform = newTransform;
+//    }];
 }
 
 - (IBAction)progressChanged:(UISlider *)sender {
@@ -190,7 +227,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    NSLog(@"viewWillAppear ... ");
     
     [self initPlayView];
 }
@@ -388,6 +424,14 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (appDelegate.jerryPlayer.isPlaying) {
+        NSLog(@"创建动画/.....");
+        self.coverAnimation = [JerryViewTools startRotationAnimationWithView:self.coverDiskImageView];
+    }else{
+        self.pauseStatusWhenIn = YES;
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated{

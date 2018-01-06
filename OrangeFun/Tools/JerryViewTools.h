@@ -43,4 +43,7 @@
 #pragma mark 当前是否最上层view controller
 + (BOOL)isTopViewContoller:(UIViewController *) viewController;
 
+#pragma mark 旋转动画
++ (CABasicAnimation *)startRotationAnimationWithView:(UIView *) targetView;
+
 @end
