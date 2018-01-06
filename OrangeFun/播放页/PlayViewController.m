@@ -89,26 +89,37 @@
             [appDelegate.jerryPlayer continuePlay];
             [self setControlStop];
             
-            if (self.pauseStatusWhenIn) {
-                //
-                NSLog(@"创建动画/.....");
-                self.coverAnimation = [JerryViewTools startRotationAnimationWithView:self.coverDiskImageView];
-                self.pauseStatusWhenIn = NO;
-            }
-            
-            //继续动画
-            //1.将动画的时间偏移量作为暂停的时间点
-            CFTimeInterval pauseTime = self.coverDiskImageView.layer.timeOffset;
-            
-            //2.计算出开始时间
-            CFTimeInterval begin = CACurrentMediaTime() - pauseTime;
-            
-            [self.coverDiskImageView.layer setTimeOffset:0];
-            [self.coverDiskImageView.layer setBeginTime:begin];
-            
-            self.coverDiskImageView.layer.speed = 1.0;
+            [self continueCoverAnimation];
         }
     }
+}
+
+- (void)startCoverAnimation{
+    NSLog(@"创建动画.....(startCoverAnimation)");
+    self.coverAnimation = [JerryViewTools startRotationAnimationWithView:self.coverDiskImageView];
+}
+
+#pragma mark 封面动画继续转动
+- (void)continueCoverAnimation{
+    
+    if (self.pauseStatusWhenIn) {
+        //
+        NSLog(@"创建动画.....(continueCoverAnimation)");
+        self.coverAnimation = [JerryViewTools startRotationAnimationWithView:self.coverDiskImageView];
+        self.pauseStatusWhenIn = NO;
+    }
+    
+    //继续动画
+    //1.将动画的时间偏移量作为暂停的时间点
+    CFTimeInterval pauseTime = self.coverDiskImageView.layer.timeOffset;
+    
+    //2.计算出开始时间
+    CFTimeInterval begin = CACurrentMediaTime() - pauseTime;
+    
+    [self.coverDiskImageView.layer setTimeOffset:0];
+    [self.coverDiskImageView.layer setBeginTime:begin];
+    
+    self.coverDiskImageView.layer.speed = 1.0;
 }
 
 - (IBAction)previousAction:(UIButton *)sender {
@@ -285,6 +296,8 @@ float fromValue = 0.0f;
             
             [self.coverImageView removeFromSuperview];
             [self setCoverInDisk:image];
+            
+            [self continueCoverAnimation];
         }];
         
         self.progressSlider.enabled = YES;
@@ -428,7 +441,7 @@ float fromValue = 0.0f;
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if (appDelegate.jerryPlayer.isPlaying) {
         NSLog(@"创建动画/.....");
-        self.coverAnimation = [JerryViewTools startRotationAnimationWithView:self.coverDiskImageView];
+        [self startCoverAnimation];
     }else{
         self.pauseStatusWhenIn = YES;
     }
@@ -513,6 +526,8 @@ float fromValue = 0.0f;
     [self.tablePlayList reloadData];
     
     [self setControllerBackgound];
+    
+    [self setControlStop];
 }
 
 - (void)didReceiveMemoryWarning {
