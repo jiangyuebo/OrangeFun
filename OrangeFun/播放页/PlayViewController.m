@@ -10,6 +10,7 @@
 #import "globalHeader.h"
 #import "ProjectHeader.h"
 #import "JerryViewTools.h"
+#import "HistoryTool.h"
 #import "PlayListViewCell.h"
 #import "AppDelegate.h"
 #import "UIColor+NSString.h"
@@ -35,6 +36,8 @@
 @property (assign,nonatomic) BOOL pauseStatusWhenIn;
 
 @property (assign,nonatomic) BOOL firstInPlayController;
+
+@property (assign,nonatomic) BOOL isPause;
 
 @end
 
@@ -86,12 +89,16 @@
             CFTimeInterval currTimeoffset = [self.coverDiskImageView.layer convertTime:CACurrentMediaTime() fromLayer:nil];
             self.coverDiskImageView.layer.speed = 0.0;
             self.coverDiskImageView.layer.timeOffset = currTimeoffset;
+            
+            self.isPause = YES;
         }else{
             //未播放，开始
             [appDelegate.jerryPlayer continuePlay];
             [self setControlStop];
             
             [self continueCoverAnimation];
+            
+            self.isPause = NO;
         }
     }
 }
@@ -126,7 +133,12 @@
 }
 
 - (IBAction)previousAction:(UIButton *)sender {
+    
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    if (!appDelegate.jerryPlayer.isPlaying) {
+        [self continueCoverAnimation];
+    }
     
     if (appDelegate.jerryPlayer.currentItem) {
         [appDelegate.jerryPlayer previous];
@@ -138,7 +150,12 @@
 }
 
 - (IBAction)nextAction:(UIButton *)sender {
+    
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    if (!appDelegate.jerryPlayer.isPlaying) {
+        [self continueCoverAnimation];
+    }
     
     if (appDelegate.jerryPlayer.currentItem) {
         NSLog(@"next in PlayViewController ... ");
@@ -252,6 +269,12 @@ float fromValue = 0.0f;
     
     [self.tablePlayList reloadData];
     
+    //判断是否有历史记录
+    NSDictionary *item = appDelegate.jerryPlayer.currentItem;
+    if (!item) {
+        [self loadHistoryRecord];
+    }
+    
     [self setControllerBackgound];
     
     //播放按钮
@@ -266,6 +289,24 @@ float fromValue = 0.0f;
         self.backBtn.hidden = YES;
     }else{
         self.backBtn.hidden = NO;
+    }
+}
+
+#pragma mark 读取播放记录
+- (void)loadHistoryRecord{
+    NSArray *historyDataArray = [HistoryTool readHistoryDataArray];
+    
+    if (historyDataArray && [historyDataArray count] > 0) {
+        //有历史数据
+        //获取待播放对象
+        NSDictionary *storyDataDic = [historyDataArray objectAtIndex:0];
+        
+        AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate.jerryPlayer addSeriaPlayItemToList:historyDataArray];
+        
+        [appDelegate.jerryPlayer prepareToPlayerAtCurrentItem:storyDataDic];
+        
+        [appDelegate.jerryPlayer play];
     }
 }
 
@@ -301,14 +342,6 @@ float fromValue = 0.0f;
             
             [self.coverImageView removeFromSuperview];
             [self setCoverInDisk:image];
-            
-            if (appDelegate.jerryPlayer.isPlaying) {
-                if (!self.firstInPlayController) {
-                    [self continueCoverAnimation];
-                }else{
-                    self.firstInPlayController = NO;
-                }
-            }
         }];
         
         self.progressSlider.enabled = YES;
@@ -542,6 +575,11 @@ float fromValue = 0.0f;
     [self setControllerBackgound];
     
     [self setControlStop];
+    
+    if (self.isPause) {
+        [self continueCoverAnimation];
+        self.isPause = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
