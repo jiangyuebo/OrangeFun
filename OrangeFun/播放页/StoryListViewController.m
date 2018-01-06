@@ -64,12 +64,13 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
+    //刷新显示
+    [self.storyListTable reloadData];
 }
 
 #pragma mark 播放完成监听 刷新列表更新显示
 - (void)playingFinish{
-//    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//    [appDelegate.jerryPlayer next];
     NSLog(@"playingFinish in StoryListViewController ...");
     [self.storyListTable reloadData];
 }
@@ -219,14 +220,21 @@
                     storyItemCell.labelPlayTimes.text = [NSString stringWithFormat:@"%@次",playCount];
                     
                     //判断当前是否在播放
-                    if ([self currentDicIsPlaying:dataItemDic]) {
-                        storyItemCell.webViewGif.hidden = NO;
-                        NSString *path = [[NSBundle mainBundle] pathForResource:@"animation" ofType:@"gif"];
-                        NSURL *url = [NSURL URLWithString:path];
-                        [storyItemCell.webViewGif loadRequest:[NSURLRequest requestWithURL:url]];
-                        storyItemCell.webViewGif.scalesPageToFit = YES;
+                    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                    if (appDelegate.jerryPlayer.isPlaying) {
+                        //正在播放
+                        if ([self currentDicIsPlaying:dataItemDic]) {
+                            storyItemCell.webViewGif.hidden = NO;
+                            NSString *path = [[NSBundle mainBundle] pathForResource:@"animation" ofType:@"gif"];
+                            NSURL *url = [NSURL URLWithString:path];
+                            [storyItemCell.webViewGif loadRequest:[NSURLRequest requestWithURL:url]];
+                            storyItemCell.webViewGif.scalesPageToFit = YES;
+                        }else{
+                            storyItemCell.webViewGif.hidden = YES;
+                        }
                     }else{
-                        storyItemCell.webViewGif.hidden = YES;
+                        //未播放
+                        
                     }
                     
                     return storyItemCell;

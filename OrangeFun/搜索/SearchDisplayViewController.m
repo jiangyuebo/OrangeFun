@@ -48,6 +48,8 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
+    [self.searchResultTable reloadData];
 }
 
 - (void)registNibForTable{
@@ -144,7 +146,8 @@
     [resultItemCell.imageViewCover sd_setImageWithURL:coverURL placeholderImage:[UIImage imageNamed:@"nobanner"]];
     
     //判断当前是否在播放
-    if ([self currentDicIsPlaying:dataItemDic]) {
+    AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (appDelegate.jerryPlayer.isPlaying && [self currentDicIsPlaying:dataItemDic]) {
         resultItemCell.webViewGif.hidden = NO;
         NSString *path = [[NSBundle mainBundle] pathForResource:@"animation" ofType:@"gif"];
         NSURL *url = [NSURL URLWithString:path];
