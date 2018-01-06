@@ -34,6 +34,8 @@
 
 @property (assign,nonatomic) BOOL pauseStatusWhenIn;
 
+@property (assign,nonatomic) BOOL firstInPlayController;
+
 @end
 
 @implementation PlayViewController
@@ -107,8 +109,9 @@
         NSLog(@"创建动画.....(continueCoverAnimation)");
         self.coverAnimation = [JerryViewTools startRotationAnimationWithView:self.coverDiskImageView];
         self.pauseStatusWhenIn = NO;
+    }else{
+        NSLog(@"继续动画.....(continueCoverAnimation)");
     }
-    
     //继续动画
     //1.将动画的时间偏移量作为暂停的时间点
     CFTimeInterval pauseTime = self.coverDiskImageView.layer.timeOffset;
@@ -268,6 +271,8 @@ float fromValue = 0.0f;
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    
+    self.coverAnimation = nil;
 }
 
 #pragma mark 设置背景模糊图片
@@ -297,7 +302,13 @@ float fromValue = 0.0f;
             [self.coverImageView removeFromSuperview];
             [self setCoverInDisk:image];
             
-            [self continueCoverAnimation];
+            if (appDelegate.jerryPlayer.isPlaying) {
+                if (!self.firstInPlayController) {
+                    [self continueCoverAnimation];
+                }else{
+                    self.firstInPlayController = NO;
+                }
+            }
         }];
         
         self.progressSlider.enabled = YES;
@@ -438,11 +449,14 @@ float fromValue = 0.0f;
     [super viewDidAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
+    self.firstInPlayController = YES;
+    
     AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if (appDelegate.jerryPlayer.isPlaying) {
-        NSLog(@"创建动画/.....");
+        //正在播放
         [self startCoverAnimation];
     }else{
+        //未播放
         self.pauseStatusWhenIn = YES;
     }
 }
