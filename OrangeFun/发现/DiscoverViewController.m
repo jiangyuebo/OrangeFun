@@ -61,7 +61,17 @@
     NSString *url_story_index = [NSString stringWithFormat:@"%@%@",URL_REQUEST_STORY,URL_REQUEST_STORY_GET_DESCOVER];
     NSLog(@"url_story_index = %@",url_story_index);
     
+    //开始转菊花
+    self.indicator.hidden = NO;
+    [self.indicator startAnimating];
+    
     [requestHelper getRequestAsynchronousToUrl:url_story_index andCallback:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        //停止转菊花
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.indicator stopAnimating];
+            self.indicator.hidden = YES;
+        });
         
         if (error) {
             if (error.code == -1009) {

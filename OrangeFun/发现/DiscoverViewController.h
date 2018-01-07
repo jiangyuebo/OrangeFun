@@ -14,4 +14,6 @@
 
 @property (strong,nonatomic) NSString *storyCellID;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
+
 @end

@@ -48,17 +48,27 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="1Ra-3M-JBP">
+                                <rect key="frame" x="177.5" y="323" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="ZAj-Ug-7Eh"/>
+                                    <constraint firstAttribute="height" constant="20" id="czZ-NR-BZz"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qtn-fB-hUL" firstAttribute="top" secondItem="jYZ-2Q-XWG" secondAttribute="bottom" id="0br-3E-SsJ"/>
+                            <constraint firstItem="1Ra-3M-JBP" firstAttribute="centerY" secondItem="6ts-5s-pe1" secondAttribute="centerY" id="S5o-yO-c9E"/>
                             <constraint firstItem="jYZ-2Q-XWG" firstAttribute="leading" secondItem="6ts-5s-pe1" secondAttribute="leading" id="TC5-ai-iMJ"/>
                             <constraint firstItem="jYZ-2Q-XWG" firstAttribute="top" secondItem="TGj-Kl-OA6" secondAttribute="bottom" id="wCU-SN-jyd"/>
                             <constraint firstAttribute="trailing" secondItem="jYZ-2Q-XWG" secondAttribute="trailing" id="wdc-uH-1SG"/>
+                            <constraint firstItem="1Ra-3M-JBP" firstAttribute="centerX" secondItem="6ts-5s-pe1" secondAttribute="centerX" id="yKB-R4-QyN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="发现" id="1Ng-yd-u2g"/>
                     <connections>
+                        <outlet property="indicator" destination="1Ra-3M-JBP" id="l91-2u-joQ"/>
                         <outlet property="tableDiscover" destination="jYZ-2Q-XWG" id="J2F-G5-Ike"/>
                     </connections>
                 </viewController>
