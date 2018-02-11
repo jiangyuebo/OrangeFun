@@ -22,7 +22,12 @@
 
 @interface DiscoverViewController ()
 
-@property (strong,nonatomic) NSArray *discoverDataArray;
+@property (strong,nonatomic) NSMutableArray *discoverDataArray;
+
+//分页信息
+@property (nonatomic) NSUInteger pageIndex;
+//总页数
+@property (nonatomic) NSUInteger totalPages;
 
 @end
 
@@ -31,14 +36,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.discoverDataArray = [NSArray array];
+    self.discoverDataArray = [NSMutableArray array];
     self.tableDiscover.delegate = self;
     self.tableDiscover.dataSource = self;
     
-    self.tableDiscover.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+//    self.tableDiscover.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
+    
+    self.tableDiscover.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadData)];
     
     //注册cell
     [self registNibForTable];
+    
+    self.pageIndex = 0;
+    self.totalPages = 100;
     
     [self loadData];
 }
@@ -58,8 +68,17 @@
 
 - (void)loadData{
     BMRequestHelper *requestHelper = [[BMRequestHelper alloc] init];
-    NSString *url_story_index = [NSString stringWithFormat:@"%@%@",URL_REQUEST_STORY,URL_REQUEST_STORY_GET_DESCOVER];
-    NSLog(@"url_story_index = %@",url_story_index);
+    //index
+    self.pageIndex = self.pageIndex + 1;
+    NSLog(@"当前页数:%lu , 总页数:%lu",(unsigned long)self.pageIndex,(unsigned long) self.totalPages);
+    
+    //判断页数是否超出,超出就取消请求
+    if (self.pageIndex > self.totalPages) {
+        [self.tableDiscover.mj_footer endRefreshingWithNoMoreData];
+        return;
+    }
+    
+    NSString *url_story_index = [NSString stringWithFormat:@"%@%@?pageIndex=%lu&pageSize=%d",URL_REQUEST_STORY,URL_REQUEST_STORY_GET_SERIA_BY_PAGE,(unsigned long)self.pageIndex,10];
     
     //开始转菊花
     self.indicator.hidden = NO;
@@ -82,13 +101,21 @@
             if (data) {
                 NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
                 if (httpResponse.statusCode == 200) {
-                    NSArray *dataArray = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-                    self.discoverDataArray = dataArray;
+                    
+                    NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+                    //总页数
+                    NSNumber *dataTotalPages = [dataDic objectForKey:@"totalPages"];
+                    self.totalPages = [dataTotalPages integerValue];
+                    
+                    //获取专辑列表
+                    NSArray *dataResult = [dataDic objectForKey:@"result"];
+                    
+                    [self.discoverDataArray addObjectsFromArray:dataResult];
                     
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         [self.tableDiscover reloadData];
                         
-                        [self.tableDiscover.mj_header endRefreshing];
+                        [self.tableDiscover.mj_footer endRefreshing];
                     });
                 }else{
                     NSDictionary *jsonDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
@@ -116,7 +143,6 @@
     
     NSDictionary *dataItemDic = [self.discoverDataArray objectAtIndex:indexPath.row];
     NSString *logoURLString = [dataItemDic objectForKey:@"logoUrl"];
-    NSLog(@"logoURLString : %@",logoURLString);
     NSString *itemName = [dataItemDic objectForKey:@"seriaName"];
     //name
     storyItemCell.labelStoryName.text = itemName;

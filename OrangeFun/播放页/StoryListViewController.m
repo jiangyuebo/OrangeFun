@@ -35,6 +35,8 @@
     //注册cell
     [self registNibForTable];
     
+    NSLog(@"passDataDic : %@",self.passDataDic);
+    
     NSString *type = [self.passDataDic objectForKey:@"type"];
     
     if ([type isEqualToString:@"more"]) {
@@ -44,16 +46,20 @@
         [self loadData:seriaIDString];
     }else{
         self.title = [self.passDataDic objectForKey:@"seriaName"];
+        
+        //专辑ID seriaID
+        NSString *seriaIDString = [NSString stringWithFormat:@"%@",[self.passDataDic objectForKey:@"seriaID"]];
+        [self loadData:seriaIDString];
     
-        //其他信息
-        if (self.passDataDic) {
-            NSString *seriaName = [self.passDataDic objectForKey:@"seriaName"];
-            if (seriaName) {
-                //是专辑
-                NSArray *stories = [self.passDataDic objectForKey:@"stories"];
-                self.storyCountLabel.text = [NSString stringWithFormat:@"共 %lu 个故事",(unsigned long)[stories count]];
-            }
-        }
+//        //其他信息
+//        if (self.passDataDic) {
+//            NSString *seriaName = [self.passDataDic objectForKey:@"seriaName"];
+//            if (seriaName) {
+//                //是专辑
+//                NSArray *stories = [self.passDataDic objectForKey:@"stories"];
+//                self.storyCountLabel.text = [NSString stringWithFormat:@"共 %lu 个故事",(unsigned long)[stories count]];
+//            }
+//        }
     }
 }
 

@@ -213,6 +213,8 @@
 }
 
 - (void)loadData{
+    
+    
     BMRequestHelper *requestHelper = [[BMRequestHelper alloc] init];
     NSString *url_story_index = [NSString stringWithFormat:@"%@%@",URL_REQUEST_STORY,URL_REQUEST_STORY_GET_INDEX];
     NSLog(@"url_story_index = %@",url_story_index);

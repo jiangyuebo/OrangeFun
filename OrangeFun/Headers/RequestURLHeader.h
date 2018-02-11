@@ -16,6 +16,8 @@
 #define URL_REQUEST_STORY_GET_INDEX @"v1/story/getIndex"
 //获取发现数据
 #define URL_REQUEST_STORY_GET_DESCOVER @"v1/story/discovery"
+//获取专辑数据（分页）
+#define URL_REQUEST_STORY_GET_SERIA_BY_PAGE @"v1/story/findSeriaPage"
 //获取分类中的系列
 #define URL_REQUEST_STORY_GET_CATEGORY @"v1/story/getSerias"
 //获取热门故事
