@@ -26,6 +26,8 @@
 #define viewcontroller_playview @"playviewcontroller"
 //播放历史页
 #define viewcontroller_playedhistory @"playhistoryviewcontroller"
+//登录页
+#define viewcontroller_login @"loginviewcontroller"
 
 //webview
 #define viewcontroller_webview @"webviewcontroller"

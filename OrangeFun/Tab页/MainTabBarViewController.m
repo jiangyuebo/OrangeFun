@@ -79,6 +79,11 @@
     item2.image = [[UIImage imageNamed:@"find"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     item2.selectedImage = [[UIImage imageNamed:@"findhover"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
+    //我的
+    UITabBarItem *item3 = [tabBar.items objectAtIndex:3];
+    item3.image = [[UIImage imageNamed:@"find"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    item3.selectedImage = [[UIImage imageNamed:@"findhover"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
     //设置选中后标题颜色
     for (int i = 0; i < [tabBar.items count]; i++) {
         //迭代所有tab bar item统一设置选中后字颜色

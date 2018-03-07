@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F2F3809203030A500785C30 /* UserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F2F3808203030A500785C30 /* UserCenterViewController.m */; };
+		6F93D3F4204C5EC300308647 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F93D3F3204C5EC300308647 /* LoginViewController.m */; };
 		7F399667EE070C6F9F1771AA /* libPods-OrangeFun.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 030DD2513EA5E94C92CF96C8 /* libPods-OrangeFun.a */; };
 		C40A94201FB37E61001971A1 /* JerryAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A941F1FB37E61001971A1 /* JerryAVPlayer.m */; };
 		C40A94231FBD977B001971A1 /* BMRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C40A94211FBD977B001971A1 /* BMRequestHelper.m */; };
@@ -62,6 +64,10 @@
 		030DD2513EA5E94C92CF96C8 /* libPods-OrangeFun.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OrangeFun.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B49597F75728F93128ED018 /* Pods-OrangeFun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeFun.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeFun/Pods-OrangeFun.debug.xcconfig"; sourceTree = "<group>"; };
 		46E6EDAFB76380052B3737E2 /* Pods-OrangeFun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OrangeFun.release.xcconfig"; path = "Pods/Target Support Files/Pods-OrangeFun/Pods-OrangeFun.release.xcconfig"; sourceTree = "<group>"; };
+		6F2F3807203030A500785C30 /* UserCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCenterViewController.h; sourceTree = "<group>"; };
+		6F2F3808203030A500785C30 /* UserCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCenterViewController.m; sourceTree = "<group>"; };
+		6F93D3F2204C5EC300308647 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		6F93D3F3204C5EC300308647 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		C40A941E1FB37E61001971A1 /* JerryAVPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JerryAVPlayer.h; sourceTree = "<group>"; };
 		C40A941F1FB37E61001971A1 /* JerryAVPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JerryAVPlayer.m; sourceTree = "<group>"; };
 		C40A94211FBD977B001971A1 /* BMRequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BMRequestHelper.m; path = OrangeFun/BMRequestHelper.m; sourceTree = SOURCE_ROOT; };
@@ -162,6 +168,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F2F38062030305600785C30 /* 我的 */ = {
+			isa = PBXGroup;
+			children = (
+				6F93D3F1204C5EAA00308647 /* 登录 */,
+				6F2F3807203030A500785C30 /* UserCenterViewController.h */,
+				6F2F3808203030A500785C30 /* UserCenterViewController.m */,
+			);
+			path = "我的";
+			sourceTree = "<group>";
+		};
+		6F93D3F1204C5EAA00308647 /* 登录 */ = {
+			isa = PBXGroup;
+			children = (
+				6F93D3F2204C5EC300308647 /* LoginViewController.h */,
+				6F93D3F3204C5EC300308647 /* LoginViewController.m */,
+			);
+			path = "登录";
+			sourceTree = "<group>";
+		};
 		7B637DB2559BA171EF8F3F89 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +419,7 @@
 				C40A946C1FD04C2B001971A1 /* 搜索 */,
 				C40A94341FC73B35001971A1 /* 播放页 */,
 				C40A943C1FC80C33001971A1 /* 发现 */,
+				6F2F38062030305600785C30 /* 我的 */,
 				C40A94381FC73B60001971A1 /* 播单 */,
 				C4A58C241FAF70A900E45395 /* AppDelegate.h */,
 				C4A58C251FAF70A900E45395 /* AppDelegate.m */,
@@ -591,6 +617,8 @@
 				C4A58C291FAF70A900E45395 /* ViewController.m in Sources */,
 				C4B612A31FE42EF800DD4DB2 /* HistoryTableCell.m in Sources */,
 				C4A58C341FAF70A900E45395 /* main.m in Sources */,
+				6F93D3F4204C5EC300308647 /* LoginViewController.m in Sources */,
+				6F2F3809203030A500785C30 /* UserCenterViewController.m in Sources */,
 				C40A94201FB37E61001971A1 /* JerryAVPlayer.m in Sources */,
 				C40A943F1FC80C55001971A1 /* DiscoverViewController.m in Sources */,
 				C40A94371FC73B4C001971A1 /* PlayViewController.m in Sources */,
